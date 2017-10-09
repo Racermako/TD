@@ -1,0 +1,5567 @@
+﻿<?xml version="1.0" encoding="utf-8"?><symbolimport xmlns="urn:Unify.Sal.Compiler">
+<assembly name="System">
+<enumeration name="PerformanceCounterType" namespace="System.Diagnostics" symbol="System_Diagnostics_PerformanceCounterType">
+<enumvalue name="NumberOfItemsHEX32" value="0" />
+<enumvalue name="NumberOfItemsHEX64" value="256" />
+<enumvalue name="NumberOfItems32" value="65536" />
+<enumvalue name="NumberOfItems64" value="65792" />
+<enumvalue name="CounterDelta32" value="4195328" />
+<enumvalue name="CounterDelta64" value="4195584" />
+<enumvalue name="SampleCounter" value="4260864" />
+<enumvalue name="CountPerTimeInterval32" value="4523008" />
+<enumvalue name="CountPerTimeInterval64" value="4523264" />
+<enumvalue name="RateOfCountsPerSecond32" value="272696320" />
+<enumvalue name="RateOfCountsPerSecond64" value="272696576" />
+<enumvalue name="RawFraction" value="537003008" />
+<enumvalue name="CounterTimer" value="541132032" />
+<enumvalue name="Timer100Ns" value="542180608" />
+<enumvalue name="SampleFraction" value="549585920" />
+<enumvalue name="CounterTimerInverse" value="557909248" />
+<enumvalue name="Timer100NsInverse" value="558957824" />
+<enumvalue name="CounterMultiTimer" value="574686464" />
+<enumvalue name="CounterMultiTimer100Ns" value="575735040" />
+<enumvalue name="CounterMultiTimerInverse" value="591463680" />
+<enumvalue name="CounterMultiTimer100NsInverse" value="592512256" />
+<enumvalue name="AverageTimer32" value="805438464" />
+<enumvalue name="ElapsedTime" value="807666944" />
+<enumvalue name="AverageCount64" value="1073874176" />
+<enumvalue name="SampleBase" value="1073939457" />
+<enumvalue name="AverageBase" value="1073939458" />
+<enumvalue name="RawBase" value="1073939459" />
+<enumvalue name="CounterMultiBase" value="1107494144" />
+</enumeration>
+<enumeration name="PerformanceCounterPermissionAccess" namespace="System.Diagnostics" symbol="System_Diagnostics_PerformanceCounterPermissionAccess">
+<enumvalue name="None" value="0" />
+<enumvalue name="Read" value="1" />
+<enumvalue name="Browse" value="1" />
+<enumvalue name="Write" value="2" />
+<enumvalue name="Instrument" value="3" />
+<enumvalue name="Administer" value="7" />
+</enumeration>
+<enumeration name="PerformanceCounterInstanceLifetime" namespace="System.Diagnostics" symbol="System_Diagnostics_PerformanceCounterInstanceLifetime">
+<enumvalue name="Global" value="0" />
+<enumvalue name="Process" value="1" />
+</enumeration>
+<enumeration name="PerformanceCounterCategoryType" namespace="System.Diagnostics" symbol="System_Diagnostics_PerformanceCounterCategoryType">
+<enumvalue name="SingleInstance" value="0" />
+<enumvalue name="MultiInstance" value="1" />
+<enumvalue name="Unknown" value="-1" />
+</enumeration>
+<class name="CounterCreationDataCollection" symbol="System_Diagnostics_CounterCreationDataCollection" namespace="System.Diagnostics" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="CounterCreationDataCollection_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name=".ctor" symbol="CounterCreationDataCollection_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationDataCollection</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="CounterCreationDataCollection_Overload3" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Diagnostics_CounterCreationData</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Item" symbol="get_Item" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationData</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="set_Item" symbol="set_Item" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationData</type>
+</parameter>
+</parameters>
+</function>
+<function name="Add" symbol="Add" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationData</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddRange" symbol="AddRange_Overload1" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Diagnostics_CounterCreationData</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddRange" symbol="AddRange_Overload2" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationDataCollection</type>
+</parameter>
+</parameters>
+</function>
+<function name="Contains" symbol="Contains" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationData</type>
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Diagnostics_CounterCreationData</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="IndexOf" symbol="IndexOf" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationData</type>
+</parameter>
+</parameters>
+</function>
+<function name="Insert" symbol="Insert" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationData</type>
+</parameter>
+</parameters>
+</function>
+<function name="Remove" symbol="Remove" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationData</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="CounterCreationData" symbol="System_Diagnostics_CounterCreationData" namespace="System.Diagnostics" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="CounterCreationData_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name=".ctor" symbol="CounterCreationData_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterType</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_CounterType" symbol="get_CounterType" implemented="true" loadasglobal="false">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterType</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_CounterType" symbol="set_CounterType" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterType</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_CounterName" symbol="get_CounterName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_CounterName" symbol="set_CounterName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_CounterHelp" symbol="get_CounterHelp" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_CounterHelp" symbol="set_CounterHelp" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="PerformanceCounterPermissionEntryCollection" symbol="System_Diagnostics_PerformanceCounterPermissionEntryCollection" namespace="System.Diagnostics" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Item" symbol="get_Item" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="set_Item" symbol="set_Item" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+</parameter>
+</parameters>
+</function>
+<function name="Add" symbol="Add" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddRange" symbol="AddRange_Overload1" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddRange" symbol="AddRange_Overload2" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterPermissionEntryCollection</type>
+</parameter>
+</parameters>
+</function>
+<function name="Contains" symbol="Contains" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="IndexOf" symbol="IndexOf" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+</parameter>
+</parameters>
+</function>
+<function name="Insert" symbol="Insert" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+</parameter>
+</parameters>
+</function>
+<function name="Remove" symbol="Remove" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="PerformanceCounterPermissionEntry" symbol="System_Diagnostics_PerformanceCounterPermissionEntry" namespace="System.Diagnostics" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="PerformanceCounterPermissionEntry" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterPermissionAccess</type>
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_CategoryName" symbol="get_CategoryName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="get_MachineName" symbol="get_MachineName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="get_PermissionAccess" symbol="get_PermissionAccess" implemented="true" loadasglobal="false">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterPermissionAccess</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="PerformanceCounterPermissionAttribute" symbol="System_Diagnostics_PerformanceCounterPermissionAttribute" namespace="System.Diagnostics" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="PerformanceCounterPermissionAttribute" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [mscorlib]System.Security.Permissions.SecurityAction</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_CategoryName" symbol="get_CategoryName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_CategoryName" symbol="set_CategoryName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_MachineName" symbol="get_MachineName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_MachineName" symbol="set_MachineName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_PermissionAccess" symbol="get_PermissionAccess" implemented="true" loadasglobal="false">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterPermissionAccess</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_PermissionAccess" symbol="set_PermissionAccess" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterPermissionAccess</type>
+</parameter>
+</parameters>
+</function>
+<function name="CreatePermission" symbol="CreatePermission" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="PerformanceCounterPermission" symbol="System_Diagnostics_PerformanceCounterPermission" namespace="System.Diagnostics" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="PerformanceCounterPermission_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounterPermission_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [mscorlib]System.Security.Permissions.PermissionState</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounterPermission_Overload3" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterPermissionAccess</type>
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounterPermission_Overload4" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Diagnostics_PerformanceCounterPermissionEntry</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_PermissionEntries" symbol="get_PermissionEntries" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterPermissionEntryCollection</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="PerformanceCounterManager" symbol="System_Diagnostics_PerformanceCounterManager" namespace="System.Diagnostics" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="PerformanceCounterManager" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="PerformanceCounterCategory" symbol="System_Diagnostics_PerformanceCounterCategory" namespace="System.Diagnostics" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="PerformanceCounterCategory_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounterCategory_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounterCategory_Overload3" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_CategoryName" symbol="get_CategoryName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_CategoryName" symbol="set_CategoryName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_CategoryHelp" symbol="get_CategoryHelp" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="get_CategoryType" symbol="get_CategoryType" implemented="true" loadasglobal="false">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterCategoryType</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_MachineName" symbol="get_MachineName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_MachineName" symbol="set_MachineName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="CounterExists" symbol="CounterExists" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="InstanceExists" symbol="InstanceExists" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="ReadCategory" symbol="ReadCategory" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Diagnostics_InstanceDataCollectionCollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="CounterExists" symbol="System_Diagnostics_PerformanceCounterCategory_CounterExists" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="CounterExists" symbol="System_Diagnostics_PerformanceCounterCategory_CounterExists_Overload2" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="Create" symbol="System_Diagnostics_PerformanceCounterCategory_Create" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterCategory</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="Create" symbol="System_Diagnostics_PerformanceCounterCategory_Create_Overload2" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterCategory</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterCategoryType</type>
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="Create" symbol="System_Diagnostics_PerformanceCounterCategory_Create_Overload3" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterCategory</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationDataCollection</type>
+</parameter>
+</parameters>
+</function>
+<function name="Create" symbol="System_Diagnostics_PerformanceCounterCategory_Create_Overload4" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Diagnostics_PerformanceCounterCategory</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterCategoryType</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterCreationDataCollection</type>
+</parameter>
+</parameters>
+</function>
+<function name="Delete" symbol="System_Diagnostics_PerformanceCounterCategory_Delete" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="Exists" symbol="System_Diagnostics_PerformanceCounterCategory_Exists" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="Exists" symbol="System_Diagnostics_PerformanceCounterCategory_Exists_Overload2" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="InstanceExists" symbol="System_Diagnostics_PerformanceCounterCategory_InstanceExists" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="InstanceExists" symbol="System_Diagnostics_PerformanceCounterCategory_InstanceExists_Overload2" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="PerformanceCounter" symbol="System_Diagnostics_PerformanceCounter" namespace="System.Diagnostics" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="PerformanceCounter_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounter_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounter_Overload3" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounter_Overload4" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounter_Overload5" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="PerformanceCounter_Overload6" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="get_CategoryName" symbol="get_CategoryName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_CategoryName" symbol="set_CategoryName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_CounterHelp" symbol="get_CounterHelp" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="get_CounterName" symbol="get_CounterName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_CounterName" symbol="set_CounterName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_CounterType" symbol="get_CounterType" implemented="true" loadasglobal="false">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterType</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_InstanceLifetime" symbol="get_InstanceLifetime" implemented="true" loadasglobal="false">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterInstanceLifetime</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_InstanceLifetime" symbol="set_InstanceLifetime" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterInstanceLifetime</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_InstanceName" symbol="get_InstanceName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_InstanceName" symbol="set_InstanceName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_ReadOnly" symbol="get_ReadOnly" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="set_ReadOnly" symbol="set_ReadOnly" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="get_MachineName" symbol="get_MachineName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_MachineName" symbol="set_MachineName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_RawValue" symbol="get_RawValue" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="set_RawValue" symbol="set_RawValue" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="BeginInit" symbol="BeginInit" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Close" symbol="Close" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Decrement" symbol="Decrement" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="EndInit" symbol="EndInit" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="IncrementBy" symbol="IncrementBy" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="Increment" symbol="Increment" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="NextSample" symbol="NextSample" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+<parameters>
+</parameters>
+</function>
+<function name="NextValue" symbol="NextValue" implemented="true" loadasglobal="false">
+<type enum="Float" />
+<parameters>
+</parameters>
+</function>
+<function name="RemoveInstance" symbol="RemoveInstance" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="CloseSharedResources" symbol="System_Diagnostics_PerformanceCounter_CloseSharedResources" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="DescriptionAttribute" symbol="System_ComponentModel_DescriptionAttribute" namespace="System.ComponentModel" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="DescriptionAttribute_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name=".ctor" symbol="DescriptionAttribute_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Description" symbol="get_Description" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="IsDefaultAttribute" symbol="IsDefaultAttribute" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="ResourcePermissionBase" symbol="System_Security_Permissions_ResourcePermissionBase" namespace="System.Security.Permissions" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<constants>
+<constant name="System_Security_Permissions_ResourcePermissionBase_Any" value="*" loadasglobal="true" />
+<constant name="System_Security_Permissions_ResourcePermissionBase_Local" value="." loadasglobal="true" />
+</constants>
+<functions>
+<function name="Copy" symbol="Copy" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+</parameters>
+</function>
+<function name="FromXml" symbol="FromXml" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_SecurityElement</type>
+</parameter>
+</parameters>
+</function>
+<function name="Intersect" symbol="Intersect" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_IPermission</type>
+</parameter>
+</parameters>
+</function>
+<function name="IsSubsetOf" symbol="IsSubsetOf" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_IPermission</type>
+</parameter>
+</parameters>
+</function>
+<function name="IsUnrestricted" symbol="IsUnrestricted" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="ToXml" symbol="ToXml" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_SecurityElement</type>
+<parameters>
+</parameters>
+</function>
+<function name="Union" symbol="Union" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_IPermission</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="InstanceDataCollectionCollection" symbol="System_Diagnostics_InstanceDataCollectionCollection" namespace="System.Diagnostics" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="InstanceDataCollectionCollection" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Item" symbol="get_Item" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Diagnostics_InstanceDataCollection</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Keys" symbol="get_Keys" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Values" symbol="get_Values" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="Contains" symbol="Contains" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Diagnostics_InstanceDataCollection</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="CounterSample" symbol="System_Diagnostics_CounterSample" namespace="System.Diagnostics" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="CounterSample_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterType</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="CounterSample_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterType</type>
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="get_RawValue" symbol="get_RawValue" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="get_BaseValue" symbol="get_BaseValue" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="get_SystemFrequency" symbol="get_SystemFrequency" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="get_CounterFrequency" symbol="get_CounterFrequency" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="get_CounterTimeStamp" symbol="get_CounterTimeStamp" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="get_TimeStamp" symbol="get_TimeStamp" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="get_TimeStamp100nSec" symbol="get_TimeStamp100nSec" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="get_CounterType" symbol="get_CounterType" implemented="true" loadasglobal="false">
+<type enum="Enumeration">valuetype [System]System.Diagnostics.PerformanceCounterType</type>
+<parameters>
+</parameters>
+</function>
+<function name="Calculate" symbol="System_Diagnostics_CounterSample_Calculate" implemented="true" loadasglobal="true">
+<type enum="Float" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+</parameter>
+</parameters>
+</function>
+<function name="Calculate" symbol="System_Diagnostics_CounterSample_Calculate_Overload2" implemented="true" loadasglobal="true">
+<type enum="Float" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Equality" symbol="System_Diagnostics_CounterSample_op_Equality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Inequality" symbol="System_Diagnostics_CounterSample_op_Inequality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="Component" symbol="System_ComponentModel_Component" namespace="System.ComponentModel" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="Component" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Site" symbol="get_Site" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_ComponentModel_ISite</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_Site" symbol="set_Site" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_ComponentModel_ISite</type>
+</parameter>
+</parameters>
+</function>
+<function name="Dispose" symbol="Dispose" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Container" symbol="get_Container" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_ComponentModel_IContainer</type>
+<parameters>
+</parameters>
+</function>
+<function name="ToString" symbol="ToString" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="InstanceDataCollection" symbol="System_Diagnostics_InstanceDataCollection" namespace="System.Diagnostics" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="InstanceDataCollection" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_CounterName" symbol="get_CounterName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Keys" symbol="get_Keys" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Values" symbol="get_Values" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Item" symbol="get_Item" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Diagnostics_InstanceData</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="Contains" symbol="Contains" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Diagnostics_InstanceData</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="ISite" symbol="System_ComponentModel_ISite" namespace="System.ComponentModel" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Component" symbol="get_Component" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_ComponentModel_IComponent</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Container" symbol="get_Container" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_ComponentModel_IContainer</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_DesignMode" symbol="get_DesignMode" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Name" symbol="get_Name" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_Name" symbol="set_Name" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IContainer" symbol="System_ComponentModel_IContainer" namespace="System.ComponentModel" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="Add" symbol="Add_Overload1" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_ComponentModel_IComponent</type>
+</parameter>
+</parameters>
+</function>
+<function name="Add" symbol="Add_Overload2" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_ComponentModel_IComponent</type>
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Components" symbol="get_Components" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_ComponentModel_ComponentCollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="Remove" symbol="Remove" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_ComponentModel_IComponent</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="InstanceData" symbol="System_Diagnostics_InstanceData" namespace="System.Diagnostics" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="InstanceData" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_InstanceName" symbol="get_InstanceName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Sample" symbol="get_Sample" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Diagnostics_CounterSample</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_RawValue" symbol="get_RawValue" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IComponent" symbol="System_ComponentModel_IComponent" namespace="System.ComponentModel" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Site" symbol="get_Site" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_ComponentModel_ISite</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_Site" symbol="set_Site" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_ComponentModel_ISite</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="ComponentCollection" symbol="System_ComponentModel_ComponentCollection" namespace="System.ComponentModel" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="ComponentCollection" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_ComponentModel_IComponent</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Item" symbol="get_Item_Overload1" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_ComponentModel_IComponent</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Item" symbol="get_Item_Overload2" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_ComponentModel_IComponent</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_ComponentModel_IComponent</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+</assembly>
+<assembly name="mscorlib">
+<enumeration name="SecurityAction" namespace="System.Security.Permissions" symbol="System_Security_Permissions_SecurityAction">
+<enumvalue name="Demand" value="2" />
+<enumvalue name="Assert" value="3" />
+<enumvalue name="Deny" value="4" />
+<enumvalue name="PermitOnly" value="5" />
+<enumvalue name="LinkDemand" value="6" />
+<enumvalue name="InheritanceDemand" value="7" />
+<enumvalue name="RequestMinimum" value="8" />
+<enumvalue name="RequestOptional" value="9" />
+<enumvalue name="RequestRefuse" value="10" />
+</enumeration>
+<enumeration name="PermissionState" namespace="System.Security.Permissions" symbol="System_Security_Permissions_PermissionState">
+<enumvalue name="None" value="0" />
+<enumvalue name="Unrestricted" value="1" />
+</enumeration>
+<enumeration name="StreamingContextStates" namespace="System.Runtime.Serialization" symbol="System_Runtime_Serialization_StreamingContextStates">
+<enumvalue name="CrossProcess" value="1" />
+<enumvalue name="CrossMachine" value="2" />
+<enumvalue name="File" value="4" />
+<enumvalue name="Persistence" value="8" />
+<enumvalue name="Remoting" value="16" />
+<enumvalue name="Other" value="32" />
+<enumvalue name="Clone" value="64" />
+<enumvalue name="CrossAppDomain" value="128" />
+<enumvalue name="All" value="255" />
+</enumeration>
+<enumeration name="TypeCode" namespace="System" symbol="System_TypeCode">
+<enumvalue name="Empty" value="0" />
+<enumvalue name="Object" value="1" />
+<enumvalue name="DBNull" value="2" />
+<enumvalue name="Boolean" value="3" />
+<enumvalue name="Char" value="4" />
+<enumvalue name="SByte" value="5" />
+<enumvalue name="Byte" value="6" />
+<enumvalue name="Int16" value="7" />
+<enumvalue name="UInt16" value="8" />
+<enumvalue name="Int32" value="9" />
+<enumvalue name="UInt32" value="10" />
+<enumvalue name="Int64" value="11" />
+<enumvalue name="UInt64" value="12" />
+<enumvalue name="Single" value="13" />
+<enumvalue name="Double" value="14" />
+<enumvalue name="Decimal" value="15" />
+<enumvalue name="DateTime" value="16" />
+<enumvalue name="String" value="18" />
+</enumeration>
+<class name="Object" symbol="System_Object" namespace="System" loadassymbol="true" implemented="true">
+<functions>
+<function name=".ctor" symbol="Object" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="ToString" symbol="ToString" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="Equals" symbol="System_Object_Equals" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ReferenceEquals" symbol="System_Object_ReferenceEquals" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="CollectionBase" symbol="System_Collections_CollectionBase" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Capacity" symbol="get_Capacity" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="set_Capacity" symbol="set_Capacity" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Count" symbol="get_Count" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="Clear" symbol="Clear" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="RemoveAt" symbol="RemoveAt" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="GetEnumerator" symbol="GetEnumerator" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_IEnumerator</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IPermission" symbol="System_Security_IPermission" namespace="System.Security" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="Copy" symbol="Copy" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+</parameters>
+</function>
+<function name="Intersect" symbol="Intersect" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_IPermission</type>
+</parameter>
+</parameters>
+</function>
+<function name="Union" symbol="Union" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_IPermission</type>
+</parameter>
+</parameters>
+</function>
+<function name="IsSubsetOf" symbol="IsSubsetOf" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_IPermission</type>
+</parameter>
+</parameters>
+</function>
+<function name="Demand" symbol="Demand" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="CodeAccessSecurityAttribute" symbol="System_Security_Permissions_CodeAccessSecurityAttribute" namespace="System.Security.Permissions" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="Attribute" symbol="System_Attribute" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_TypeId" symbol="get_TypeId" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="Match" symbol="Match" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="IsDefaultAttribute" symbol="IsDefaultAttribute" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="SecurityElement" symbol="System_Security_SecurityElement" namespace="System.Security" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="SecurityElement_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="SecurityElement_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Tag" symbol="get_Tag" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_Tag" symbol="set_Tag" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Attributes" symbol="get_Attributes" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_Hashtable</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_Attributes" symbol="set_Attributes" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_Hashtable</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Text" symbol="get_Text" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_Text" symbol="set_Text" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Children" symbol="get_Children" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+<parameters>
+</parameters>
+</function>
+<function name="AddAttribute" symbol="AddAttribute" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="AddChild" symbol="AddChild" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_SecurityElement</type>
+</parameter>
+</parameters>
+</function>
+<function name="Equal" symbol="Equal" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_SecurityElement</type>
+</parameter>
+</parameters>
+</function>
+<function name="Copy" symbol="Copy" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_SecurityElement</type>
+<parameters>
+</parameters>
+</function>
+<function name="ToString" symbol="ToString" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="Attribute" symbol="Attribute" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="SearchForTextOfTag" symbol="SearchForTextOfTag" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="set_Children" symbol="set_Children" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+</parameter>
+</parameters>
+</function>
+<function name="SearchForChildByTag" symbol="SearchForChildByTag" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_SecurityElement</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="FromString" symbol="System_Security_SecurityElement_FromString" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Security_SecurityElement</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="IsValidTag" symbol="System_Security_SecurityElement_IsValidTag" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="IsValidText" symbol="System_Security_SecurityElement_IsValidText" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="IsValidAttributeName" symbol="System_Security_SecurityElement_IsValidAttributeName" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="IsValidAttributeValue" symbol="System_Security_SecurityElement_IsValidAttributeValue" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="Escape" symbol="System_Security_SecurityElement_Escape" implemented="true" loadasglobal="true">
+<type enum="String" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="CodeAccessPermission" symbol="System_Security_CodeAccessPermission" namespace="System.Security" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="Demand" symbol="Demand" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Assert" symbol="Assert" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Deny" symbol="Deny" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="PermitOnly" symbol="PermitOnly" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Union" symbol="Union" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_IPermission</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToXml" symbol="ToXml" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_SecurityElement</type>
+<parameters>
+</parameters>
+</function>
+<function name="FromXml" symbol="FromXml" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_SecurityElement</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToString" symbol="ToString" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="Copy" symbol="Copy" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+</parameters>
+</function>
+<function name="Intersect" symbol="Intersect" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_IPermission</type>
+</parameter>
+</parameters>
+</function>
+<function name="IsSubsetOf" symbol="IsSubsetOf" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Security_IPermission</type>
+</parameter>
+</parameters>
+</function>
+<function name="RevertAssert" symbol="System_Security_CodeAccessPermission_RevertAssert" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="RevertDeny" symbol="System_Security_CodeAccessPermission_RevertDeny" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="RevertPermitOnly" symbol="System_Security_CodeAccessPermission_RevertPermitOnly" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="RevertAll" symbol="System_Security_CodeAccessPermission_RevertAll" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="ICollection" symbol="System_Collections_ICollection" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="CopyTo" symbol="CopyTo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Count" symbol="get_Count" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="get_SyncRoot" symbol="get_SyncRoot" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_IsSynchronized" symbol="get_IsSynchronized" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="DictionaryBase" symbol="System_Collections_DictionaryBase" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Count" symbol="get_Count" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Clear" symbol="Clear" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="GetEnumerator" symbol="GetEnumerator" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_IDictionaryEnumerator</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="ValueType" symbol="System_ValueType" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="ToString" symbol="ToString" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="EventHandler" symbol="System_EventHandler" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="EventHandler" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+</parameters>
+</function>
+<function name="EndInvoke" symbol="EndInvoke" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_IAsyncResult</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="MarshalByRefObject" symbol="System_MarshalByRefObject" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="GetLifetimeService" symbol="GetLifetimeService" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="InitializeLifetimeService" symbol="InitializeLifetimeService" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IEnumerator" symbol="System_Collections_IEnumerator" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="MoveNext" symbol="MoveNext" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Current" symbol="get_Current" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="Reset" symbol="Reset" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="SecurityAttribute" symbol="System_Security_Permissions_SecurityAttribute" namespace="System.Security.Permissions" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Action" symbol="get_Action" implemented="true" loadasglobal="false">
+<type enum="Enumeration">valuetype [mscorlib]System.Security.Permissions.SecurityAction</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_Action" symbol="set_Action" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [mscorlib]System.Security.Permissions.SecurityAction</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Unrestricted" symbol="get_Unrestricted" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="set_Unrestricted" symbol="set_Unrestricted" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="CreatePermission" symbol="CreatePermission" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Security_IPermission</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="Hashtable" symbol="System_Collections_Hashtable" namespace="System.Collections" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="Hashtable_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload3" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Float" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload4" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Float" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IHashCodeProvider</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload5" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Float" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IEqualityComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload6" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IHashCodeProvider</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload7" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IEqualityComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload8" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IHashCodeProvider</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload9" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IEqualityComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload10" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IDictionary</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload11" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IDictionary</type>
+</parameter>
+<parameter direction="In">
+<type enum="Float" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload12" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IDictionary</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IHashCodeProvider</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload13" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IDictionary</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IEqualityComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload14" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IDictionary</type>
+</parameter>
+<parameter direction="In">
+<type enum="Float" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IHashCodeProvider</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="Hashtable_Overload15" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IDictionary</type>
+</parameter>
+<parameter direction="In">
+<type enum="Float" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IEqualityComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="Add" symbol="Add" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Clear" symbol="Clear" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Clone" symbol="Clone" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="Contains" symbol="Contains" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ContainsKey" symbol="ContainsKey" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ContainsValue" symbol="ContainsValue" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Item" symbol="get_Item" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="set_Item" symbol="set_Item" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="GetEnumerator" symbol="GetEnumerator" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_IDictionaryEnumerator</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_IsReadOnly" symbol="get_IsReadOnly" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsFixedSize" symbol="get_IsFixedSize" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsSynchronized" symbol="get_IsSynchronized" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Keys" symbol="get_Keys" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Values" symbol="get_Values" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="Remove" symbol="Remove" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_SyncRoot" symbol="get_SyncRoot" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Count" symbol="get_Count" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="GetObjectData" symbol="GetObjectData" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Serialization_SerializationInfo</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Serialization_StreamingContext</type>
+</parameter>
+</parameters>
+</function>
+<function name="OnDeserialization" symbol="OnDeserialization" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Synchronized" symbol="System_Collections_Hashtable_Synchronized" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Collections_Hashtable</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_Hashtable</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="ArrayList" symbol="System_Collections_ArrayList" namespace="System.Collections" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="ArrayList_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name=".ctor" symbol="ArrayList_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="ArrayList_Overload3" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Capacity" symbol="get_Capacity" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="set_Capacity" symbol="set_Capacity" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Count" symbol="get_Count" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsFixedSize" symbol="get_IsFixedSize" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsReadOnly" symbol="get_IsReadOnly" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsSynchronized" symbol="get_IsSynchronized" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_SyncRoot" symbol="get_SyncRoot" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Item" symbol="get_Item" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="set_Item" symbol="set_Item" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Add" symbol="Add" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddRange" symbol="AddRange" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+</parameter>
+</parameters>
+</function>
+<function name="BinarySearch" symbol="BinarySearch_Overload1" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="BinarySearch" symbol="BinarySearch_Overload2" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="BinarySearch" symbol="BinarySearch_Overload3" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="Clear" symbol="Clear" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Clone" symbol="Clone" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="Contains" symbol="Contains" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo_Overload1" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo_Overload2" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo_Overload3" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="GetEnumerator" symbol="GetEnumerator_Overload1" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_IEnumerator</type>
+<parameters>
+</parameters>
+</function>
+<function name="GetEnumerator" symbol="GetEnumerator_Overload2" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_IEnumerator</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="IndexOf" symbol="IndexOf_Overload1" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="IndexOf" symbol="IndexOf_Overload2" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="IndexOf" symbol="IndexOf_Overload3" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Insert" symbol="Insert" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="InsertRange" symbol="InsertRange" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+</parameter>
+</parameters>
+</function>
+<function name="LastIndexOf" symbol="LastIndexOf_Overload1" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="LastIndexOf" symbol="LastIndexOf_Overload2" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="LastIndexOf" symbol="LastIndexOf_Overload3" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Remove" symbol="Remove" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="RemoveAt" symbol="RemoveAt" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="RemoveRange" symbol="RemoveRange" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Reverse" symbol="Reverse_Overload1" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Reverse" symbol="Reverse_Overload2" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="SetRange" symbol="SetRange" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+</parameter>
+</parameters>
+</function>
+<function name="GetRange" symbol="GetRange" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="Sort_Overload1" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Sort" symbol="Sort_Overload2" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="Sort_Overload3" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="TrimToSize" symbol="TrimToSize" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Adapter" symbol="System_Collections_ArrayList_Adapter" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IList</type>
+</parameter>
+</parameters>
+</function>
+<function name="FixedSize" symbol="System_Collections_ArrayList_FixedSize" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Collections_IList</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IList</type>
+</parameter>
+</parameters>
+</function>
+<function name="FixedSize" symbol="System_Collections_ArrayList_FixedSize_Overload2" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+</parameter>
+</parameters>
+</function>
+<function name="ReadOnly" symbol="System_Collections_ArrayList_ReadOnly" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Collections_IList</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IList</type>
+</parameter>
+</parameters>
+</function>
+<function name="ReadOnly" symbol="System_Collections_ArrayList_ReadOnly_Overload2" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+</parameter>
+</parameters>
+</function>
+<function name="Repeat" symbol="System_Collections_ArrayList_Repeat" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Synchronized" symbol="System_Collections_ArrayList_Synchronized" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Collections_IList</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IList</type>
+</parameter>
+</parameters>
+</function>
+<function name="Synchronized" symbol="System_Collections_ArrayList_Synchronized_Overload2" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_ArrayList</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="Array" symbol="System_Array" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="GetValue" symbol="GetValue_Overload1" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" array="true" />
+</parameter>
+</parameters>
+</function>
+<function name="GetValue" symbol="GetValue_Overload2" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="GetValue" symbol="GetValue_Overload3" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="GetValue" symbol="GetValue_Overload4" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="GetValue" symbol="GetValue_Overload5" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="GetValue" symbol="GetValue_Overload6" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="GetValue" symbol="GetValue_Overload7" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="GetValue" symbol="GetValue_Overload8" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" array="true" />
+</parameter>
+</parameters>
+</function>
+<function name="SetValue" symbol="SetValue_Overload1" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="SetValue" symbol="SetValue_Overload2" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="SetValue" symbol="SetValue_Overload3" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="SetValue" symbol="SetValue_Overload4" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" array="true" />
+</parameter>
+</parameters>
+</function>
+<function name="SetValue" symbol="SetValue_Overload5" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="SetValue" symbol="SetValue_Overload6" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="SetValue" symbol="SetValue_Overload7" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="SetValue" symbol="SetValue_Overload8" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" array="true" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Length" symbol="get_Length" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="get_LongLength" symbol="get_LongLength" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="GetLength" symbol="GetLength" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="GetLongLength" symbol="GetLongLength" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Rank" symbol="get_Rank" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="GetUpperBound" symbol="GetUpperBound" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="GetLowerBound" symbol="GetLowerBound" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="get_SyncRoot" symbol="get_SyncRoot" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_IsReadOnly" symbol="get_IsReadOnly" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsFixedSize" symbol="get_IsFixedSize" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsSynchronized" symbol="get_IsSynchronized" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="Clone" symbol="Clone" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo_Overload1" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="CopyTo" symbol="CopyTo_Overload2" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="GetEnumerator" symbol="GetEnumerator" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_IEnumerator</type>
+<parameters>
+</parameters>
+</function>
+<function name="Initialize" symbol="Initialize" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="Copy" symbol="System_Array_Copy" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Copy" symbol="System_Array_Copy_Overload2" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="ConstrainedCopy" symbol="System_Array_ConstrainedCopy" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Copy" symbol="System_Array_Copy_Overload3" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="Copy" symbol="System_Array_Copy_Overload4" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="Clear" symbol="System_Array_Clear" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="BinarySearch" symbol="System_Array_BinarySearch" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="BinarySearch" symbol="System_Array_BinarySearch_Overload2" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="BinarySearch" symbol="System_Array_BinarySearch_Overload3" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="BinarySearch" symbol="System_Array_BinarySearch_Overload4" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="IndexOf" symbol="System_Array_IndexOf" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="IndexOf" symbol="System_Array_IndexOf_Overload2" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="IndexOf" symbol="System_Array_IndexOf_Overload3" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="LastIndexOf" symbol="System_Array_LastIndexOf" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="LastIndexOf" symbol="System_Array_LastIndexOf_Overload2" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="LastIndexOf" symbol="System_Array_LastIndexOf_Overload3" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Reverse" symbol="System_Array_Reverse" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+</parameters>
+</function>
+<function name="Reverse" symbol="System_Array_Reverse_Overload2" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="System_Array_Sort" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="System_Array_Sort_Overload2" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="System_Array_Sort_Overload3" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="System_Array_Sort_Overload4" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="System_Array_Sort_Overload5" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="System_Array_Sort_Overload6" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="System_Array_Sort_Overload7" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+<function name="Sort" symbol="System_Array_Sort_Overload8" implemented="true" loadasglobal="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Array</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Collections_IComparer</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IDictionaryEnumerator" symbol="System_Collections_IDictionaryEnumerator" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Key" symbol="get_Key" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Value" symbol="get_Value" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Entry" symbol="get_Entry" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_DictionaryEntry</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="EventArgs" symbol="System_EventArgs" namespace="System" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="EventArgs" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IAsyncResult" symbol="System_IAsyncResult" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_IsCompleted" symbol="get_IsCompleted" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_AsyncWaitHandle" symbol="get_AsyncWaitHandle" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Threading_WaitHandle</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_AsyncState" symbol="get_AsyncState" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_CompletedSynchronously" symbol="get_CompletedSynchronously" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="AsyncCallback" symbol="System_AsyncCallback" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="AsyncCallback" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+</parameters>
+</function>
+<function name="Invoke" symbol="Invoke" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_IAsyncResult</type>
+</parameter>
+</parameters>
+</function>
+<function name="EndInvoke" symbol="EndInvoke" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_IAsyncResult</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IntPtr" symbol="System_IntPtr" namespace="System" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="IntPtr_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="IntPtr_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="ToInt32" symbol="ToInt32" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="ToInt64" symbol="ToInt64" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="ToString" symbol="ToString_Overload1" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="ToString" symbol="ToString_Overload2" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="op_Explicit" symbol="System_IntPtr_op_Explicit" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_IntPtr</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="op_Explicit" symbol="System_IntPtr_op_Explicit_Overload2" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_IntPtr</type>
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="op_Explicit" symbol="System_IntPtr_op_Explicit_Overload5" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Explicit" symbol="System_IntPtr_op_Explicit_Overload6" implemented="true" loadasglobal="true">
+<type enum="LongNative" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Equality" symbol="System_IntPtr_op_Equality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Inequality" symbol="System_IntPtr_op_Inequality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Size" symbol="System_IntPtr_get_Size" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="MulticastDelegate" symbol="System_MulticastDelegate" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="GetObjectData" symbol="GetObjectData" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Serialization_SerializationInfo</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Serialization_StreamingContext</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Equality" symbol="System_MulticastDelegate_op_Equality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_MulticastDelegate</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_MulticastDelegate</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Inequality" symbol="System_MulticastDelegate_op_Inequality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_MulticastDelegate</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_MulticastDelegate</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="ObjRef" symbol="System_Runtime_Remoting_ObjRef" namespace="System.Runtime.Remoting" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="ObjRef_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="GetObjectData" symbol="GetObjectData" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Serialization_SerializationInfo</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Serialization_StreamingContext</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_URI" symbol="get_URI" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_URI" symbol="set_URI" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_TypeInfo" symbol="get_TypeInfo" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Runtime_Remoting_IRemotingTypeInfo</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_TypeInfo" symbol="set_TypeInfo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Remoting_IRemotingTypeInfo</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_EnvoyInfo" symbol="get_EnvoyInfo" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Runtime_Remoting_IEnvoyInfo</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_EnvoyInfo" symbol="set_EnvoyInfo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Remoting_IEnvoyInfo</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_ChannelInfo" symbol="get_ChannelInfo" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Runtime_Remoting_IChannelInfo</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_ChannelInfo" symbol="set_ChannelInfo" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Remoting_IChannelInfo</type>
+</parameter>
+</parameters>
+</function>
+<function name="IsFromThisProcess" symbol="IsFromThisProcess" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="IsFromThisAppDomain" symbol="IsFromThisAppDomain" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="GetRealObject" symbol="GetRealObject" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Serialization_StreamingContext</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="ReadOnlyCollectionBase" symbol="System_Collections_ReadOnlyCollectionBase" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Count" symbol="get_Count" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="GetEnumerator" symbol="GetEnumerator" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_IEnumerator</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="SerializationInfo" symbol="System_Runtime_Serialization_SerializationInfo" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_FullTypeName" symbol="get_FullTypeName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_FullTypeName" symbol="set_FullTypeName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_AssemblyName" symbol="get_AssemblyName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="set_AssemblyName" symbol="set_AssemblyName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_MemberCount" symbol="get_MemberCount" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="GetEnumerator" symbol="GetEnumerator" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Runtime_Serialization_SerializationInfoEnumerator</type>
+<parameters>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload2" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload3" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload4" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Char</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload5" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_SByte</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload6" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Byte</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload7" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Short" />
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload8" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_UInt16</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload9" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload10" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_UInt32</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload11" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload12" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_UInt64</type>
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload13" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Float" />
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload14" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="Double" />
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload15" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="DecimalNative" />
+</parameter>
+</parameters>
+</function>
+<function name="AddValue" symbol="AddValue_Overload16" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="DateNative" />
+</parameter>
+</parameters>
+</function>
+<function name="GetBoolean" symbol="GetBoolean" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetChar" symbol="GetChar" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Char</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetSByte" symbol="GetSByte" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_SByte</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetByte" symbol="GetByte" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Byte</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetInt16" symbol="GetInt16" implemented="true" loadasglobal="false">
+<type enum="Short" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetUInt16" symbol="GetUInt16" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_UInt16</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetUInt32" symbol="GetUInt32" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_UInt32</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetInt64" symbol="GetInt64" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetUInt64" symbol="GetUInt64" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_UInt64</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetSingle" symbol="GetSingle" implemented="true" loadasglobal="false">
+<type enum="Float" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetDouble" symbol="GetDouble" implemented="true" loadasglobal="false">
+<type enum="Double" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetDecimal" symbol="GetDecimal" implemented="true" loadasglobal="false">
+<type enum="DecimalNative" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetDateTime" symbol="GetDateTime" implemented="true" loadasglobal="false">
+<type enum="DateNative" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetInt32" symbol="GetInt32" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetString" symbol="GetString" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="StreamingContext" symbol="System_Runtime_Serialization_StreamingContext" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="StreamingContext_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [mscorlib]System.Runtime.Serialization.StreamingContextStates</type>
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="StreamingContext_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [mscorlib]System.Runtime.Serialization.StreamingContextStates</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Context" symbol="get_Context" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_State" symbol="get_State" implemented="true" loadasglobal="false">
+<type enum="Enumeration">valuetype [mscorlib]System.Runtime.Serialization.StreamingContextStates</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IHashCodeProvider" symbol="System_Collections_IHashCodeProvider" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IComparer" symbol="System_Collections_IComparer" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="Compare" symbol="Compare" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IEqualityComparer" symbol="System_Collections_IEqualityComparer" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IDictionary" symbol="System_Collections_IDictionary" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Item" symbol="get_Item" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="set_Item" symbol="set_Item" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Keys" symbol="get_Keys" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Values" symbol="get_Values" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_ICollection</type>
+<parameters>
+</parameters>
+</function>
+<function name="Contains" symbol="Contains" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Add" symbol="Add" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Clear" symbol="Clear" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsReadOnly" symbol="get_IsReadOnly" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsFixedSize" symbol="get_IsFixedSize" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="GetEnumerator" symbol="GetEnumerator" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_IDictionaryEnumerator</type>
+<parameters>
+</parameters>
+</function>
+<function name="Remove" symbol="Remove" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IList" symbol="System_Collections_IList" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Item" symbol="get_Item" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="set_Item" symbol="set_Item" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Add" symbol="Add" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Contains" symbol="Contains" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Clear" symbol="Clear" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsReadOnly" symbol="get_IsReadOnly" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsFixedSize" symbol="get_IsFixedSize" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="IndexOf" symbol="IndexOf" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Insert" symbol="Insert" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="Remove" symbol="Remove" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="RemoveAt" symbol="RemoveAt" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="DictionaryEntry" symbol="System_Collections_DictionaryEntry" namespace="System.Collections" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="DictionaryEntry" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Key" symbol="get_Key" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_Key" symbol="set_Key" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Value" symbol="get_Value" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_Value" symbol="set_Value" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="WaitHandle" symbol="System_Threading_WaitHandle" namespace="System.Threading" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<constants>
+<constant name="System_Threading_WaitHandle_WaitTimeout" value="258" loadasglobal="true" />
+</constants>
+<functions>
+<function name="get_Handle" symbol="get_Handle" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_IntPtr</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_Handle" symbol="set_Handle" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_SafeWaitHandle" symbol="get_SafeWaitHandle" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">Microsoft_Win32_SafeHandles_SafeWaitHandle</type>
+<parameters>
+</parameters>
+</function>
+<function name="set_SafeWaitHandle" symbol="set_SafeWaitHandle" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">Microsoft_Win32_SafeHandles_SafeWaitHandle</type>
+</parameter>
+</parameters>
+</function>
+<function name="WaitOne" symbol="WaitOne_Overload1" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="WaitOne" symbol="WaitOne_Overload2" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="WaitOne" symbol="WaitOne_Overload3" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="WaitOne" symbol="WaitOne_Overload4" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="WaitOne" symbol="WaitOne_Overload5" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="Close" symbol="Close" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="WaitAll" symbol="System_Threading_WaitHandle_WaitAll" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="WaitAll" symbol="System_Threading_WaitHandle_WaitAll_Overload2" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="WaitAll" symbol="System_Threading_WaitHandle_WaitAll_Overload3" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+</parameters>
+</function>
+<function name="WaitAll" symbol="System_Threading_WaitHandle_WaitAll_Overload4" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="WaitAll" symbol="System_Threading_WaitHandle_WaitAll_Overload5" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="WaitAny" symbol="System_Threading_WaitHandle_WaitAny" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="WaitAny" symbol="System_Threading_WaitHandle_WaitAny_Overload2" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="WaitAny" symbol="System_Threading_WaitHandle_WaitAny_Overload3" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+</parameters>
+</function>
+<function name="WaitAny" symbol="System_Threading_WaitHandle_WaitAny_Overload4" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="WaitAny" symbol="System_Threading_WaitHandle_WaitAny_Overload5" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="SignalAndWait" symbol="System_Threading_WaitHandle_SignalAndWait" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Threading_WaitHandle</type>
+</parameter>
+</parameters>
+</function>
+<function name="SignalAndWait" symbol="System_Threading_WaitHandle_SignalAndWait_Overload2" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="SignalAndWait" symbol="System_Threading_WaitHandle_SignalAndWait_Overload3" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Threading_WaitHandle</type>
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="Delegate" symbol="System_Delegate" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="DynamicInvoke" symbol="DynamicInvoke" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_Target" symbol="get_Target" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="Clone" symbol="Clone" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="GetObjectData" symbol="GetObjectData" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Serialization_SerializationInfo</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Serialization_StreamingContext</type>
+</parameter>
+</parameters>
+</function>
+<function name="Combine" symbol="System_Delegate_Combine" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Delegate</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+</parameters>
+</function>
+<function name="Combine" symbol="System_Delegate_Combine_Overload2" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Delegate</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Delegate</type>
+</parameter>
+</parameters>
+</function>
+<function name="Remove" symbol="System_Delegate_Remove" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Delegate</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+</parameters>
+</function>
+<function name="RemoveAll" symbol="System_Delegate_RemoveAll" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_Delegate</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Equality" symbol="System_Delegate_op_Equality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Inequality" symbol="System_Delegate_op_Inequality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Delegate</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IRemotingTypeInfo" symbol="System_Runtime_Remoting_IRemotingTypeInfo" namespace="System.Runtime.Remoting" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="set_TypeName" symbol="set_TypeName" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="get_TypeName" symbol="get_TypeName" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IEnvoyInfo" symbol="System_Runtime_Remoting_IEnvoyInfo" namespace="System.Runtime.Remoting" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="set_EnvoySinks" symbol="set_EnvoySinks" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Remoting_Messaging_IMessageSink</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_EnvoySinks" symbol="get_EnvoySinks" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Runtime_Remoting_Messaging_IMessageSink</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IChannelInfo" symbol="System_Runtime_Remoting_IChannelInfo" namespace="System.Runtime.Remoting" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="set_ChannelData" symbol="set_ChannelData" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative" array="true">System_Object</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="SerializationInfoEnumerator" symbol="System_Runtime_Serialization_SerializationInfoEnumerator" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="MoveNext" symbol="MoveNext" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Current" symbol="get_Current" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Runtime_Serialization_SerializationEntry</type>
+<parameters>
+</parameters>
+</function>
+<function name="Reset" symbol="Reset" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Name" symbol="get_Name" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Value" symbol="get_Value" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IFormatterConverter" symbol="System_Runtime_Serialization_IFormatterConverter" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="Convert" symbol="Convert_Overload2" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+<parameter direction="In">
+<type enum="Enumeration">valuetype [mscorlib]System.TypeCode</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToBoolean" symbol="ToBoolean" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToChar" symbol="ToChar" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Char</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToSByte" symbol="ToSByte" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_SByte</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToByte" symbol="ToByte" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Byte</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToInt16" symbol="ToInt16" implemented="true" loadasglobal="false">
+<type enum="Short" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToUInt16" symbol="ToUInt16" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_UInt16</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToUInt32" symbol="ToUInt32" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_UInt32</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToInt64" symbol="ToInt64" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToUInt64" symbol="ToUInt64" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_UInt64</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToSingle" symbol="ToSingle" implemented="true" loadasglobal="false">
+<type enum="Float" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToDouble" symbol="ToDouble" implemented="true" loadasglobal="false">
+<type enum="Double" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToDecimal" symbol="ToDecimal" implemented="true" loadasglobal="false">
+<type enum="DecimalNative" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToDateTime" symbol="ToDateTime" implemented="true" loadasglobal="false">
+<type enum="DateNative" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToInt32" symbol="ToInt32" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToString" symbol="ToString" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="SafeWaitHandle" symbol="Microsoft_Win32_SafeHandles_SafeWaitHandle" namespace="Microsoft.Win32.SafeHandles" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="SafeWaitHandle" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_IntPtr</type>
+</parameter>
+<parameter direction="In">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="TimeSpan" symbol="System_TimeSpan" namespace="System" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<constants>
+<constant name="System_TimeSpan_TicksPerMillisecond" value="10000" loadasglobal="true" />
+<constant name="System_TimeSpan_TicksPerSecond" value="10000000" loadasglobal="true" />
+<constant name="System_TimeSpan_TicksPerMinute" value="600000000" loadasglobal="true" />
+<constant name="System_TimeSpan_TicksPerHour" value="36000000000" loadasglobal="true" />
+<constant name="System_TimeSpan_TicksPerDay" value="864000000000" loadasglobal="true" />
+</constants>
+<functions>
+<function name=".ctor" symbol="TimeSpan_Overload1" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="TimeSpan_Overload2" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="TimeSpan_Overload3" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name=".ctor" symbol="TimeSpan_Overload4" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+<function name="get_Ticks" symbol="get_Ticks" implemented="true" loadasglobal="false">
+<type enum="LongNative" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Days" symbol="get_Days" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Hours" symbol="get_Hours" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Milliseconds" symbol="get_Milliseconds" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Minutes" symbol="get_Minutes" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="get_Seconds" symbol="get_Seconds" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+</parameters>
+</function>
+<function name="get_TotalDays" symbol="get_TotalDays" implemented="true" loadasglobal="false">
+<type enum="Double" />
+<parameters>
+</parameters>
+</function>
+<function name="get_TotalHours" symbol="get_TotalHours" implemented="true" loadasglobal="false">
+<type enum="Double" />
+<parameters>
+</parameters>
+</function>
+<function name="get_TotalMilliseconds" symbol="get_TotalMilliseconds" implemented="true" loadasglobal="false">
+<type enum="Double" />
+<parameters>
+</parameters>
+</function>
+<function name="get_TotalMinutes" symbol="get_TotalMinutes" implemented="true" loadasglobal="false">
+<type enum="Double" />
+<parameters>
+</parameters>
+</function>
+<function name="get_TotalSeconds" symbol="get_TotalSeconds" implemented="true" loadasglobal="false">
+<type enum="Double" />
+<parameters>
+</parameters>
+</function>
+<function name="Add" symbol="Add" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="CompareTo" symbol="CompareTo_Overload1" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Object</type>
+</parameter>
+</parameters>
+</function>
+<function name="CompareTo" symbol="CompareTo_Overload2" implemented="true" loadasglobal="false">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="Duration" symbol="Duration" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+</parameters>
+</function>
+<function name="Negate" symbol="Negate" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+</parameters>
+</function>
+<function name="Subtract" symbol="Subtract" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="ToString" symbol="ToString" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+<function name="Compare" symbol="System_TimeSpan_Compare" implemented="true" loadasglobal="true">
+<type enum="Integer" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="FromDays" symbol="System_TimeSpan_FromDays" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="Double" />
+</parameter>
+</parameters>
+</function>
+<function name="Equals" symbol="System_TimeSpan_Equals" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="FromHours" symbol="System_TimeSpan_FromHours" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="Double" />
+</parameter>
+</parameters>
+</function>
+<function name="FromMilliseconds" symbol="System_TimeSpan_FromMilliseconds" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="Double" />
+</parameter>
+</parameters>
+</function>
+<function name="FromMinutes" symbol="System_TimeSpan_FromMinutes" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="Double" />
+</parameter>
+</parameters>
+</function>
+<function name="Parse" symbol="System_TimeSpan_Parse" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="TryParse" symbol="System_TimeSpan_TryParse" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="Out">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="FromSeconds" symbol="System_TimeSpan_FromSeconds" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="Double" />
+</parameter>
+</parameters>
+</function>
+<function name="FromTicks" symbol="System_TimeSpan_FromTicks" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="LongNative" />
+</parameter>
+</parameters>
+</function>
+<function name="op_UnaryNegation" symbol="System_TimeSpan_op_UnaryNegation" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Subtraction" symbol="System_TimeSpan_op_Subtraction" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_UnaryPlus" symbol="System_TimeSpan_op_UnaryPlus" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Addition" symbol="System_TimeSpan_op_Addition" implemented="true" loadasglobal="true">
+<type enum="ObjectNative">System_TimeSpan</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Equality" symbol="System_TimeSpan_op_Equality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_Inequality" symbol="System_TimeSpan_op_Inequality" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_LessThan" symbol="System_TimeSpan_op_LessThan" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_LessThanOrEqual" symbol="System_TimeSpan_op_LessThanOrEqual" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_GreaterThan" symbol="System_TimeSpan_op_GreaterThan" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+<function name="op_GreaterThanOrEqual" symbol="System_TimeSpan_op_GreaterThanOrEqual" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_TimeSpan</type>
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IMessageSink" symbol="System_Runtime_Remoting_Messaging_IMessageSink" namespace="System.Runtime.Remoting.Messaging" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="SyncProcessMessage" symbol="SyncProcessMessage" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Runtime_Remoting_Messaging_IMessage</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Remoting_Messaging_IMessage</type>
+</parameter>
+</parameters>
+</function>
+<function name="AsyncProcessMessage" symbol="AsyncProcessMessage" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Runtime_Remoting_Messaging_IMessageCtrl</type>
+<parameters>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Remoting_Messaging_IMessage</type>
+</parameter>
+<parameter direction="In">
+<type enum="ObjectNative">System_Runtime_Remoting_Messaging_IMessageSink</type>
+</parameter>
+</parameters>
+</function>
+<function name="get_NextSink" symbol="get_NextSink" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Runtime_Remoting_Messaging_IMessageSink</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="SerializationEntry" symbol="System_Runtime_Serialization_SerializationEntry" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Value" symbol="get_Value" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Object</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_Name" symbol="get_Name" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="SafeHandleZeroOrMinusOneIsInvalid" symbol="Microsoft_Win32_SafeHandles_SafeHandleZeroOrMinusOneIsInvalid" namespace="Microsoft.Win32.SafeHandles" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_IsInvalid" symbol="get_IsInvalid" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="TimeSpan&amp;" symbol="System_TimeSpan_" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IMessage" symbol="System_Runtime_Remoting_Messaging_IMessage" namespace="System.Runtime.Remoting.Messaging" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="get_Properties" symbol="get_Properties" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_Collections_IDictionary</type>
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="IMessageCtrl" symbol="System_Runtime_Remoting_Messaging_IMessageCtrl" namespace="System.Runtime.Remoting.Messaging" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="Cancel" symbol="Cancel" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="In">
+<type enum="Integer" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="SafeHandle" symbol="System_Runtime_InteropServices_SafeHandle" namespace="System.Runtime.InteropServices" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name="DangerousGetHandle" symbol="DangerousGetHandle" implemented="true" loadasglobal="false">
+<type enum="ObjectNative">System_IntPtr</type>
+<parameters>
+</parameters>
+</function>
+<function name="get_IsClosed" symbol="get_IsClosed" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="Close" symbol="Close" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="get_IsInvalid" symbol="get_IsInvalid" implemented="true" loadasglobal="false">
+<type enum="Boolean" />
+<parameters>
+</parameters>
+</function>
+<function name="Dispose" symbol="Dispose" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="SetHandleAsInvalid" symbol="SetHandleAsInvalid" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="DangerousAddRef" symbol="DangerousAddRef" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+<parameter direction="InOut">
+<type enum="Boolean" />
+</parameter>
+</parameters>
+</function>
+<function name="DangerousRelease" symbol="DangerousRelease" implemented="true" loadasglobal="false">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+</functions>
+</class>
+<class name="CriticalFinalizerObject" symbol="System_Runtime_ConstrainedExecution_CriticalFinalizerObject" namespace="System.Runtime.ConstrainedExecution" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+</assembly>
+</symbolimport>
