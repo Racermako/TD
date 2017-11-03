@@ -1,0 +1,98 @@
+Auflistung der Ordnerpfade fÅr Volume OS
+Volumeseriennummer : 00000084 F874:EBAE
+C:.
++---Background
++---Button
+|   +---CheckAndRadio
+|   |   +---Check
+|   |   |   +---Disabled
+|   |   |   +---Hover
+|   |   |   +---Normal
+|   |   |   \---Pressed
+|   |   \---Radio
+|   |       +---Disabled
+|   |       +---Hover
+|   |       +---Normal
+|   |       \---Pressed
+|   +---ControlDropDownButton
+|   |   +---DropDownArrow
+|   |   \---PushButton
+|   +---ControlPushButton
+|   +---ControlSeparatedDropDownButton
+|   |   +---DropDownArrow
+|   |   +---DropDownButton
+|   |   \---PushButton
+|   +---FrameNcButton
+|   |   +---Active
+|   |   \---Inactive
+|   +---GridButton
+|   |   +---Arrow
+|   |   \---Background
+|   +---MenuBarPushButton
+|   +---RibbonButton
+|   |   +---Large
+|   |   |   +---DropDownButton
+|   |   |   +---PushButton
+|   |   |   \---SplitButton
+|   |   |       +---DropDownButton
+|   |   |       \---PushButton
+|   |   +---Small
+|   |   |   +---DropDownButton
+|   |   |   +---PushButton
+|   |   |   \---SplitButton
+|   |   |       +---DropDownButton
+|   |   |       \---PushButton
+|   |   \---Tool
+|   |       +---DropDownButton
+|   |       +---PushButton
+|   |       \---SplitButton
+|   |           +---DropDownButton
+|   |           \---PushButton
+|   +---RibbonGallery
+|   +---Spin
+|   |   +---Horizontal
+|   |   |   +---Left
+|   |   |   |   +---Arrow
+|   |   |   |   \---Button
+|   |   |   \---Right
+|   |   |       +---Arrow
+|   |   |       \---Button
+|   |   \---Vertical
+|   |       +---Down
+|   |       |   +---Arrow
+|   |       |   \---Button
+|   |       \---Up
+|   |           +---Arrow
+|   |           \---Button
+|   +---ToolBarDropDownButton
+|   |   +---DropDownArrow
+|   |   \---PushButton
+|   +---ToolBarPushButton
+|   \---ToolBarSeparatedDropDownButton
+|       +---DropDownArrow
+|       +---DropDownButton
+|       \---PushButton
++---Caption
++---ComboBox
+|   +---DropDownArrow
+|   +---DropDownButton
+|   \---Frame
++---Frame
+|   \---ControlFrame
+|       +---Active
+|       \---Inactive
++---Grid
++---ImageCollection
++---MenuItem
++---RibbonGallery
++---ScrollBar
+|   +---Classic
+|   |   +---Horizontal
+|   |   \---Vertical
+|   +---RibbonGalleryInplace
+|   \---Zoom
+|       +---Horizontal
+|       \---Vertical
++---Tab
+|   \---Buttons
+\---WindowNcArea
