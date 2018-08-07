@@ -1,0 +1,226 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <description>This sample shows how to set the background of text fields with a specific color
+or a gradient through the use of CSS3 classes.
+
+1) Create a CSS file that specifies certain CSS attributes to named classes (see samplecss.css).  
+    Here is one of the sample CSS classes:
+      	.label2 {
+		background-color: #2f4f4f; 
+		color: #87ceeb;
+    	}
+   The dot - "." - in front of the class name "label2" is not part of the name; it signifies to CSS that it is a class.  
+   The defined attributes go inside the curly blocks, and the syntax is:    	attribute-name: value; 
+								attribute-name: value; ....
+2) Import that CSS file into your application by adding it to the Stylesheets collection.  Stylesheets
+    can be found in the Application pane of the IDE, inside the Client Resources section.
+3) In the (Phone or Tab) Layout pane of the IDE, click on the controls you want to style and then, in the
+    Properties window, specify the desired class name in the CSS Class field.  A class can be used in as
+    many controls as you like.</description>
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="page1" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes>
+    <cssfile name="samplecss.css" path="." />
+  </cssincludes>
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>This sample shows how to set the background of text fields with a specific color
+or a gradient through the use of CSS3 classes.
+
+1) Create a CSS file that specifies certain CSS attributes to named classes (see samplecss.css).  
+    Here is one of the sample CSS classes:
+      	.label2 {
+		background-color: #2f4f4f; 
+		color: #87ceeb;
+    	}
+   The dot - "." - in front of the class name "label2" is not part of the name; it signifies to CSS that it is a class.  
+   The defined attributes go inside the curly blocks, and the syntax is:    	attribute-name: value; 
+								attribute-name: value; ....
+2) Import that CSS file into your application by adding it to the Stylesheets collection, which
+    can be found in the Application pane of the IDE, inside the Client Resources section.
+3) In the (Phone or Tab) Layout pane of the IDE, click on the controls you want to style and then, in the
+    Properties window, specify the desired class name in the CSS Class field.  A class can be used in as
+    many controls as you like.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg1" />
+          <property type="Theme" value="A" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Text Backgrounds" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Standard text" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Styled Text (css class: label2)" />
+              </property>
+              <property type="CssClass" value="label2" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Styled Text (css class: label3)" />
+              </property>
+              <property type="CssClass" value="label3" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="4" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Rows" value="10" />
+              <property type="Columns" value="1" />
+              <property type="Children" value="bgt1,df1,bgt2,df2,bgt3,df3,bgt4,df4,bgt5,df5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df1" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df2" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="3" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df3" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="5" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="6" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Styled Text (css class: label4)" />
+              </property>
+              <property type="CssClass" value="label4" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df4" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="7" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="8" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Styled Text (css class: label5)" />
+              </property>
+              <property type="CssClass" value="label5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df5" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="9" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings />
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

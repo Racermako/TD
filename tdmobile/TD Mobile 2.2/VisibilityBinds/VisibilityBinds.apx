@@ -1,0 +1,304 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="5/2/2014 11:05 AM: Frank - " />
+    <change description="5/2/2014 11:04 AM: Frank - " />
+    <change description="11/4/2013 2:07 PM: Frank" />
+    <change description="11/4/2013 2:06 PM: Frank" />
+    <change description="11/4/2013 1:59 PM: Frank" />
+    <change description="11/4/2013 1:52 PM: Frank" />
+    <change description="11/1/2013 4:56 PM: Frank" />
+    <change description="11/1/2013 4:37 PM: Frank" />
+    <change description="11/1/2013 4:05 PM: Frank" />
+    <change description="11/1/2013 4:05 PM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="clsCustomerLister">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" />
+        <variable name="Name" type="String" />
+        <variable name="City" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Shows how to hide controls on your page based on the Boolean State of a Binding.
+
+How to define a Binding's Boolean State:
+Select the Binding in the Outline, then select the Bindings tab on the menu; in the 
+Boolean State section, select your choice from the 'Binding is true when:' dropdown.
+
+ In our sample, we want to hide the header fields (in the Layout Grid 'lgHeaders') whenever
+the array of customers we display below it, is empty.  For that to happen we did the following:
+1) defined the Boolean State of the Binding 'CUST_LIST' to be true when 'Array has items'
+2) set the Visibility Bind of the Layout Grid 'lgHeaders' to be CUST_LIST (so the Layout Grid
+    will be visible only when the array has items).</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pbPopList,lgHeaders,ltv1,pbClearList" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Visibility Binds" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="lg1" />
+              <property type="ListBinding" value="CUST_LIST" />
+              <property type="Binding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltv1" />
+              <property type="Columns" value="3" />
+              <property type="Children" value="bgt1,bgt2,bgt3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="CUST_LIST.ID" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CUST_LIST.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Binding" value="CUST_LIST.City" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbPopList" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Populate List" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="GetCustomers" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lgHeaders" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Columns" value="3" />
+              <property type="Children" value="bgt4,bgt5,bgt6" />
+              <property type="VisibilityBinding" value="CUST_LIST" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgHeaders" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="ID" />
+              </property>
+              <property type="LeftMargin" value="18" />
+              <property type="VisibilityBinding" value="" />
+              <property type="Binding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgHeaders" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Cust Name" />
+              </property>
+              <property type="VisibilityBinding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgHeaders" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="City" />
+              </property>
+              <property type="VisibilityBinding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbClearList" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Clear List" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="ClearCustomers" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="CUST_LIST" array="true" type="clsCustomerLister">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="CUST" type="clsCustomerLister">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <operation name="GetCustomers">
+          <parameters />
+          <return type="clsCustomerLister" array="true">
+            <binding name="CUST_LIST" />
+          </return>
+          <variables>
+            <variable name="custs" type="clsCustomerLister" array="true" dims="*" />
+          </variables>
+          <actions>
+            <comment>! Simulate getting customer data from database</comment>
+            <code line="Set custs[0].City = &quot;Flagstaff&quot;" />
+            <code line="Set custs[0].ID = 101" />
+            <code line="Set custs[0].Name = &quot;Acme, Inc.&quot;" />
+            <code line="Set custs[1].City = &quot;Nome&quot;" />
+            <code line="Set custs[1].ID = 103" />
+            <code line="Set custs[1].Name = &quot;Tollo Corp.&quot;" />
+            <code line="Set custs[2].City = &quot;Birmingham&quot;" />
+            <code line="Set custs[2].ID = 105" />
+            <code line="Set custs[2].Name = &quot;Aberroff's&quot;" />
+            <code line="Return custs" />
+          </actions>
+        </operation>
+        <operation name="ClearCustomers">
+          <parameters />
+          <return type="clsCustomerLister" array="true">
+            <binding name="CUST_LIST" />
+          </return>
+          <variables>
+            <variable name="custs" type="clsCustomerLister" array="true" dims="*" />
+          </variables>
+          <actions>
+            <comment>! Return empty array</comment>
+            <code line="Return custs" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

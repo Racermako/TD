@@ -1,0 +1,111 @@
+<application xmlns="urn:Gupta.TD.CDK" version="2.0">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting EnableOffline="False" />
+    <setting CordovaEnabled="True" />
+    <setting CordovaTargetDisplay="Phone" />
+    <setting DefaultPage="Demo" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <miscincludes />
+  <weblinks />
+  <reportfiles />
+  <symbolimports />
+  <variables />
+  <functions />
+  <operations />
+  <exceptions />
+  <classes />
+  <dataconnections />
+  <webpages>
+    <page name="Demo">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pbScan,dfResult" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Scan Bar Code" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbScan" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Scan Code" />
+              </property>
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="ScanBarcode" data="SCAN_CODE" extradata="">
+                  <action action="Alert" data="" extradata="&quot;Got Result&quot;" />
+                </action>
+                <action action="Else" data="" extradata="">
+                  <action action="Alert" data="" extradata="&quot;No Result&quot;" />
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="dfResult" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Result" />
+              </property>
+              <property type="Binding" value="SCAN_CODE" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="SCAN_CODE" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+      <reports />
+    </page>
+  </webpages>
+  <dialogs />
+</application>

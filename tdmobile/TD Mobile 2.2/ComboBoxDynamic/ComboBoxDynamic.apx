@@ -1,0 +1,151 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="clsNUM">
+      <inherits />
+      <instance_variables>
+        <variable name="nVal" type="Number" />
+      </instance_variables>
+      <functions />
+    </class>
+    <class name="clsSTR">
+      <inherits />
+      <instance_variables>
+        <variable name="sVal" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>The combox is built using an array. Once the combox has been populated, we initialize its bind value</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="cmb1,lg1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="cmb1" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="VALUES" />
+              <property type="BindingDirection" value="GetSet" />
+              <property type="Binding" value="SELECTED_VALUE" />
+            </propertylist>
+          </properties>
+          <listinitialization />
+          <events>
+            <event name="Create">
+              <actions>
+                <action action="Invoke" data="PopulateCombo" extradata="" />
+                <action action="Set" data="SELECTED_VALUE" extradata="&quot;A&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="SELECTED_VALUE" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgtDemo,bgt1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtDemo" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Selected Value:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <comment>! VALUES is the List Source Bind for the Combo Box 'cmb1'; It is populated in the Server Operation 'PopulateCombo'.</comment>
+        <binding name="VALUES" array="true" type="String">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! SELECTED_VALUE is the Value Bind for the Combo Box 'cmb1'; it represents the currently selected item of the combobox.
+  For this demonstration, it is also the Value Bind for the Text field 'bgtDemo', to show how selecting items from the combobox changes the Binding</comment>
+        <binding name="SELECTED_VALUE" type="String">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <operation name="PopulateCombo">
+          <parameters />
+          <return type="String" array="true">
+            <binding name="VALUES" />
+          </return>
+          <variables>
+            <variable name="sArray" type="String" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Set sArray[0] = &quot;A&quot;" />
+            <code line="Set sArray[1] = &quot;B&quot;" />
+            <code line="Set sArray[2] = &quot;C&quot;" />
+            <code line="Set sArray[3] = &quot;D&quot;" />
+            <code line="Return sArray" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

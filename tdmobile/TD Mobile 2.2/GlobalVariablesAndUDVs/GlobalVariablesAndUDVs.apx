@@ -1,0 +1,584 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables>
+    <variable name="SessionUDV" type="cls1" commentgap="	" />
+    <variable name="SessionStr" type="String" />
+  </variables>
+  <functions />
+  <classes>
+    <class name="cls1">
+      <inherits />
+      <instance_variables>
+        <variable name="strVar" type="String" />
+        <variable name="numVar" type="Number" />
+        <variable name="dtVar" type="Date/Time" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>This sample shows how to manipulate session wide or global variables.  These can be standard 
+types such as String or Number or custom types (UDV or User Defined Variable).
+
+To give a variable global or session scope, declare it under Server Resources | Variables.
+It can then be shared between all pages and server side operations within the application session.
+
+The default timeout for session objects in IIS is 20 minutes of idleness.  You can change that by setting 
+the desired number of minutes in the application's web.config file (but be careful you don't overload
+your server with idle and perhaps abandoned applications):
+ &lt;system.web&gt;
+      ...
+     &lt;sessionState timeout="60" /&gt;
+  &lt;/system.web&gt;</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt5,lg1,pb1,pbNextPage" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Session Variables/UDVs" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Set Global Values" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="oSetGlobalValues" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbNextPage" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Go to Next Page" />
+              </property>
+              <property type="EnabledBinding" value="SET" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="page2" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Rows" value="4" />
+              <property type="Children" value="bgt1,dfStringVar,bgt2,dfUDVString,bgt3,dfUDVNumber,bgt4,dfUDVDate" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="18" />
+              <property type="Title">
+                <value culture="en-US" title="SessionStr:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfStringVar" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Inline" value="No" />
+              <property type="Binding" value="LOCAL_STR" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="18" />
+              <property type="Row" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="SessionUDV.strVar:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfUDVString" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="LOCAL_UDV.strVar" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="18" />
+              <property type="Row" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="SessionUDV.numVar:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfUDVNumber" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="Format" value="Number" />
+              <property type="Binding" value="LOCAL_UDV.numVar" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="18" />
+              <property type="Row" value="3" />
+              <property type="Title">
+                <value culture="en-US" title="SessionUDV.dtVar:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfUDVDate" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="Format" value="Date" />
+              <property type="Binding" value="LOCAL_UDV.dtVar" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Change default values if you like:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <comment>! LOCAL_UDV.strVar is the Value Bind for the datafield 'dfUDVString'.
+  LOCAL_UDV.numVar is the Value Bind for the datafield 'dfUDVNumber'.
+  LOCAL_UDV.dtVar is the Value Bind for the datafield 'dfUDVDate'.
+  LOCAL_UDV is initialized with default values in the Operation oInitializeUDV;
+                       and is sent as a parameter to Operation oSetGlobalValues.</comment>
+        <binding name="LOCAL_UDV" type="cls1">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="dtVar" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="strVar" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="numVar" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! LOCAL_STR is the Value Bind for the datafield 'dfStringVar'
+  It is initialized in the Operation oInitializeString and passed as a parameter to oSetGlobalValues.</comment>
+        <binding name="LOCAL_STR" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! SET is the Enabled Bind for the pushButton pbNextPage.
+  It is assigned a value as the Return value of the Operation oSetGlobalValues </comment>
+        <binding name="SET" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="oInitializeString" extradata="" />
+            <action action="Invoke" data="oInitializeUDV" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="oSetGlobalValues">
+          <parameters>
+            <variable name="pUDV" type="cls1">
+              <binding name="LOCAL_UDV" />
+            </variable>
+            <variable name="pStr" type="String">
+              <binding name="LOCAL_STR" />
+            </variable>
+          </parameters>
+          <return type="Boolean">
+            <binding name="SET" />
+          </return>
+          <variables>
+            <variable name="sDir" type="String" />
+          </variables>
+          <actions>
+            <code line="Set SessionUDV.strVar = pUDV.strVar" />
+            <code line="Set SessionUDV.numVar = pUDV.numVar" />
+            <code line="Set SessionUDV.dtVar = pUDV.dtVar" />
+            <code line="Set SessionStr = pStr" />
+            <code line="Return TRUE" />
+          </actions>
+        </operation>
+        <operation name="oInitializeString">
+          <parameters />
+          <return type="String">
+            <binding name="LOCAL_STR" />
+          </return>
+          <variables />
+          <actions>
+            <code line="If SessionStr = &quot;&quot;">
+              <code line="Return &quot;Simple String&quot;" />
+            </code>
+            <code line="Else ">
+              <comment>! if global has been assigned a value, return it</comment>
+              <code line="Return SessionStr" />
+            </code>
+          </actions>
+        </operation>
+        <operation name="oInitializeUDV">
+          <parameters />
+          <return type="cls1">
+            <binding name="LOCAL_UDV" />
+          </return>
+          <variables>
+            <variable name="udv" type="cls1" />
+          </variables>
+          <actions>
+            <code line="If SessionUDV.strVar = &quot;&quot;">
+              <code line="Set udv.strVar = &quot;UDV String&quot;" />
+              <code line="Set udv.numVar = 789.33" />
+              <code line="Set udv.dtVar = SalDateCurrent()" />
+              <code line="Return udv" />
+            </code>
+            <code line="Else ">
+              <comment>! if global has been assigned a value, return it</comment>
+              <code line="Return SessionUDV" />
+            </code>
+          </actions>
+        </operation>
+      </operations>
+    </page>
+    <page name="page2">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt9,lg1,pbBack" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Access Global Variables/UDVs" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="UDV_BIND.strVar" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="1" />
+              <property type="BottomMargin" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="UDV_BIND.numVar" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="BottomMargin" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="UDV_BIND.dtVar" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="Format" value="ShortDate" />
+              <property type="BottomMargin" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="STR_BIND" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="BottomMargin" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Rows" value="4" />
+              <property type="Children" value="bgt5,bgt4,bgt6,bgt1,bgt7,bgt2,bgt8,bgt3" />
+              <property type="ColumnWidth" value="55,45" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="SessionStr:" />
+              </property>
+              <property type="BottomMargin" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="SessionUDV.strVar:" />
+              </property>
+              <property type="BottomMargin" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt7" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="SessionUDV.numVar:" />
+              </property>
+              <property type="BottomMargin" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt8" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Title">
+                <value culture="en-US" title="SessionUDV.dtVar" />
+              </property>
+              <property type="BottomMargin" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt9" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Demonstrating that we can access the global variables (or Session objects) from any page in the application:" />
+              </property>
+              <property type="BottomMargin" value="24" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbBack" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Back" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="UDV_BIND" type="cls1">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="dtVar" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="strVar" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="numVar" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="STR_BIND" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="readSessionUDV" extradata="">
+              <action action="Invoke" data="readSessionVariable" extradata="" />
+            </action>
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="readSessionUDV">
+          <parameters />
+          <return type="cls1">
+            <binding name="UDV_BIND" />
+          </return>
+          <variables>
+            <variable name="tmpUDV" type="cls1" />
+          </variables>
+          <actions>
+            <code line="Set tmpUDV.strVar = SessionUDV.strVar" />
+            <code line="Set tmpUDV.numVar = SessionUDV.numVar" />
+            <code line="Set tmpUDV.dtVar = SessionUDV.dtVar" />
+            <code line="Return tmpUDV" />
+          </actions>
+        </operation>
+        <operation name="readSessionVariable">
+          <parameters />
+          <return type="String">
+            <binding name="STR_BIND" />
+          </return>
+          <variables>
+            <variable name="tmpSTR" type="String" />
+          </variables>
+          <actions>
+            <code line="Set tmpSTR = SessionStr" />
+            <code line="Return tmpSTR" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

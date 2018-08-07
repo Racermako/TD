@@ -1,0 +1,256 @@
+<application xmlns="urn:Gupta.TD.CDK" version="2.0">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="AccountStatus" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <miscincludes />
+  <weblinks />
+  <reportfiles />
+  <symbolimports />
+  <variables />
+  <functions />
+  <operations />
+  <exceptions />
+  <classes>
+    <class name="Customer">
+      <inherits />
+      <instance_variables>
+        <variable name="Name" type="String" />
+        <variable name="AccountStatus" type="String" />
+        <variable name="Age" type="Number" />
+      </instance_variables>
+      <functions />
+      <constructors />
+    </class>
+  </classes>
+  <dataconnections />
+  <webpages>
+    <page name="AccountStatus">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt1,bgt4,bgt5,ltv1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Account Status" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="lg1" />
+              <property type="ListBinding" value="CUSTOMERS" />
+              <property type="ParentControl" value="AccountStatus" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="AccountStatus" />
+              <property type="TopMargin" value="0" />
+              <property type="Children" value="bgt2,bgt3,bgt6" />
+              <property type="Columns" value="3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="AccountStatus" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="CUST.Name" />
+              <property type="ColorMappings" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ColorMapPropertyModel xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xD;&#xA;  &lt;Field&gt;AccountStatus&lt;/Field&gt;&#xD;&#xA;  &lt;Mappings&gt;&#xD;&#xA;    &lt;ColorMappingModel&gt;&#xD;&#xA;      &lt;Expression&gt;'{0}' == 'Late'&lt;/Expression&gt;&#xD;&#xA;      &lt;Color&gt;&#xD;&#xA;        &lt;A&gt;255&lt;/A&gt;&#xD;&#xA;        &lt;R&gt;249&lt;/R&gt;&#xD;&#xA;        &lt;G&gt;12&lt;/G&gt;&#xD;&#xA;        &lt;B&gt;8&lt;/B&gt;&#xD;&#xA;        &lt;ScA&gt;1&lt;/ScA&gt;&#xD;&#xA;        &lt;ScR&gt;0.9473065&lt;/ScR&gt;&#xD;&#xA;        &lt;ScG&gt;0.00367650739&lt;/ScG&gt;&#xD;&#xA;        &lt;ScB&gt;0.002428216&lt;/ScB&gt;&#xD;&#xA;      &lt;/Color&gt;&#xD;&#xA;    &lt;/ColorMappingModel&gt;&#xD;&#xA;    &lt;ColorMappingModel&gt;&#xD;&#xA;      &lt;Expression&gt;'{0}' == 'Paid'&lt;/Expression&gt;&#xD;&#xA;      &lt;Color&gt;&#xD;&#xA;        &lt;A&gt;255&lt;/A&gt;&#xD;&#xA;        &lt;R&gt;33&lt;/R&gt;&#xD;&#xA;        &lt;G&gt;212&lt;/G&gt;&#xD;&#xA;        &lt;B&gt;52&lt;/B&gt;&#xD;&#xA;        &lt;ScA&gt;1&lt;/ScA&gt;&#xD;&#xA;        &lt;ScR&gt;0.0152085163&lt;/ScR&gt;&#xD;&#xA;        &lt;ScG&gt;0.658374846&lt;/ScG&gt;&#xD;&#xA;        &lt;ScB&gt;0.0343398079&lt;/ScB&gt;&#xD;&#xA;      &lt;/Color&gt;&#xD;&#xA;    &lt;/ColorMappingModel&gt;&#xD;&#xA;    &lt;ColorMappingModel&gt;&#xD;&#xA;      &lt;Expression&gt;'{0}' == 'Pending'&lt;/Expression&gt;&#xD;&#xA;      &lt;Color&gt;&#xD;&#xA;        &lt;A&gt;255&lt;/A&gt;&#xD;&#xA;        &lt;R&gt;44&lt;/R&gt;&#xD;&#xA;        &lt;G&gt;6&lt;/G&gt;&#xD;&#xA;        &lt;B&gt;248&lt;/B&gt;&#xD;&#xA;        &lt;ScA&gt;1&lt;/ScA&gt;&#xD;&#xA;        &lt;ScR&gt;0.0251868609&lt;/ScR&gt;&#xD;&#xA;        &lt;ScG&gt;0.001821162&lt;/ScG&gt;&#xD;&#xA;        &lt;ScB&gt;0.9386857&lt;/ScB&gt;&#xD;&#xA;      &lt;/Color&gt;&#xD;&#xA;    &lt;/ColorMappingModel&gt;&#xD;&#xA;  &lt;/Mappings&gt;&#xD;&#xA;&lt;/ColorMapPropertyModel&gt;" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="AccountStatus" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CUST.AccountStatus" />
+              <property type="ColorMappings" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ColorMapPropertyModel xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xD;&#xA;  &lt;Field&gt;AccountStatus&lt;/Field&gt;&#xD;&#xA;  &lt;Mappings&gt;&#xD;&#xA;    &lt;ColorMappingModel&gt;&#xD;&#xA;      &lt;Expression&gt;'{0}' == 'Late'&lt;/Expression&gt;&#xD;&#xA;      &lt;Color&gt;&#xD;&#xA;        &lt;A&gt;255&lt;/A&gt;&#xD;&#xA;        &lt;R&gt;228&lt;/R&gt;&#xD;&#xA;        &lt;G&gt;15&lt;/G&gt;&#xD;&#xA;        &lt;B&gt;15&lt;/B&gt;&#xD;&#xA;        &lt;ScA&gt;1&lt;/ScA&gt;&#xD;&#xA;        &lt;ScR&gt;0.7758222&lt;/ScR&gt;&#xD;&#xA;        &lt;ScG&gt;0.00477695372&lt;/ScG&gt;&#xD;&#xA;        &lt;ScB&gt;0.00477695372&lt;/ScB&gt;&#xD;&#xA;      &lt;/Color&gt;&#xD;&#xA;    &lt;/ColorMappingModel&gt;&#xD;&#xA;  &lt;/Mappings&gt;&#xD;&#xA;&lt;/ColorMapPropertyModel&gt;" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="AccountStatus" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Binding" value="CUST.Age" />
+              <property type="ColorMappings" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ColorMapPropertyModel xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xD;&#xA;  &lt;Field&gt;Age&lt;/Field&gt;&#xD;&#xA;  &lt;Mappings&gt;&#xD;&#xA;    &lt;ColorMappingModel&gt;&#xD;&#xA;      &lt;Expression&gt;{0} == 0&lt;/Expression&gt;&#xD;&#xA;      &lt;Color&gt;&#xD;&#xA;        &lt;A&gt;255&lt;/A&gt;&#xD;&#xA;        &lt;R&gt;249&lt;/R&gt;&#xD;&#xA;        &lt;G&gt;32&lt;/G&gt;&#xD;&#xA;        &lt;B&gt;0&lt;/B&gt;&#xD;&#xA;        &lt;ScA&gt;1&lt;/ScA&gt;&#xD;&#xA;        &lt;ScR&gt;0.9473065&lt;/ScR&gt;&#xD;&#xA;        &lt;ScG&gt;0.0144438446&lt;/ScG&gt;&#xD;&#xA;        &lt;ScB&gt;0&lt;/ScB&gt;&#xD;&#xA;      &lt;/Color&gt;&#xD;&#xA;    &lt;/ColorMappingModel&gt;&#xD;&#xA;  &lt;/Mappings&gt;&#xD;&#xA;&lt;/ColorMapPropertyModel&gt;" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Late = Red" />
+              </property>
+              <property type="TextColor" value="#FFD62100" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Paid = Green" />
+              </property>
+              <property type="TextColor" value="#FF13B700" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Pending = Blue" />
+              </property>
+              <property type="TextColor" value="#FF0013D6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="CUST" type="Customer">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Age" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="AccountStatus" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+          </subbindings>
+          <events />
+        </binding>
+        <binding name="CUSTOMERS" array="true" type="Customer">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Age" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="AccountStatus" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+          </subbindings>
+          <events />
+        </binding>
+        <binding name="USER_NAME" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+          <events />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="CreateComplete">
+          <actions>
+            <action action="Invoke" data="GetCustomers" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetCustomers">
+          <description />
+          <parameters />
+          <return type="Customer" array="true">
+            <binding name="CUSTOMERS" />
+          </return>
+          <variables>
+            <variable name="c" type="Customer" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Set c[0].Name = &quot;Bob&quot;" />
+            <code line="Set c[0].AccountStatus= &quot;Paid&quot;" />
+            <code line="Set c[0].Age= 34" />
+            <code line="Set c[1].Name = &quot;John&quot;" />
+            <code line="Set c[1].AccountStatus= &quot;Late&quot;" />
+            <code line="Set c[1].Age= 5" />
+            <code line="Set c[2].Name = &quot;Steve&quot;" />
+            <code line="Set c[2].AccountStatus= &quot;Pending&quot;" />
+            <code line="Set c[2].Age= 28" />
+            <code line="Set c[3].Name = &quot;Mary&quot;" />
+            <code line="Set c[3].AccountStatus= &quot;Paid&quot;" />
+            <code line="Set c[4].Name = &quot;Meg&quot;" />
+            <code line="Set c[4].AccountStatus= &quot;Returned&quot;" />
+            <code line="Set c[5].Name = &quot;Tim&quot;" />
+            <code line="Set c[5].AccountStatus= &quot;Late&quot;" />
+            <code line="Return c" />
+          </actions>
+        </operation>
+      </operations>
+      <reports />
+    </page>
+  </webpages>
+  <dialogs />
+  <webconfig />
+</application>

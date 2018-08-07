@@ -1,0 +1,284 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="List" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/23/2014 2:06 PM: garyb - " />
+    <change description="4/23/2014 2:06 PM: garyb - " />
+    <change description="4/23/2014 11:01 AM: garyb - " />
+    <change description="4/23/2014 11:00 AM: garyb - " />
+    <change description="11/7/2013 9:06 PM: garyb" />
+    <change description="11/7/2013 9:06 PM: garyb" />
+    <change description="11/7/2013 9:00 PM: garyb" />
+    <change description="11/7/2013 8:58 PM: garyb" />
+    <change description="11/7/2013 8:57 PM: garyb" />
+    <change description="11/7/2013 7:33 PM: garyb" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <exceptions />
+  <classes>
+    <class name="PointOfInterest">
+      <inherits />
+      <instance_variables>
+        <variable name="InfoContent" type="String" />
+        <variable name="Lat" type="Number" />
+        <variable name="Long" type="Number" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <dataconnections />
+  <webpages>
+    <page name="List">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Title">
+            <value culture="en-US" title="Things to do in Maui" />
+          </property>
+          <property type="Children" value="ltv1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Maui" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="PointsOfInterestCats" />
+              <property type="Binding" value="SelectedPointOfInterestCat" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Map" extradata="SelectedPointOfInterestCat" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="SelectedPointOfInterestCat" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="PointsOfInterestCats" array="true" type="String">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetPointsOfInterestCategories" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetPointsOfInterestCategories">
+          <parameters />
+          <return type="String" array="true">
+            <binding name="PointsOfInterestCats" />
+          </return>
+          <variables>
+            <variable name="items" type="String" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Set items[0] = &quot;Hotels&quot;" />
+            <code line="Set items[1] = &quot;Beaches&quot;" />
+            <code line="Set items[2] = &quot;Restaurants&quot;" />
+            <code line="Return items" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+    <page name="Map">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt1,map1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Map" />
+              </property>
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="PointOfInterestCategory" />
+              <property type="Justify" value="Center" />
+              <property type="FontSize" value="1.5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Back" />
+              </property>
+              <property type="FileName" value="LeftArrow" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="map1" type="Map">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="PointsOfInterest" />
+              <property type="MapMarkerContentField" value="InfoContent" />
+              <property type="MapMarkerLatField" value="Lat" />
+              <property type="MapMarkerLongField" value="Long" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="PointsOfInterest" array="true" type="PointOfInterest">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="InfoContent" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Lat" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Long" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="PointOfInterestCategory" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetPointsOfInterest" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetPointsOfInterest">
+          <parameters>
+            <variable name="pCategory" type="String">
+              <binding name="PointOfInterestCategory" />
+            </variable>
+          </parameters>
+          <return type="PointOfInterest" array="true">
+            <binding name="PointsOfInterest" />
+          </return>
+          <variables>
+            <variable name="items" type="PointOfInterest" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="If pCategory = &quot;Beaches&quot;">
+              <code line="Set items[0].Lat = 21.001349" />
+              <code line="Set items[0].Long = -156.666096" />
+              <code line="Set items[0].InfoContent = &quot;&lt;h3&gt;Kapalua Beach&lt;/h3&gt;Great Snorkeling&lt;br/&gt;&lt;a href='#'&gt;More Info&lt;/a&gt;&quot;" />
+              <code line="Set items[1].Lat = 20.917992" />
+              <code line="Set items[1].Long = -156.69442" />
+              <code line="Set items[1].InfoContent = &quot;&lt;h3&gt;Kaanapali Beach&lt;/h3&gt;Great Shopping&lt;br/&gt;&lt;a href='#'&gt;More Info&lt;/a&gt;&quot;" />
+            </code>
+            <code line="Else If pCategory = &quot;Hotels&quot;">
+              <code line="Set items[0].Lat = 20.919796" />
+              <code line="Set items[0].Long = -156.695941" />
+              <code line="Set items[0].InfoContent = &quot;&lt;h3&gt;The Westin Maui Resort &amp; Spa&lt;/h3&gt;2365 Kaanapali Parkway&lt;br/&gt;Maui, HI 96761&lt;br/&gt;(808) 667-2525&lt;br/&gt;&lt;a href='westinmaui.com‎'&gt;westinmaui.com‎&lt;/a&gt;&quot;" />
+              <code line="Set items[1].Lat = 20.924405" />
+              <code line="Set items[1].Long = -156.694592" />
+              <code line="Set items[1].InfoContent = &quot;&lt;h3&gt;Sheraton Maui Resort &amp; Spa&lt;/h3&gt;2605 Kaanapali Parkway&lt;br/&gt;Maui, HI 96761&lt;br/&gt;(808) 661-0031&lt;br/&gt;&lt;a href='sheraton-maui.com‎‎'&gt;sheraton-maui.com‎&lt;/a&gt;&quot;" />
+            </code>
+            <code line="Else If pCategory = &quot;Restaurants&quot;">
+              <code line="Set items[0].Lat = 20.952743" />
+              <code line="Set items[0].Long = -156.686031" />
+              <code line="Set items[0].InfoContent = &quot;&lt;h3&gt;Honokowai Okazuya &amp; Deli&lt;/h3&gt;3600 Lower Honoapiilani Road&lt;br/&gt;Lahaina, HI 96761&lt;br/&gt;(808) 665-0512&quot;" />
+              <code line="Set items[1].Lat = 20.924405" />
+              <code line="Set items[1].Long = -156.694592" />
+              <code line="Set items[1].InfoContent = &quot;&lt;h3&gt;Duke's Beach House&lt;/h3&gt;130 Kai Malina Parkway&lt;br/&gt;Lahaina, HI 96761&lt;br/&gt;(808) 662-2900&lt;br/&gt;&lt;a href='dukesmaui.com‎‎‎'&gt;dukesmaui.com‎‎&lt;/a&gt;&quot;" />
+            </code>
+            <code line="Return items" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

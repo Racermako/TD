@@ -1,0 +1,330 @@
+<application xmlns="urn:Gupta.TD.CDK" version="2.0">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Tablet" />
+    <setting FallbackDisplay="Tablet" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="page1" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <miscincludes />
+  <weblinks />
+  <reportfiles />
+  <symbolimports />
+  <variables />
+  <functions />
+  <operations />
+  <exceptions />
+  <classes>
+    <class name="Employee" isdata="true" namemap="EMPLOYEE">
+      <inherits />
+      <instance_variables>
+        <variable name="EMAIL" type="String" />
+        <variable name="EMPLOYEE_ID" type="String" identityfield="true" />
+        <variable name="EXTENSION" type="String" />
+        <variable name="FIRST_NAME" type="String" />
+        <variable name="LAST_NAME" type="String" />
+        <variable name="FULL_NAME" type="String" calculated="true" formula="FIRST_NAME || &quot; &quot; || LAST_NAME" />
+        <variable name="OFFICE_NO" type="Number" />
+        <variable name="OFFICE_NO2" type="Number" calculated="true" formula="(OFFICE_NO * 1.5) - 1" />
+      </instance_variables>
+      <functions />
+      <constructors />
+    </class>
+  </classes>
+  <dataconnections>
+    <dataconnection name="conn1" connectiontype="SQL">
+      <description />
+      <configuration>
+        <config name="DatabaseName">application1</config>
+        <config name="Port">27017</config>
+        <config name="Host">localhost</config>
+        <config name="DbProvider">Sqlbase</config>
+        <config name="DbConnectionString">DataSource=localhost;InitialCatalog=ISLAND;Server=Server1;User=SYSADM;Password=SYSADM;poolsize=10;connectionlifetime=20;</config>
+      </configuration>
+    </dataconnection>
+  </dataconnections>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="tablet" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="tablet">
+          <property type="Children" value="pb1,bgt6,lg2,ltv1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="tablet" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="tablet">
+              <property type="Title">
+                <value culture="en-US" title="Calculated Fields" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ListBinding" value="EMPLOYEES" />
+              <property type="Children" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="ltv1" />
+              <property type="TopMargin" value="0" />
+              <property type="Children" value="bgt1,bgt2,bgt3,bgt4,bgt5" />
+              <property type="Columns" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="EMPLOYEES.FIRST_NAME" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="EMPLOYEES.LAST_NAME" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="tablet">
+              <property type="Title">
+                <value culture="en-US" title="Load" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="GetEmployees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Binding" value="EMPLOYEES.FULL_NAME" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="3" />
+              <property type="Binding" value="EMPLOYEES.OFFICE_NO" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="4" />
+              <property type="Binding" value="EMPLOYEES.OFFICE_NO2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="Title">
+                <value culture="en-US" title="The Data Class used to populate the list below uses two calculated fields, FULL_NAME and OFFICE_NO2." />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg2" type="LayoutGrid">
+          <properties>
+            <propertylist display="tablet">
+              <property type="Columns" value="5" />
+              <property type="Children" value="bgt7,bgt8,bgt9,bgt10,bgt11" />
+              <property type="TopMargin" value="15" />
+              <property type="LeftMargin" value="15" />
+              <property type="RightMargin" value="10" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt7" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="First" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt8" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg2" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Last" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt9" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg2" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="First + Last" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt10" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg2" />
+              <property type="Column" value="3" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Office No" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt11" type="Label">
+          <properties>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg2" />
+              <property type="Column" value="4" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="(Office_No * 1.5) - 1" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="EMPLOYEES" array="true" type="Employee">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="OFFICE_NO2" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OFFICE_NO" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="FULL_NAME" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="EMAIL" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="EMPLOYEE_ID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="EXTENSION" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="FIRST_NAME" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="LAST_NAME" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <dataoperation name="GetEmployees" connection="conn1" dataaction="Browse">
+          <databinding>
+            <binding name="EMPLOYEES" />
+          </databinding>
+          <idbinds>
+            <idbind name="">
+              <fieldbind>
+                <binding name="EMPLOYEE_ID" />
+              </fieldbind>
+              <valuebind>
+                <binding name="" />
+              </valuebind>
+            </idbind>
+          </idbinds>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+      <reports />
+    </page>
+  </webpages>
+  <dialogs />
+</application>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="jquery/jquery-mobile-tdm.min.css" />
+		<link rel="stylesheet" href="jquery/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="jquery/jquery.mobile.structure-1.4.2.min.css" />
+		<link rel="stylesheet" href="css/td.css" />
+		<script src="jquery/jquery-2.1.3.min.js"></script>
+		<script src="jquery/jquery.dateFormat-1.0.min.js"></script>
+		<script src="jquery/jquery.mobile-1.4.2.min.js"></script>
+		<script src="js/td.min.js"></script>
+		<script></script>
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<link rel="icon" href="apple-touch-icon.png">
+
+	</head>
+	<body>
+		<div data-role="page" id="ProductDetail" data-theme="c">
+			<script type="text/javascript">
+				Td.Localization.init("en-US");
+				$('body').one("pagecontainerbeforeshow", function(event, ui){
+					new Td.Data.Operation("GetProductDetail", "ProductDetail.asmx/GetProductDetail", "Product", {pID: "ProductId"});
+					new Td.Data.Binding(
+						"Product",
+						"Functional Class",
+						{
+							boolstate: {
+								booltype: "NotNull",
+								compareval: ""
+							},
+							members:
+							[
+								{
+									name: "LongDescription",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "NotNull",
+											compareval: ""
+										},
+										initval: ""
+									}
+								},
+								{
+									name: "ID",
+									type: "Number",
+									opts: {
+										boolstate: {
+											booltype: "NotNull",
+											compareval: ""
+										},
+										initval: null
+									}
+								},
+								{
+									name: "ImageUrl",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								},
+								{
+									name: "Description",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								},
+								{
+									name: "Name",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								}
+							]
+
+						}
+					);
+					new Td.Data.Binding(
+						"ProductId",
+						"Number",
+						{
+							boolstate: {
+								booltype: "DoesntEqualValue",
+								compareval: "0"
+							},
+							initval: null
+						}
+					);
+					new Td.Controls.Page(
+						"ProductDetail",
+						{
+							create: function() {
+								Td.Data.Operation.get("GetProductDetail").invoke();
+							},
+						}
+					);
+					new Td.Controls.Toolbar(
+						"__header",
+						{
+						}
+					);
+					new Td.Controls.Picture(
+						"img1",
+						{
+							binding: { "source": "Product", "path": "ImageUrl" },
+						}
+					);
+					new Td.Controls.LayoutGrid(
+						"lg1",
+						{
+						}
+					);
+					new Td.Controls.Label(
+						"bgt1",
+						{
+							binding: { "source": "Product", "path": "Name", "direction": "get" },
+						}
+					);
+					new Td.Controls.Label(
+						"bgt2",
+						{
+							binding: { "source": "Product", "path": "LongDescription", "direction": "get" },
+						}
+					);
+				});
+				$('body').one("pagecontainershow", function(event, ui){
+					Td.Controls.get('ProductDetail').raiseCreateComplete();
+				});
+
+			</script>
+			<div id="__header" data-role="header" data-position="fixed" data-theme="a">
+				<h1>
+					&nbsp;
+				</h1>
+			</div>
+			<div data-role="content">
+				<div class="ui-grid-a" id="lg1">
+					<div class="ui-block-a">
+						<img id="img1" src="" class="td-picture" style="margin:6px 0px 0px 0px;" />
+
+					</div>
+					<div class="ui-block-b">
+
+					</div>
+				</div>
+				<div id="bgt1" style="font-size:1.2em;overflow:hidden;">
+					
+				</div>
+				<div id="bgt2" style="overflow:hidden;">
+					
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+</html>

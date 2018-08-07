@@ -1,0 +1,226 @@
+<application xmlns="urn:Gupta.TD.CDK" version="2.0">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="page1" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <miscincludes />
+  <weblinks />
+  <reportfiles />
+  <symbolimports />
+  <variables />
+  <functions />
+  <operations />
+  <exceptions />
+  <classes />
+  <dataconnections />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pbGetName,bgt1,bgtName" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Dialog Demo" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbGetName" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Get Name" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="ShowDialog" data="dlgGetName" extradata="&quot;Please enter your name:&quot;">
+                  <action action="Set" data="NAME" extradata="[dialog_return]" />
+                </action>
+                <action action="Else" data="" extradata="">
+                  <action action="Set" data="NAME" extradata="&quot;you declined to enter your name&quot;" />
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="You entered:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtName" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="NAME" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="NAME" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+      <reports />
+    </page>
+  </webpages>
+  <dialogs>
+    <dialog name="dlgGetName">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Width" value="320" />
+          <property type="Height" value="280" />
+          <property type="Children" value="bgt1,dfName,lg1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="dfName" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Your name:" />
+              </property>
+              <property type="Binding" value="NAME" />
+              <property type="ParentControl" value="dlgGetName" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="" />
+              </property>
+              <property type="FontSize" value="1.2" />
+              <property type="ParentControl" value="dlgGetName" />
+              <property type="Binding" value="PROMPT" />
+            </propertylist>
+            <propertylist display="tablet" />
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pbYes,pbNo" />
+              <property type="ParentControl" value="dlgGetName" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbYes" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="dlgGetName" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Ok" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="CloseDialog" data="True" extradata="NAME" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbNo" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="dlgGetName" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="No Thanks" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="CloseDialog" data="False" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="NAME" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="PROMPT" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="CloseDialog" data="True" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations />
+      <reports />
+    </dialog>
+  </dialogs>
+</application>

@@ -1,0 +1,28 @@
+.label2 {
+	background-color: #2f4f4f; 
+	color: #87ceeb;
+}
+
+.label3 {
+	background-color: #2f4f4f; 
+	color: #ffd700;
+	padding: 0.2em 0.2em;
+}
+
+.label4 {
+	padding: 0.2em 0.2em;
+  background-image: -o-linear-gradient(bottom, #ADCDCD 0%, #2F4F4F 100%);
+  background-image: -moz-linear-gradient(bottom, #ADCDCD 0%, #2F4F4F 100%);
+  background-image: -webkit-linear-gradient(bottom, #ADCDCD 0%, #2F4F4F 100%);
+  background-image: -ms-linear-gradient(bottom, #ADCDCD 0%, #2F4F4F 100%);
+  background-image: linear-gradient(to bottom, #ADCDCD 0%, #2F4F4F 100%);
+}
+
+.label5 {
+	padding: 0.2em 0.2em;
+  background: -webkit-linear-gradient(0deg, red, blue); 	/* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(0deg, red, blue); 		/* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(0deg, red, blue); 		/* For Firefox 3.6 to 15 */
+  background: linear-gradient(0deg, red, blue); 		/* Standard syntax (must be last) */
+}
+

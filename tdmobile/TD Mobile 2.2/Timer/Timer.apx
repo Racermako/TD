@@ -1,0 +1,138 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables>
+    <variable name="TimerCount" type="Number" />
+  </variables>
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Shows how to use the Timer statement to turn on and off the Timer (in the Pushbutton events)
+and how to use the Page event On Timer.  When turning the timer On, specify how many milliseconds 
+should elapse between firings of the On Timer event. </description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pbStart,bgt1,pbStop" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Timer Demo" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbStart" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Start Timer" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Timer" data="On" extradata="1000" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="STR" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbStop" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Stop Timer" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Timer" data="Off" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="TIME" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="STR" type="String">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Timer">
+          <actions>
+            <action action="Invoke" data="GetString" extradata="" />
+          </actions>
+        </event>
+        <event name="Create">
+          <actions>
+            <action action="Set" data="TIME" extradata="0" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetString">
+          <parameters />
+          <return type="String">
+            <binding name="STR" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Set TimerCount = ( TimerCount + 1 )" />
+            <code line="Return &quot;Timer count: &quot; || SalNumberToStrX(TimerCount, 0 )" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

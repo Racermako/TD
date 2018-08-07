@@ -1,0 +1,1727 @@
+<application xmlns="urn:Gupta.TD.CDK" version="2.0">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="ListOrders" />
+    <setting EnableOffline="False" />
+    <setting CordovaEnabled="True" />
+    <setting CordovaProjectDir="C:\Temp\SalesDemo" />
+    <setting CordovaTargetDisplay="Phone" />
+    <setting CordovaAppUrl="http://192.169.1.107/SalesDemo" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes>
+    <jsfile name="salesdemo.js" path=".">
+      <description>JS For Sales Demo</description>
+    </jsfile>
+  </jsincludes>
+  <miscincludes />
+  <weblinks />
+  <reportfiles />
+  <symbolimports>
+    <axlfile name="PushNotificationLib.axl" path=".">
+      <description />
+    </axlfile>
+  </symbolimports>
+  <variables />
+  <functions />
+  <operations />
+  <exceptions />
+  <classes>
+    <class name="Order" isdata="true">
+      <inherits />
+      <instance_variables>
+        <variable name="ProductID" type="Number" />
+        <variable name="CustomerID" type="Number" />
+        <variable name="Quantity" type="Number" />
+        <variable name="Price" type="Number" />
+        <variable name="PushNotificationID" type="String" />
+        <variable name="Status" type="String" />
+        <variable name="Product" type="String" />
+        <variable name="Customer" type="String" />
+        <variable name="OrderID" type="Number" identityfield="true" autoincrement="true" />
+        <variable name="OrderDate" type="Date/Time" />
+        <variable name="CustomerContactID" type="Number" />
+        <variable name="CustomerContact" type="String" />
+      </instance_variables>
+      <functions />
+      <constructors />
+    </class>
+    <class name="Product" isdata="true">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" identityfield="true" />
+        <variable name="Name" type="String" />
+      </instance_variables>
+      <functions />
+      <constructors />
+    </class>
+    <class name="Customer" isdata="true">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" identityfield="true" autoincrement="true" />
+        <variable name="Name" type="String" />
+      </instance_variables>
+      <functions />
+      <constructors />
+    </class>
+    <class name="Contact" isdata="true">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" identityfield="true" autoincrement="true" />
+        <variable name="CustomerID" type="Number" />
+        <variable name="First" type="String" />
+        <variable name="Last" type="String" />
+        <variable name="Phone" type="String" />
+        <variable name="Email" type="String" />
+        <variable name="Street" type="String" />
+        <variable name="City" type="String" />
+        <variable name="Zip" type="String" />
+        <variable name="Country" type="String" />
+        <variable name="State" type="String" />
+      </instance_variables>
+      <functions />
+      <constructors />
+    </class>
+  </classes>
+  <dataconnections>
+    <dataconnection name="MongoSalesDemo" connectiontype="Mongo">
+      <description />
+      <configuration>
+        <config name="DatabaseName">SalesDemo</config>
+        <config name="Port">27017</config>
+        <config name="Host">localhost</config>
+      </configuration>
+    </dataconnection>
+  </dataconnections>
+  <webpages>
+    <page name="CreateCustomer">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="df1,pb2" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="New Customer" />
+              </property>
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="LeftArrow" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="df1" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Name" />
+              </property>
+              <property type="Binding" value="CUST.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb2" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Create" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="AddCustomer" extradata="">
+                  <action action="Alert" data="" extradata="&quot;New customer added!&quot;">
+                    <action action="Navigate" data="&lt;back&gt;" extradata="" />
+                  </action>
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="CUST" type="Customer">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <dataoperation name="AddCustomer" connection="MongoSalesDemo" dataaction="Add">
+          <databinding>
+            <binding name="CUST" />
+          </databinding>
+          <idbinds />
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+      <reports />
+    </page>
+    <page name="CreateContact">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="df1,pbSearch,df2,df3,df4,txtAddr,df5,df6,df7,df8,df9,pbAddContact" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="New Contact" />
+              </property>
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df1" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="First" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="CONTACT.First" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df2" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Last" />
+              </property>
+              <property type="Binding" value="CONTACT.Last" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df3" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Eamil" />
+              </property>
+              <property type="Format" value="Email" />
+              <property type="Binding" value="CONTACT.Email" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df4" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Phone" />
+              </property>
+              <property type="Format" value="Tel" />
+              <property type="Binding" value="CONTACT.Phone" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="txtAddr" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Address:" />
+              </property>
+              <property type="FontSize" value="1.5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df5" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Street" />
+              </property>
+              <property type="Binding" value="CONTACT.Street" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df6" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="City" />
+              </property>
+              <property type="Binding" value="CONTACT.City" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df7" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="State" />
+              </property>
+              <property type="Binding" value="CONTACT.State" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df8" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Zip" />
+              </property>
+              <property type="Binding" value="CONTACT.Zip" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df9" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Country" />
+              </property>
+              <property type="Binding" value="CONTACT.Country" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbSearch" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Search" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="SearchContacts" extradata="CONTACT.First" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="LeftArrow" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbAddContact" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Create Contact" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="AddContact" extradata="">
+                  <action action="Javascript" data="SetContactVar" extradata="" />
+                  <action action="Alert" data="" extradata="&quot;Contact Created&quot;">
+                    <action action="Navigate" data="CreateOrder" extradata="" />
+                  </action>
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="CONTACT" type="Contact">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="First" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Last" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Phone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Email" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Street" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Zip" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Country" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="State" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="SetContactVar">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>var contactObj = Td.Data.Binding.get('CONTACT').getValue();
+window.salesDemoNewContactName = contactObj.First;</javascript>
+        </function>
+        <function name="SearchContacts">
+          <description />
+          <parameters>
+            <variable name="firstName" type="Unknown" />
+          </parameters>
+          <variables />
+          <javascript>
+var options = new ContactFindOptions();
+options.filter = firstName;
+options.multiple = true;
+var fields = ["displayName", "name", "phoneNumbers", "addresses", "emails"];
+navigator.contacts.find(fields, onSuccess, onError, options);
+
+function onSuccess(contacts) {
+	var foundContact = false;
+	var matchHadAddress = false;
+	for (var i = 0; i &lt; contacts.length; i++) {
+		var contact = contacts[i];
+		if (contact.displayName
+				&amp;&amp; contact.name) {
+							
+				if (contact.displayName.indexOf(firstName) == 0 || contact.name.formatted.indexOf(firstName) == 0){
+					
+					foundContact = true;
+					var contactBind = Td.Data.Binding.get('CONTACT');
+					contactBind.setValue(contact.name.givenName, "First");
+					contactBind.setValue(contact.name.familyName, "Last");
+					
+					if (contact.emails.length &gt; 0){
+						contactBind.setValue(contact.emails[0].value, "Email");
+					}
+					
+					if (contact.phoneNumbers &amp;&amp; contact.phoneNumbers.length &gt; 0){
+						contactBind.setValue(contact.phoneNumbers[0].value, "Phone");
+					}
+					
+					if (contact.addresses &amp;&amp; contact.addresses.length &gt; 0){
+						matchHadAddress = true;
+						var formatted = contact.addresses[0].formatted;
+						var parts = formatted.split("\n");
+						
+						contactBind.setValue(parts[0], "Street");
+						if (parts.length == 3){
+							var cityState = parts[2].split(' ');
+							contactBind.setValue(cityState[0].replace(",", ""), "City");
+							contactBind.setValue(cityState[1], "State");
+							contactBind.setValue(cityState[2], "Zip");
+						}
+					}
+					if (matchHadAddress){
+						break;	
+					}
+				}		
+		}
+   	}
+	if (!foundContact){
+		alert('Unable to find contact on your device');
+	}
+}
+
+function onError(contactError) {
+  	alert('error: ' + contactError.code);
+}</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <dataoperation name="AddContact" connection="MongoSalesDemo" dataaction="Add">
+          <databinding>
+            <binding name="CONTACT" />
+          </databinding>
+          <idbinds>
+            <idbind name="">
+              <fieldbind>
+                <binding name="ID" />
+              </fieldbind>
+              <valuebind>
+                <binding name="" />
+              </valuebind>
+            </idbind>
+          </idbinds>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+      <reports />
+    </page>
+    <page name="ListOrders">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="ltvOrders" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Orders" />
+              </property>
+              <property type="Children" value="pbCreateOrder" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCreateOrder" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="ImageAlignment" value="NoText" />
+              <property type="FileName" value="Plus" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="CreateOrder" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="ltvOrders" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="lg1" />
+              <property type="ListBinding" value="ORDERS" />
+              <property type="Binding" value="ORDER" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="OrderDetail" extradata="ORDER.OrderID" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="ltvOrders" />
+              <property type="Children" value="bgt1,bgt2,bgt3" />
+              <property type="Rows" value="2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="ORDERS.Customer" />
+              <property type="FontSize" value="1.5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="ORDERS.OrderDate" />
+              <property type="Format" value="ShortDateTime" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="ORDERS.Status" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="ORDER" type="Order">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="CustomerContact" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerContactID" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProductID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Quantity" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="PushNotificationID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Status" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Product" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Customer" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="ORDERS" array="true" type="Order">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="CustomerContact" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerContactID" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProductID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Quantity" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="PushNotificationID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Status" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Product" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Customer" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="CreateComplete">
+          <actions>
+            <action action="Invoke" data="GetOrders" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="GetOrders" connection="MongoSalesDemo" dataaction="Browse">
+          <databinding>
+            <binding name="ORDERS" />
+          </databinding>
+          <idbinds>
+            <idbind name="">
+              <fieldbind>
+                <binding name="OrderID" />
+              </fieldbind>
+              <valuebind>
+                <binding name="" />
+              </valuebind>
+            </idbind>
+          </idbinds>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+      <reports />
+    </page>
+    <page name="CreateOrder">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lnk3,cmbCustomers,lnk2,cmb1,lnk1,cmbProducts,df5,df6,cb1,pbCreateOrder,html1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Create Order" />
+              </property>
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df5" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Quantity" />
+              </property>
+              <property type="Binding" value="ORDER.Quantity" />
+              <property type="ParentControl" value="CreateOrder" />
+              <property type="Format" value="Number" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df6" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Price" />
+              </property>
+              <property type="Binding" value="ORDER.Price" />
+              <property type="ParentControl" value="CreateOrder" />
+              <property type="Format" value="Number" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cb1" type="CheckBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Get Notfications" />
+              </property>
+              <property type="Binding" value="GET_NOTIFICATIONS" />
+              <property type="ParentControl" value="CreateOrder" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="html1" type="HtmlHost">
+          <properties>
+            <propertylist display="phone">
+              <property type="Html" value="&lt;ul id=&quot;app-status-ul&quot; style=&quot;height:100px;display:none&quot;&gt;&lt;/ul&gt;" />
+              <property type="ParentControl" value="CreateOrder" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCreateOrder" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Create Order" />
+              </property>
+              <property type="ParentControl" value="CreateOrder" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="GetDeviceIdIfNotifyEnabled" extradata="" />
+                <action action="Set" data="ORDER.Status" extradata="&quot;Quote Sent&quot;" />
+                <action action="Invoke" data="AddOrder" extradata="">
+                  <action action="Alert" data="" extradata="&quot;Order created, quote sent to customer for approval&quot;">
+                    <action action="Navigate" data="ListOrders" extradata="" />
+                  </action>
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="cmbProducts" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Product" />
+              </property>
+              <property type="ListBinding" value="PRODUCTS" />
+              <property type="DisplayMemberPath" value="PRODUCTS.Name" />
+              <property type="Binding" value="PRODUCT" />
+              <property type="TopMargin" value="3" />
+            </propertylist>
+          </properties>
+          <listinitialization />
+          <events>
+            <event name="Change">
+              <actions>
+                <action action="Set" data="ORDER.ProductID" extradata="PRODUCT.ID" />
+                <action action="Set" data="ORDER.Product" extradata="PRODUCT.Name" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="cmbCustomers" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Customer" />
+              </property>
+              <property type="ListBinding" value="CUSTOMERS" />
+              <property type="Binding" value="CUSTOMER" />
+              <property type="DisplayMemberPath" value="CUSTOMERS.Name" />
+              <property type="TopMargin" value="3" />
+            </propertylist>
+          </properties>
+          <listinitialization />
+          <events>
+            <event name="Change">
+              <actions>
+                <action action="Set" data="ORDER.CustomerID" extradata="CUSTOMER.ID" />
+                <action action="Set" data="ORDER.Customer" extradata="CUSTOMER.Name" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lnk1" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Scan Product" />
+              </property>
+              <property type="Justify" value="Right" />
+              <property type="LinkType" value="Javascript" />
+              <property type="Href" value="ScanProduct()" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cmb1" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Customer Contact" />
+              </property>
+              <property type="ListBinding" value="CONTACTS" />
+              <property type="Binding" value="CONTACT" />
+              <property type="DisplayMemberPath" value="CONTACTS.First" />
+              <property type="TopMargin" value="3" />
+            </propertylist>
+          </properties>
+          <listinitialization />
+          <events />
+        </control>
+        <control name="lnk2" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="Justify" value="Right" />
+              <property type="Title">
+                <value culture="en-US" title="New Contact" />
+              </property>
+              <property type="Href" value="NavToContactPage()" />
+              <property type="LinkType" value="Javascript" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="LeftArrow" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lnk3" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="Justify" value="Right" />
+              <property type="Title">
+                <value culture="en-US" title="New Customer" />
+              </property>
+              <property type="LinkType" value="Javascript" />
+              <property type="Href" value="NavToCustomerPage()" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="CONTACT" type="Contact">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="First" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Last" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Phone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Email" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Street" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Zip" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Country" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="State" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="CONTACTS" array="true" type="Contact">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="First" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Last" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Phone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Email" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Street" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Zip" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Country" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="State" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="CUSTOMER" type="Customer">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="CUSTOMERS" array="true" type="Customer">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="PRODUCT" type="Product">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Name" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="PRODUCTS" array="true" type="Product">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Name" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="DEVICE_ID" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="GET_NOTIFICATIONS" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="ORDER" type="Order">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="CustomerContact" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerContactID" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Now" value="" />
+            </binding>
+            <binding name="OrderID" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProductID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Quantity" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="PushNotificationID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Status" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Product" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Customer" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="NavToContactPage">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>Td.Util.navToPage("CreateContact");</javascript>
+        </function>
+        <function name="GetDeviceIdIfNotifyEnabled">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>if (Td.Data.Binding.get('GET_NOTIFICATIONS').getValue()){
+	var orderBind = Td.Data.Binding.get('ORDER');
+	orderBind.setValue(window.salesDemoDeviceId, 'PushNotificationID');
+}</javascript>
+        </function>
+        <function name="ScanProduct">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>cordova.plugins.barcodeScanner.scan(
+      function (result) {
+		  if (!result.cancelled){
+			  	if (result.format == "QR_CODE"){
+					var productsArr = Td.Data.Binding.get('PRODUCTS').getValue();
+					var foundProd = false;
+					for (var idx = 0; idx &lt; productsArr.length; idx++){
+						if (productsArr[idx].Name == result.text){
+							foundProd = true;
+							Td.Data.Binding.get('PRODUCT').setValue(productsArr[idx]);
+							Td.Data.Binding.get('ORDER').setValue(productsArr[idx].ID, "ProductID");
+							Td.Data.Binding.get('ORDER').setValue(productsArr[idx].Name, "Product");
+							break;
+						}
+					}
+					if (!foundProd){
+						alert('Invalid product: ' + result.text);
+					}
+				} else{
+					alert('Only QR Codes are supproted');
+				}
+		  }
+      }, 
+      function (error) {
+          alert("Scanning failed: " + error);
+      }
+ );</javascript>
+        </function>
+        <function name="CheckIfNewContactCreated">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>if (window.salesDemoNewContactName){
+	var contactsBind = Td.Data.Binding.get('CONTACTS');
+	var contactBind = Td.Data.Binding.get('CONTACT');
+	
+	var arr = contactsBind.getValue();
+	for (var idx = 0; idx&lt; arr.length; idx++){
+		if (arr[idx].First == window.salesDemoNewContactName){
+			contactBind.setValue(arr[idx]);
+			break;
+		}
+	}
+}</javascript>
+        </function>
+        <function name="NavToCustomerPage">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>Td.Util.navToPage("CreateCustomer");</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events>
+        <event name="CreateComplete">
+          <actions>
+            <action action="Invoke" data="GetProducts" extradata="">
+              <action action="Set" data="ORDER.ProductID" extradata="PRODUCT.ID" />
+              <action action="Set" data="ORDER.Product" extradata="PRODUCT.Name" />
+            </action>
+            <action action="Invoke" data="GetCustomers" extradata="">
+              <action action="Set" data="ORDER.CustomerID" extradata="CUSTOMER.ID" />
+              <action action="Set" data="ORDER.Customer" extradata="CUSTOMER.Name" />
+            </action>
+            <action action="Invoke" data="GetContacts" extradata="">
+              <action action="Javascript" data="CheckIfNewContactCreated" extradata="" />
+            </action>
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetProducts">
+          <description />
+          <parameters />
+          <return type="Product" array="true">
+            <binding name="PRODUCTS" />
+          </return>
+          <variables>
+            <variable name="oProducts" type="Product" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Set oProducts[0].ID = 1" />
+            <code line="Set oProducts[0].Name = &quot;NXJ&quot;" />
+            <code line="Set oProducts[1].ID = 2" />
+            <code line="Set oProducts[1].Name = &quot;SQLBase&quot;" />
+            <code line="Set oProducts[2].ID = 3" />
+            <code line="Set oProducts[2].Name = &quot;TD&quot;" />
+            <code line="Set oProducts[3].ID = 4" />
+            <code line="Set oProducts[3].Name = &quot;TD Mobile&quot;" />
+            <code line="Return oProducts" />
+          </actions>
+        </operation>
+        <dataoperation name="GetContacts" connection="MongoSalesDemo" dataaction="Browse">
+          <databinding>
+            <binding name="CONTACTS" />
+          </databinding>
+          <idbinds>
+            <idbind name="">
+              <fieldbind>
+                <binding name="ID" />
+              </fieldbind>
+              <valuebind>
+                <binding name="" />
+              </valuebind>
+            </idbind>
+          </idbinds>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="GetCustomers" connection="MongoSalesDemo" dataaction="Browse">
+          <databinding>
+            <binding name="CUSTOMERS" />
+          </databinding>
+          <idbinds>
+            <idbind name="">
+              <fieldbind>
+                <binding name="ID" />
+              </fieldbind>
+              <valuebind>
+                <binding name="" />
+              </valuebind>
+            </idbind>
+          </idbinds>
+          <filters />
+          <sortoptions>
+            <sortoption name="" dir="Ascending">
+              <fieldbind>
+                <binding name="CUSTOMERS.Name" />
+              </fieldbind>
+            </sortoption>
+          </sortoptions>
+        </dataoperation>
+        <dataoperation name="AddOrder" connection="MongoSalesDemo" dataaction="Add">
+          <databinding>
+            <binding name="ORDER" />
+          </databinding>
+          <idbinds>
+            <idbind name="">
+              <fieldbind>
+                <binding name="OrderID" />
+              </fieldbind>
+              <valuebind>
+                <binding name="" />
+              </valuebind>
+            </idbind>
+          </idbinds>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+      <reports />
+    </page>
+    <page name="OrderDetail">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg1,pbQuoteApproved" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Order" />
+              </property>
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="ORDER.Customer" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="ORDER.Product" />
+              <property type="TopMargin" value="5" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="ImageAlignment" value="NoText" />
+              <property type="FileName" value="LeftArrow" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbQuoteApproved" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Complete Order" />
+              </property>
+              <property type="VisibilityBinding" value="STATUS_QUOTE_SENT" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Set" data="ORDER.Status" extradata="&quot;Invoice Sent&quot;" />
+                <action action="If" data="ORDER.PushNotificationID" extradata="">
+                  <action action="Javascript" data="GetPushMsg" extradata="" />
+                  <action action="Invoke" data="SendInvoiceNotification" extradata="" />
+                </action>
+                <action action="Invoke" data="UpdateOrder" extradata="">
+                  <action action="Alert" data="" extradata="&quot;Invoice sent to customer&quot;">
+                    <action action="Navigate" data="ListOrders" extradata="" />
+                  </action>
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="5" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="Binding" value="ORDER.Status" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt4,bgt1,bgt5,bgt2,bgt6,bgt3" />
+              <property type="Rows" value="3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Customer:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="5" />
+              <property type="Row" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Product:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="5" />
+              <property type="Row" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Status:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="PUSH_MSG" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="STATUS_QUOTE_SENT" type="String">
+          <state mode="EqualsValue" comparevalue="Quote Sent" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="ORDER" type="Order">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="CustomerContact" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerContactID" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProductID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustomerID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Quantity" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="PushNotificationID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Status" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Product" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Customer" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="GetPushMsg">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>var orderBind = Td.Data.Binding.get('ORDER');
+var cust = orderBind.getValue('Customer');
+var product = orderBind.getValue('Product');
+var msg = "Order of " + product + " for customer " + cust + " has been approved, sending invoice";
+Td.Data.Binding.get('PUSH_MSG').setValue(msg);</javascript>
+        </function>
+      </javascripts>
+      <parameters>
+        <binding name="ID" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="CreateComplete">
+          <actions>
+            <action action="Invoke" data="GetOrder" extradata="">
+              <action action="Set" data="STATUS_QUOTE_SENT" extradata="ORDER.Status" />
+            </action>
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="SendInvoiceNotification">
+          <description />
+          <parameters>
+            <variable name="pDeviceID" type="String">
+              <binding name="ORDER.PushNotificationID" />
+            </variable>
+            <variable name="pMessage" type="String">
+              <binding name="PUSH_MSG" />
+            </variable>
+          </parameters>
+          <return type="Number" />
+          <variables />
+          <actions>
+            <code line="Call PushNotificationLib_PushUtil_SendNotification(pDeviceID, &quot;TDM Sales Demo - Order Update&quot;, pMessage)" />
+          </actions>
+        </operation>
+        <dataoperation name="GetOrder" connection="MongoSalesDemo" dataaction="Read">
+          <databinding>
+            <binding name="ORDER" />
+          </databinding>
+          <idbinds>
+            <idbind name="">
+              <fieldbind>
+                <binding name="OrderID" />
+              </fieldbind>
+              <valuebind>
+                <binding name="ID" />
+              </valuebind>
+            </idbind>
+          </idbinds>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="UpdateOrder" connection="MongoSalesDemo" dataaction="Edit">
+          <databinding>
+            <binding name="ORDER" />
+          </databinding>
+          <idbinds>
+            <idbind name="">
+              <fieldbind>
+                <binding name="OrderID" />
+              </fieldbind>
+              <valuebind>
+                <binding name="" />
+              </valuebind>
+            </idbind>
+          </idbinds>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+      <reports />
+    </page>
+  </webpages>
+  <dialogs />
+</application>

@@ -1,0 +1,447 @@
+<application xmlns="urn:Gupta.TD.CDK" version="2.0">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISPath="c:\intepub\wwwroot\ImageMenu" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes>
+    <cssfile name="image.css" path=".">
+      <description />
+    </cssfile>
+  </cssincludes>
+  <jsincludes />
+  <miscincludes>
+    <miscfile name="face-pink.png" path=".\EMPLIMAGES">
+      <description />
+    </miscfile>
+    <miscfile name="face-purple.png" path=".\EMPLIMAGES">
+      <description />
+    </miscfile>
+    <miscfile name="face-blue.png" path=".\EMPLIMAGES">
+      <description />
+    </miscfile>
+    <miscfile name="face-lightblue.png" path=".\EMPLIMAGES">
+      <description />
+    </miscfile>
+    <miscfile name="face-turquise.png" path=".\EMPLIMAGES">
+      <description />
+    </miscfile>
+    <miscfile name="face-green.png" path=".\EMPLIMAGES">
+      <description />
+    </miscfile>
+    <miscfile name="face-lightgreen.png" path=".\EMPLIMAGES">
+      <description />
+    </miscfile>
+    <miscfile name="face-yellow.png" path=".\EMPLIMAGES">
+      <description />
+    </miscfile>
+    <miscfile name="face-red.png" path=".\EMPLIMAGES">
+      <description />
+    </miscfile>
+  </miscincludes>
+  <weblinks />
+  <reportfiles />
+  <symbolimports />
+  <variables />
+  <functions />
+  <operations />
+  <exceptions />
+  <classes>
+    <class name="clsEmplMenu" isdata="true" namemap="EMPLOYEE">
+      <inherits />
+      <instance_variables>
+        <variable name="LAST_NAME" type="String" />
+        <variable name="IMG_LINK" type="String" />
+        <variable name="PHOTO" type="Binary" />
+        <variable name="FIRST_NAME" type="String" />
+        <variable name="EMPLOYEE_ID" type="String" identityfield="true" />
+        <variable name="EMAIL" type="String" />
+        <variable name="DATE_HIRED" type="Date/Time" />
+        <variable name="CURRENT_SALARY" type="Number" />
+      </instance_variables>
+      <functions />
+      <constructors />
+    </class>
+  </classes>
+  <dataconnections>
+    <dataconnection name="connIsland" connectiontype="SQL">
+      <description />
+      <configuration>
+        <config name="DatabaseName">MenuImage</config>
+        <config name="Port">27017</config>
+        <config name="Host">localhost</config>
+        <config name="DbProvider">Sqlbase</config>
+        <config name="DbConnectionString">DataSource=localhost;InitialCatalog=ISLAND;Server=Server1;User=SYSADM;Password=SYSADM;poolsize=10;connectionlifetime=20;</config>
+      </configuration>
+    </dataconnection>
+  </dataconnections>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Theme" value="D" />
+          <property type="Children" value="lg1" />
+        </propertylist>
+      </properties>
+      <menu>
+        <menu name="menuEmployees" list="true">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="EMPLS_MENU" />
+              <property type="Binding" value="SELECTED_EMPL" />
+              <property type="DisplayMemberPath" value="EMPLS_MENU.LAST_NAME" />
+              <property type="IconPath" value="EMPLS_MENU.IMG_LINK" />
+            </propertylist>
+          </properties>
+          <actions />
+        </menu>
+      </menu>
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Theme" value="B" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="SELECTED_EMPL.LAST_NAME" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg1" />
+              <property type="Title">
+                <value culture="en-US" title="untitled" />
+              </property>
+              <property type="Column" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="img1" type="Picture">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="SELECTED_EMPL.PHOTO" />
+              <property type="CssClass" value="empl_image" />
+              <property type="VisibilityBinding" value="SELECTED_EMPL.PHOTO" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="3" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Columns" value="5" />
+              <property type="Rows" value="2" />
+              <property type="Children" value="bgt5,bgt1,bgt6,bgt2,bgt9,bgt10,bgt7,bgt3,img1,bgt8,bgt4" />
+              <property type="VisibilityBinding" value="SELECTED_EMPL.LAST_NAME" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="SELECTED_EMPL.FIRST_NAME" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="1" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="SELECTED_EMPL.CURRENT_SALARY" />
+              <property type="Format" value="Number" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="1" />
+              <property type="Column" value="3" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="SELECTED_EMPL.DATE_HIRED" />
+              <property type="Format" value="ShortDate" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Last Name" />
+              </property>
+              <property type="FontWeight" value="Bold" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="First Name" />
+              </property>
+              <property type="FontWeight" value="Bold" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt7" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Current Salary" />
+              </property>
+              <property type="FontWeight" value="Bold" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt8" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="3" />
+              <property type="Title">
+                <value culture="en-US" title="Date Hired" />
+              </property>
+              <property type="FontWeight" value="Bold" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt9" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Email Address" />
+              </property>
+              <property type="FontWeight" value="Bold" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt10" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="SELECTED_EMPL.EMAIL" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="EMPLS_MENU" array="true" type="clsEmplMenu">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="CURRENT_SALARY" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="DATE_HIRED" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="EMAIL" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="EMPLOYEE_ID" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="FIRST_NAME" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="PHOTO" type="Binary">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="IMG_LINK" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="LAST_NAME" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="SELECTED_EMPL" type="clsEmplMenu">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="CURRENT_SALARY" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="DATE_HIRED" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="EMAIL" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="EMPLOYEE_ID" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="FIRST_NAME" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="PHOTO" type="Binary">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="IMG_LINK" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="LAST_NAME" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="IMG_LINK_EXISTS" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="oCheckForImageColumn" extradata="">
+              <action action="Invoke" data="GetEmployeesForMenu" extradata="">
+                <action action="ShowMenu" data="" extradata="" />
+              </action>
+            </action>
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="oCheckForImageColumn">
+          <description />
+          <parameters />
+          <return type="Boolean">
+            <binding name="IMG_LINK_EXISTS" />
+          </return>
+          <variables>
+            <variable name="hSql" type="Sql Handle" />
+            <variable name="oEmployees" type="clsEmplMenu" array="true" dims="*" />
+            <variable name="nFetchReturn" type="Number" />
+            <variable name="nIndex" type="Number" />
+          </variables>
+          <actions>
+            <code line="If SqlConnectDotNet(hSql, &quot;host=localhost;server=server1;database=island;user=sysadm;password=sysadm;&quot;, &quot;&quot;, 9)">
+              <code line="Call SqlPrepareAndExecute(hSql, &quot;select count(*) into :nIndex from syscolumns where tbname = 'EMPLOYEE' and name = 'IMG_LINK'&quot;)" />
+              <code line="Call SqlFetchNext(hSql, nFetchReturn)" />
+              <code line="If nIndex = 0">
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;alter table EMPLOYEE add IMG_LINK varchar(40)&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-blue.png' where EMPLOYEE_ID = 'PCN'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-lightblue.png' where EMPLOYEE_ID = 'CTL'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-green.png' where EMPLOYEE_ID = 'FKB'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-lightgreen.png' where EMPLOYEE_ID = 'RBP'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-pink.png' where EMPLOYEE_ID = 'AHF'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-purple.png' where EMPLOYEE_ID = 'HPG'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-yellow.png' where EMPLOYEE_ID = 'SDJ'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-red.png' where EMPLOYEE_ID = 'SRS'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-purple.png' where EMPLOYEE_ID = 'WLS'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-pink.png' where EMPLOYEE_ID = 'BAL'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-blue.png' where EMPLOYEE_ID = 'AHT'&quot;)" />
+                <code line="Call SqlPrepareAndExecute(hSql, &quot;update EMPLOYEE SET IMG_LINK = 'face-lightblue.png' where EMPLOYEE_ID = 'BYG'&quot;)" />
+                <code line="Call SqlCommit(hSql)" />
+              </code>
+              <code line="Call SqlDisconnect(hSql)" />
+              <code line="Return TRUE" />
+            </code>
+          </actions>
+        </operation>
+        <dataoperation name="GetEmployeesForMenu" connection="connIsland" dataaction="Browse">
+          <databinding>
+            <binding name="EMPLS_MENU" />
+          </databinding>
+          <idbinds />
+          <filters />
+          <sortoptions>
+            <sortoption name="" dir="Ascending">
+              <fieldbind>
+                <binding name="EMPLS_MENU.LAST_NAME" />
+              </fieldbind>
+            </sortoption>
+          </sortoptions>
+        </dataoperation>
+      </operations>
+      <reports />
+    </page>
+  </webpages>
+  <dialogs />
+</application>

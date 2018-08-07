@@ -1,0 +1,81 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="1/15/2014 10:07 AM: Frank - " />
+    <change description="10/31/2013 5:54 PM: support" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Demonstrates messagebox functionality via Alert statement</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pb1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Alert Demo" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Show MessageBox" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Alert" data="" extradata="&quot;Hello&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings />
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

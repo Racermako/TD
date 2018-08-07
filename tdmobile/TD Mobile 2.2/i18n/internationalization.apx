@@ -1,0 +1,360 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting BuildURL="http://localhost" />
+    <setting DefaultPage="page1" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/30/2014 1:28 PM: Frank - " />
+    <change description="1/13/2014 4:21 PM: Frank - " />
+    <change description="9/30/2013 10:09 PM: hdelorenzi" />
+    <change description="9/30/2013 9:58 PM: hdelorenzi" />
+    <change description="9/30/2013 9:37 PM: hdelorenzi" />
+    <change description="9/30/2013 9:35 PM: hdelorenzi" />
+    <change description="9/30/2013 9:31 PM: hdelorenzi" />
+    <change description="9/30/2013 9:28 PM: hdelorenzi" />
+    <change description="9/30/2013 9:23 PM: hdelorenzi" />
+    <change description="9/30/2013 9:22 PM: hdelorenzi" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="966c65f4-4a6d-4efd-9646-a6be2275b563" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="40d243c0-0f5d-46c6-846b-9f68c204b6d6" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="966c65f4-4a6d-4efd-9646-a6be2275b563" />
+      </supporteddisplays>
+      <description>Demonstrates how to internationalize your app.
+
+Have your web pages reflect the current user's language by setting multiple languages for the text 
+in the contents of your pages
+
+(The following presumes your machine's current region/culture is set to English(United States), so if you 
+see different things you'll know why.  Note that you can set the default languages in the Settings 
+tab of the menu.)
+For example, go to the Phone Layout window of the IDE, and select the pushButton 'pbSetFrench'.
+Note that the Caption says 'French'.  Now go up to the menu, select the 'Layout' tab, and find the
+'Language:' field.   Change it to 'Germany(Germany)':  notice that the Caption in the Properties 
+window now says 'Französisch'.  This is not default translation.  That translation was set by the 
+developer of this app.  That is one way you can internationalize your applications - by setting the 
+specific text for the specific controls for each language you want to support.  (There's another way
+we'll get to.) 
+
+This demo works by the javascript functions that call, for example: 
+     Td.Localization.setLocale('fr-FR');
+which temporarily puts this running application in the context of that culture.
+
+If you have a lot of text and pages to translate, there's a better way to to it:
+1) Finish designing your page(s) using your default language
+2) Go to the Settings tab of the menu and click the Export button
+3) Choose Application or specify which Page(s) you want to export
+4) Give the export file a name - I recommend appName_cultureName (for example,
+     internationalization_en-us.xml)
+5) Copy that xml file and rename it to the next language you want to support (for example,
+    for French you might name it: internationalization_fr-fr.xml)
+6) Translate all the values in the xml that you wish to (or send the file to a translation service) and then
+     save the file
+7) Go again to the Settings tab of the menu and click the Import button
+8) Specify the Application or which specific page(s) for which you are importing
+9) Specify which language-culture you are importing for (for example French(France))
+10) Click Go and you are done, just as if you had translated each control in the designer.</description>
+      <properties>
+        <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+          <property type="Children" value="pbSetEnglish,pbSetGerman,pbSetFrench,dfTest,cb1,foo2,lg1" />
+          <property type="Title">
+            <value culture="de-DE" title="Es funktioniert" />
+            <value culture="en-US" title="It Works" />
+            <value culture="fr-FR" title="Titre" />
+          </property>
+        </propertylist>
+      </properties>
+      <menu>
+        <menu name="menuLoadSwahili">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Title">
+                <value culture="en-US" title="Load Swahili" />
+              </property>
+            </propertylist>
+          </properties>
+          <actions />
+        </menu>
+        <menu name="menuloadArabic">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Title">
+                <value culture="en-US" title="Load Arabic" />
+              </property>
+            </propertylist>
+          </properties>
+          <actions />
+        </menu>
+      </menu>
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Title">
+                <value culture="en-US" title="It Works" />
+                <value culture="de-DE" title="Es funktioniert" />
+                <value culture="fr-FR" title="Titre" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbSetFrench" type="Button">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Title">
+                <value culture="en-US" title="French" />
+                <value culture="fr-FR" title="français" />
+                <value culture="de-DE" title="Französisch" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="SetFrench" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="foo2" type="Label">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Title">
+                <value culture="en-US" title="Hello" />
+                <value culture="de-DE" title="hallo" />
+                <value culture="fr-FR" title="Bonjour" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cb1" type="CheckBox">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Title">
+                <value culture="en-US" title="Active" />
+                <value culture="de-DE" title="tätig" />
+                <value culture="fr-FR" title="actif" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfTest" type="TextBox">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Title">
+                <value culture="en-US" title="Username:" />
+                <value culture="de-DE" title="Benutzer" />
+                <value culture="fr-FR" title="Nom d'utilisateur" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbSetGerman" type="Button">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Title">
+                <value culture="en-US" title="German" />
+                <value culture="de-DE" title="Deutsch" />
+                <value culture="fr-FR" title="allemand" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="SetGerman" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbSetEnglish" type="Button">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Title">
+                <value culture="en-US" title="English" />
+                <value culture="de-DE" title="Englisch" />
+                <value culture="fr-FR" title="Anglais" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="SetEng" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="Columns" value="3" />
+              <property type="Children" value="pbSetSwahili,pbShowAlert,pbShowConfirm" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbSetSwahili" type="Button">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Swahili" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="SetSwahili" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbShowAlert" type="Button">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Alert" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Alert" data="" extradata="&quot;Watch out!&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbShowConfirm" type="Button">
+          <properties>
+            <propertylist display="966c65f4-4a6d-4efd-9646-a6be2275b563">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Confirm" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="SwahiliAlert" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings />
+      <javascripts>
+        <function name="SetFrench">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>Td.Localization.setLocale('fr-FR')</javascript>
+        </function>
+        <function name="SetGerman">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>Td.Localization.setLocale('de-DE')</javascript>
+        </function>
+        <function name="SetEng">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>Td.Localization.setLocale('en-US')</javascript>
+        </function>
+        <function name="SetSwahili">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>Td.Localization.setLocale("sw-KE");
+
+Td.Controls.get("pbSetEnglish").setCaption("Kiingereza");
+
+Td.Controls.get("pbSetGerman").setCaption("Ujerumani");
+
+Td.Controls.get("pbSetFrench").setCaption("Kifaransa");
+
+Td.Controls.get("cb1").setCaption("kazi");</javascript>
+        </function>
+        <function name="LoadSwahiliRuntimeText">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>Td.Localization.registerTranslations(
+    {
+        "InvalidField": {
+           "sw-ke": "Shamba ni batili"
+        },
+        "ComErr": {
+            "sw-ke": "Hitilafu ilitokea katika kuwasiliana na seva: {0} &lt;br&gt; Tafadhali wasiliana na msaada."
+        },
+        "OK": {
+            "sw-ke": "nzuri"
+        },
+        "Yes": {
+            "sw-ke": "ndiyo"
+        },
+        "No": {
+            "sw-ke": "hakuna"
+        },
+		"ConfirmMessage": {
+			"en-us": "Are you really sure?",
+			"de-de" : "Sind Sie wirklich sicher?",
+			"fr-fr": "Êtes-vous vraiment sûr?",
+			"sw-ke": "Ni kweli uhakika?"
+		}
+    }
+);
+</javascript>
+        </function>
+        <function name="SwahiliAlert">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>Td.Util.confirm(Td.Localization.resolveByKey("ConfirmMessage"));</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Javascript" data="LoadSwahiliRuntimeText" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

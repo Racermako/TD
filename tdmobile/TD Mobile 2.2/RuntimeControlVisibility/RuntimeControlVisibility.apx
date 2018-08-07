@@ -1,0 +1,156 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <description>Shows two ways to control visibility of controls at runtime: 
+1) the buttons' visibility is based on the boolean state of the Binding 'HIDETEXT"
+2) the text field's visibility is set by javascript function</description>
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Shows two ways to control visibility of controls at runtime: 
+1) the buttons' visibility is based on the boolean state of the Binding 'HIDETEXT"
+2) the text field's visibility is set by javascript function</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Visibility" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pbHideTextField,pbShowTextField,bgt1" />
+              <property type="ColumnWidth" value="55,45" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbHideTextField" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Hide text field" />
+              </property>
+              <property type="VisibilityBinding" value="HIDETEXT" />
+              <property type="BackgroundColor" value="#FFEAF59C" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Set" data="HIDETEXT" extradata="FALSE" />
+                <action action="Javascript" data="jsHide" extradata="&quot;bgt1&quot;,&quot;HIDETEXT&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="18" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="I'm a text field" />
+              </property>
+              <property type="Justify" value="Center" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbShowTextField" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Show text field" />
+              </property>
+              <property type="VisibilityBinding" value="!HIDETEXT" />
+              <property type="BackgroundColor" value="#FFC2FAAA" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Set" data="HIDETEXT" extradata="TRUE" />
+                <action action="Javascript" data="jsHide" extradata="&quot;bgt1&quot;,&quot;HIDETEXT&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="HIDETEXT" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="jsHide">
+          <description />
+          <parameters>
+            <variable name="pCtl" type="Unknown" />
+            <variable name="pBind" type="Unknown" />
+          </parameters>
+          <variables />
+          <javascript>var ctl = Td.Controls.get(pCtl);
+var bind = Td.Data.Binding.get(pBind);
+var hide = bind.getValue();
+ctl.updateVisibility(hide);</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Set" data="HIDETEXT" extradata="TRUE" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

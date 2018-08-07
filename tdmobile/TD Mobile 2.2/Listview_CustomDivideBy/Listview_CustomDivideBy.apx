@@ -1,0 +1,243 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="clsNote">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" />
+        <variable name="Text" type="String" />
+        <variable name="Date" type="Date/Time" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>This sample shows how to display a full date in a list view divider.
+
+By default, JQuery takes the first character of the divide-by item and displays that in the divider. This is ok in some cases 
+but not all.  When working with Dates, for example, displaying the first character is not very useful.
+Our work-around is to override the ListView control function which determines the divider text.  You can see how in the
+custom JavaScript function 'SetupCustomDivide' (in the Client | Function section of this Outline).  The function is called 
+in the ListView's On Create event handler.
+
+The second, bonus part of this sample is to show some formatting tricks for working with the Layout Grid in a ListView.
+The ListView can only contain one Layout Grid, and a limitation of the Layout Grid is that when you have multiple rows,
+each row must have the same number of columns and the same-sized columns.  In this particular case, we had two small 
+fields to display, and then a larger field:  so we really wanted to put the two small fields on one row and the larger on the 
+2nd row.
+To make this happen, we use three rows, one column.  The two small fields go on the first two rows; small field 1 is justified left and 
+small field 2 is justified right - this separates them horizontally; small field 2 gets a top margin set to a negative number, causing it 
+to  appear on the same vertical level as field 1.  Thus they appear to share the same row and the the longer text (in row 3) appears 
+to be on a 2nd row by itself.
+
+Also note that the 2nd small field, being a less important field, a reference point, can reflect that by being a slightly smaller font size.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgtTitle,ltvNotes" />
+          <property type="ToolbarVisible" value="No" />
+          <property type="Title">
+            <value culture="en-US" title="ListView DivideBy" />
+          </property>
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="List View - Divide by Date" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltvNotes" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="NOTES" />
+              <property type="Children" value="lgNotes" />
+              <property type="DivideBy" value="bgtDate" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Create">
+              <actions>
+                <action action="Javascript" data="SetupCustomDivide" extradata="&quot;ltvNotes&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lgNotes" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvNotes" />
+              <property type="TopMargin" value="0" />
+              <property type="Children" value="bgtDate,bgtID,bgtText" />
+              <property type="Rows" value="3" />
+              <property type="Columns" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtDate" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgNotes" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="NOTES.Date" />
+              <property type="Format" value="ShortDate" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtID" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgNotes" />
+              <property type="FontSize" value="0.8" />
+              <property type="TopMargin" value="-15" />
+              <property type="Binding" value="NOTES.ID" />
+              <property type="Row" value="1" />
+              <property type="Justify" value="Right" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtTitle" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Work Notes" />
+              </property>
+              <property type="Justify" value="Center" />
+              <property type="FontSize" value="1.2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtText" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgNotes" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Binding" value="NOTES.Text" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <comment>! UDV array that populates our listview as the return value of Operation fillupDates</comment>
+        <binding name="NOTES" array="true" type="clsNote">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Date" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Text" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="SetupCustomDivide">
+          <description>Overrides the ListView.getDivideValue function to use the full text of the Divide By field</description>
+          <parameters>
+            <variable name="lvName" type="Unknown" />
+          </parameters>
+          <variables />
+          <javascript> //override ListView controls function which provides the divide by text
+ var lvCtrl = Td.Controls.get(lvName);
+ lvCtrl.getDivideValue = function (item) {
+ 	var divideItem = $(item).find('#' + lvCtrl.options.divider);
+ 	return $(divideItem[0]).text();
+};</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="fillupDates" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="fillupDates">
+          <parameters />
+          <return type="clsNote" array="true">
+            <binding name="NOTES" />
+          </return>
+          <variables>
+            <variable name="notes" type="clsNote" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Set notes[0].ID = 1" />
+            <code line="Set notes[0].Text = &quot;Met with Customer X to work out contract details for pending software project&quot;" />
+            <code line="Set notes[0].Date = 2014-04-01" />
+            <code line="Set notes[1].ID = 2" />
+            <code line="Set notes[1].Text = &quot;Gave report on Sales to team.  One of our best quarters ever!&quot;" />
+            <code line="Set notes[1].Date = 2014-04-01" />
+            <code line="Set notes[2].ID = 3" />
+            <code line="Set notes[2].Text = &quot;Met with team to discuss logistics for upcoming conference in South America&quot;" />
+            <code line="Set notes[2].Date = 2014-04-01" />
+            <code line="Set notes[3].ID = 4" />
+            <code line="Set notes[3].Text = &quot;Worked on presentation for annual report&quot;" />
+            <code line="Set notes[3].Date = 2014-04-02" />
+            <code line="Set notes[4].ID = 5" />
+            <code line="Set notes[4].Text = &quot;Gave status report to the boss&quot;" />
+            <code line="Set notes[4].Date = 2014-04-03" />
+            <code line="Set notes[5].ID = 6" />
+            <code line="Set notes[5].Text = &quot;Played golf with Customer Y; let her win&quot;" />
+            <code line="Set notes[5].Date = 2014-04-03" />
+            <code line="Set notes[6].ID = 7" />
+            <code line="Set notes[6].Text = &quot;Gave annual report to investors&quot;" />
+            <code line="Set notes[6].Date = 2014-04-03" />
+            <code line="Return notes" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

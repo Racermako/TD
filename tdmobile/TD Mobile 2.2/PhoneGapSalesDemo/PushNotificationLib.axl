@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><symbolimport xmlns="urn:Unify.Sal.Compiler"><import_description>Web Service Interop: PushNotificationLib</import_description>
+<assembly name="PushNotificationLib" path="C:\TeamDeveloper\SalesDemo">
+<class name="PushUtil" symbol="PushNotificationLib_PushUtil" namespace="PushNotificationLib" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+<function name=".ctor" symbol="PushUtil" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="SendNotification" symbol="PushNotificationLib_PushUtil_SendNotification" implemented="true" loadasglobal="true">
+<type enum="Boolean" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+</assembly>
+<assembly name="mscorlib">
+<class name="Object" symbol="System_Object" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<functions>
+</functions>
+</class>
+</assembly>
+</symbolimport>

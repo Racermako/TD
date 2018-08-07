@@ -1,0 +1,167 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/28/2014 4:37 PM: Frank - " />
+    <change description="1/14/2014 11:11 AM: Frank - " />
+    <change description="10/24/2013 7:40 PM: support" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>This page contains 3 fields and a pushButton. Each field has a binding. For example dfNumber1 is bound to N1.
+Then, each time the content of dfNumber1 changes, its value is passed to the bind variable N1. Same things for dfNumber2.
+Since dfSum is bound to RES, when the contents of RES changes, its value is reflected in dfSum.
+The pushButton pbAdd invokes a server side Operation which takes 2 parameters, makes a computation and returns a value.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="dfNumber1,dfNumber2,pbAdd,dfSum" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Server Demo" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfNumber1" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="N1" />
+              <property type="Format" value="Number" />
+              <property type="Title">
+                <value culture="en-US" title="Number 1" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbAdd" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Add " />
+              </property>
+              <property type="Theme" value="A" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="AddTwoValues" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="dfNumber2" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="N2" />
+              <property type="Format" value="Number" />
+              <property type="Title">
+                <value culture="en-US" title="Number 2" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfSum" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="RES" />
+              <property type="ReadOnly" value="Yes" />
+              <property type="Title">
+                <value culture="en-US" title="Sum" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <comment>! N1 is the Value Bind for the datafield 'dfNumber1'; it is passed as a parameter to the Operation 'AddTwoValues'</comment>
+        <binding name="N1" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! N2 is the Value Bind for the datafield 'dfNumber2'; it is passed as a parameter to the Operation 'AddTwoValues'</comment>
+        <binding name="N2" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! RES is the Value Bind for the datafield 'dfSum'; it is assigned a value as the return value from the Operation 'AddTwoValues'</comment>
+        <binding name="RES" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Set" data="N1" extradata="1000" />
+            <action action="Set" data="N2" extradata="2000" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="AddTwoValues">
+          <parameters>
+            <variable name="pN1" type="Number">
+              <binding name="N1" />
+            </variable>
+            <variable name="pN2" type="Number">
+              <binding name="N2" />
+            </variable>
+          </parameters>
+          <return type="Number">
+            <binding name="RES" />
+          </return>
+          <variables>
+            <variable name="nResult" type="Number" />
+          </variables>
+          <actions>
+            <code line="Set nResult = pN1 + pN2" />
+            <code line="Return nResult" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

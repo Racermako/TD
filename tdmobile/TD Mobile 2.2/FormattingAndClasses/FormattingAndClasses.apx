@@ -1,0 +1,252 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/29/2014 3:26 PM: Frank - " />
+    <change description="4/29/2014 3:15 PM: Frank - " />
+    <change description="4/29/2014 3:13 PM: Frank - " />
+    <change description="4/29/2014 3:11 PM: Frank - " />
+    <change description="4/29/2014 3:08 PM: Frank - " />
+    <change description="4/29/2014 3:02 PM: Frank - " />
+    <change description="4/29/2014 3:00 PM: Frank - " />
+    <change description="11/6/2013 10:45 AM: Frank" />
+    <change description="11/6/2013 9:58 AM: Frank" />
+    <change description="11/6/2013 9:33 AM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="clsFmtEmployee">
+      <inherits />
+      <instance_variables>
+        <variable name="Name" type="String" />
+        <variable name="Salary" type="String" />
+        <variable name="DateHired" type="String" />
+      </instance_variables>
+      <functions>
+        <function name="SetSalary">
+          <description />
+          <return type="Boolean" />
+          <parameters>
+            <variable name="pSalary" type="Number" />
+          </parameters>
+          <variables />
+          <staticvariables />
+          <actions>
+            <code line="Set Salary = SalFmtFormatNumber( pSalary, &quot;$#,##0.00&quot; )" />
+            <code line="Return TRUE" />
+          </actions>
+        </function>
+        <function name="SetDateHired">
+          <description />
+          <return type="Boolean" />
+          <parameters>
+            <variable name="pDateHired" type="Date/Time" />
+          </parameters>
+          <variables />
+          <staticvariables />
+          <actions>
+            <code line="Set DateHired = SalFmtFormatDateTime( pDateHired, &quot;MM/dd/yyyy&quot; )" />
+            <code line="Return TRUE" />
+          </actions>
+        </function>
+      </functions>
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Demonstrates an approach, not necessarily a recommendation, of 
+using String members in your variables and UDVs (User Defined Variables
+defined as Classes - see clsFmtEmployee).  Formatting of numbers
+and dates is done in server-side code, in this case in a functional class.
+See server-side Operation GetEmployee.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Employee Page" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ColumnWidth" value="30,70" />
+              <property type="Children" value="bgt1,bgt2,bgt3,bgt4,bgt5,bgt6" />
+              <property type="Rows" value="3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Name" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMP.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Salary" />
+              </property>
+              <property type="Binding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMP.Salary" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Date Hired" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMP.DateHired" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="EMP" type="clsFmtEmployee">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Salary" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="DateHired" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetEmployee" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetEmployee">
+          <parameters />
+          <return type="clsFmtEmployee">
+            <binding name="EMP" />
+          </return>
+          <variables>
+            <variable name="emp" type="clsFmtEmployee" />
+            <variable name="FirstName" type="String" />
+            <variable name="LastName" type="String" />
+            <variable name="nSalary" type="Number" />
+            <variable name="dtHired" type="Date/Time" />
+          </variables>
+          <actions>
+            <comment>! -- Simulate getting data from database</comment>
+            <code line="Set FirstName = &quot;Alfred&quot;" />
+            <code line="Set LastName = &quot;Zinderlofft&quot;" />
+            <code line="Set nSalary = 75000 " />
+            <code line="Set dtHired = SalDateConstruct( 2009, 9, 5, 0, 0, 0 )" />
+            <comment>! -- Format fields for display</comment>
+            <code line="Set emp.Name = FirstName || &quot; &quot; || LastName" />
+            <comment>! Salary could be formatted here and assigned directly to the String member emp.Salary, or...</comment>
+            <code line="Call emp.SetSalary( nSalary ) " />
+            <comment>! Date hired could be formatted here and assigned directly to the String member emp.DateHired, or...</comment>
+            <code line="Call emp.SetDateHired( dtHired )" />
+            <code line="Return emp" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

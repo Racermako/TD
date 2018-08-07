@@ -1,0 +1,107 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/29/2014 10:14 AM: Frank - " />
+    <change description="1/14/2014 2:01 PM: Frank - " />
+    <change description="10/31/2013 6:00 PM: support" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Shows how to get Yes/No decision from user with only client side code, with the Confirm statement</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pbQuestion,flpAnswer" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Confirm Demo" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="flpAnswer" type="FlipSwitch">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="User's Answer:" />
+              </property>
+              <property type="Binding" value="ANSWER" />
+              <property type="OffText" value="No" />
+              <property type="OnText" value="Yes" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbQuestion" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Get User Input" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Confirm" data="" extradata="&quot;Answer YES or NO&quot;">
+                  <action action="Set" data="ANSWER" extradata="TRUE" />
+                </action>
+                <action action="Else" data="" extradata="">
+                  <action action="Set" data="ANSWER" extradata="FALSE" />
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="ANSWER" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! ANSWER is the Value Bind for the Flip Switch control 'flpAnswer'.  
+  It is assigned a value in pbQuestion's On Click event, depending upon the user's response.</comment>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

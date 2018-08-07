@@ -1,0 +1,938 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes>
+    <cssfile name="mycss.css" path=".\CSS" />
+  </cssincludes>
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>http://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/
+Body Mass Index (BMI) is a number calculated from a person's weight and height. 
+BMI is a fairly reliable indicator of body fatness for most people. 
+BMI does not measure body fat directly, but research has shown that BMI correlates to direct measures of body fat, 
+such as underwater weighing and dual energy x-ray absorptiometry (DXA). 
+BMI can be considered an alternative for direct measures of body fat. 
+Additionally, BMI is an inexpensive and easy-to-perform method of screening for weight categories that may lead 
+to health problems.
+BMI 		Weight Status 
+Below 18.5	Underweight
+18.5 – 24.9	Normal
+25.0 – 29.9	Overweight
+30.0 and Above	Obese
+
+Used features in this application:
+-work with bind variables
+-invoke an operation
+-handle objects visibility depending on a condition
+-format layout using different containers
+-use a CSS to set a bg image (this is a jQuery trick)
+</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="grp1,lg3,pb1,html2,lg5,img1,lg2,html3,lg1" />
+          <property type="Title">
+            <value culture="en-US" title="BMI Calculator" />
+          </property>
+          <property type="Theme" value="A" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Theme" value="Use Parent" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="BMI Calculator" />
+              </property>
+              <property type="Children" value="pb2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rbUnit1" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="grp1" />
+              <property type="Title">
+                <value culture="en-US" title="US" />
+              </property>
+              <property type="CheckValue" value="US" />
+              <property type="Binding" value="US_UNIT" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Create">
+              <actions />
+            </event>
+            <event name="Change">
+              <actions>
+                <action action="Set" data="FEET_OR_CENTIMETERS" extradata="&quot;feet&quot;" />
+                <action action="Set" data="POUNDS_OR_KILOGRAMS" extradata="&quot;pounds&quot;" />
+                <action action="Set" data="BMI" extradata="&quot;****&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="rbUnit2" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="grp1" />
+              <property type="Title">
+                <value culture="en-US" title="Metric" />
+              </property>
+              <property type="CheckValue" value="METRIC" />
+              <property type="Binding" value="US_UNIT" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Create">
+              <actions />
+            </event>
+            <event name="Change">
+              <actions>
+                <action action="Set" data="FEET_OR_CENTIMETERS" extradata="&quot;centimeters&quot;" />
+                <action action="Set" data="POUNDS_OR_KILOGRAMS" extradata="&quot;kilograms&quot;" />
+                <action action="Set" data="BMI" extradata="&quot;****&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="grp1" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="rbUnit1,rbUnit2" />
+              <property type="Orientation" value="Horizontal" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Calculate" />
+              </property>
+              <property type="CssClass" value="boxed_btn" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="ComputeBMI" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lg3" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt1,dfHeightInFeet,dfHeightInCentimeters,bgt2,dfWeightInchesPart,bgt5,bgt6,dfWeightInPounds,dfWeightInKilo,bgt7" />
+              <property type="Columns" value="5" />
+              <property type="Rows" value="2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="TopMargin" value="18" />
+              <property type="Title">
+                <value culture="en-US" title="Height:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="18" />
+              <property type="Title">
+                <value culture="en-US" title="feet" />
+              </property>
+              <property type="VisibilityBinding" value="" />
+              <property type="Binding" value="FEET_OR_CENTIMETERS" />
+              <property type="LeftMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="Column" value="4" />
+              <property type="TopMargin" value="18" />
+              <property type="Title">
+                <value culture="en-US" title="inches" />
+              </property>
+              <property type="Binding" value="" />
+              <property type="VisibilityBinding" value="US_UNIT" />
+              <property type="LeftMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="TopMargin" value="18" />
+              <property type="Title">
+                <value culture="en-US" title="Weight:" />
+              </property>
+              <property type="Row" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt7" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="18" />
+              <property type="Title">
+                <value culture="en-US" title="pounds" />
+              </property>
+              <property type="Binding" value="POUNDS_OR_KILOGRAMS" />
+              <property type="Row" value="1" />
+              <property type="LeftMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfWeightInPounds" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="WEIGHT_IN_POUNDS" />
+              <property type="Row" value="1" />
+              <property type="VisibilityBinding" value="US_UNIT" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfHeightInFeet" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="VisibilityBinding" value="US_UNIT" />
+              <property type="Binding" value="HEIGHT_IN_FEET_PART" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Change">
+              <actions />
+            </event>
+          </events>
+        </control>
+        <control name="dfWeightInchesPart" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="Column" value="3" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="HEIGHT_IN_INCHES_PART" />
+              <property type="VisibilityBinding" value="US_UNIT" />
+              <property type="EnabledBinding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg5" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="Children" value="bgt8" />
+              <property type="Columns" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfHeightInCentimeters" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="VisibilityBinding" value="!US_UNIT" />
+              <property type="Binding" value="HEIGHT_IN_CM" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfWeightInKilo" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="VisibilityBinding" value="!US_UNIT" />
+              <property type="Binding" value="WEIGHT_IN_KG" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt8" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg5" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="BMI" />
+              <property type="VisibilityBinding" value="BMI" />
+              <property type="Justify" value="Center" />
+              <property type="FontSize" value="1.4" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="img1" type="Picture">
+          <properties>
+            <propertylist display="phone">
+              <property type="FileName" value="images\Image2.png" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt18,bgt19,bgt3,bgt4,bgt9,bgt10,bgt11,bgt12,bgt13,bgt14" />
+              <property type="Rows" value="5" />
+              <property type="ColumnWidth" value="40,60" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Below 18.5" />
+              </property>
+              <property type="Row" value="1" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Underweight" />
+              </property>
+              <property type="Row" value="1" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt9" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="18.5 – 24.9" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt10" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Normal" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt11" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="3" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="25.0 – 29.9" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt12" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Overweight" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt13" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="4" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="30.0 and Above" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt14" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="4" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Obese" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg2" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Columns" value="5" />
+              <property type="Children" value="bgt15,bgt16,bgt17" />
+              <property type="ColumnWidth" value="5,18,27,32,18" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt15" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="18.5" />
+              </property>
+              <property type="Column" value="1" />
+              <property type="Justify" value="Center" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt16" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg2" />
+              <property type="Column" value="3" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="25" />
+              </property>
+              <property type="Justify" value="Center" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt17" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg2" />
+              <property type="Column" value="4" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="30" />
+              </property>
+              <property type="Justify" value="Center" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt18" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="BMI" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt19" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Weight Status" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="html2" type="HtmlHost">
+          <properties>
+            <propertylist display="phone">
+              <property type="Html" value="&lt;HR&gt;" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb2" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="FileName" value="Info" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="page2" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="html3" type="HtmlHost">
+          <properties>
+            <propertylist display="phone">
+              <property type="Html" value="&lt;HR&gt;" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="US_UNIT" type="String">
+          <state mode="EqualsValue" comparevalue="US" />
+          <initialvalue mode="SpecificValue" value="US" />
+        </binding>
+        <binding name="FEET_OR_CENTIMETERS" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="SpecificValue" value="feet" />
+        </binding>
+        <binding name="POUNDS_OR_KILOGRAMS" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="SpecificValue" value="pounds" />
+        </binding>
+        <binding name="HEIGHT_IN_FEET_PART" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <validation>
+            <rule type="IsRequired">
+              <errmsg msg="Please enter a value" locale="en-US" />
+            </rule>
+          </validation>
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="HEIGHT_IN_INCHES_PART" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <validation>
+            <rule type="IsRequired">
+              <errmsg msg="Please enter a value" locale="en-US" />
+            </rule>
+          </validation>
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="HEIGHT_IN_CM" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <validation>
+            <rule type="IsRequired">
+              <errmsg msg="Please enter a value" locale="en-US" />
+            </rule>
+          </validation>
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="WEIGHT_IN_POUNDS" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="WEIGHT_IN_KG" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="BMI" type="String">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Set" data="HEIGHT_IN_FEET_PART" extradata="5" />
+            <action action="Set" data="HEIGHT_IN_INCHES_PART" extradata="6" />
+            <action action="Set" data="HEIGHT_IN_CM" extradata="165" />
+            <action action="Set" data="WEIGHT_IN_POUNDS" extradata="130" />
+            <action action="Set" data="WEIGHT_IN_KG" extradata="60" />
+            <action action="Set" data="BMI" extradata="&quot;****&quot;" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="ComputeBMI">
+          <parameters>
+            <variable name="sUnit" type="String">
+              <binding name="US_UNIT" />
+            </variable>
+            <variable name="nHeigthInFeetPart" type="Number">
+              <binding name="HEIGHT_IN_FEET_PART" />
+            </variable>
+            <variable name="nHeightInchesPart" type="Number">
+              <binding name="HEIGHT_IN_INCHES_PART" />
+            </variable>
+            <variable name="nHeightInCM" type="Number">
+              <binding name="HEIGHT_IN_CM" />
+            </variable>
+            <variable name="nWeightInPounds" type="Number">
+              <binding name="WEIGHT_IN_POUNDS" />
+            </variable>
+            <variable name="nWeightInKG" type="Number">
+              <binding name="WEIGHT_IN_KG" />
+            </variable>
+          </parameters>
+          <return type="String">
+            <binding name="BMI" />
+          </return>
+          <variables>
+            <variable name="sBMI" type="String" />
+          </variables>
+          <actions>
+            <code line="If sUnit = &quot;US&quot;">
+              <code line="Set sBMI = SalNumberToStrX(nWeightInPounds / SalNumberPower(((nHeigthInFeetPart * 12) + nHeightInchesPart), 2) * 703, 2)" />
+            </code>
+            <code line="Else ">
+              <code line="Set sBMI = SalNumberToStrX( nWeightInKG / SalNumberPower(( nHeightInCM / 100 ), 2) , 2)" />
+            </code>
+            <code line="Return sBMI" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+    <page name="page2">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt1,lnk1,html2,frm1" />
+          <property type="Theme" value="A" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="BMI Calculator" />
+              </property>
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Body Mass Index (BMI) is a number calculated from a person's weight and height. &#xD;&#xA;BMI is a fairly reliable indicator of body fatness for most people. &#xD;&#xA;BMI does not measure body fat directly, but research has shown that BMI correlates to direct measures of body fat, &#xD;&#xA;such as underwater weighing and dual energy x-ray absorptiometry (DXA). &#xD;&#xA;BMI can be considered an alternative for direct measures of body fat. &#xD;&#xA;Additionally, BMI is an inexpensive and easy-to-perform method of screening for weight categories that may lead &#xD;&#xA;to health problems.&#xD;&#xA;" />
+              </property>
+              <property type="BottomMargin" value="20" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="FileName" value="Home" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lnk1" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="Href" value="http://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi" />
+              <property type="Title">
+                <value culture="en-US" title="http://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ColumnWidth" value="40,60" />
+              <property type="Rows" value="5" />
+              <property type="Children" value="bgt2,bgt3,bgt4,bgt5,bgt6,bgt7,bgt8,bgt9,bgt10,bgt11" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="frm1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="BMI" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Weight Status" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Title">
+                <value culture="en-US" title="Below 18.5" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Underweight" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="18.5 – 24.9" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt7" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Normal" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt8" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Title">
+                <value culture="en-US" title="25.0 – 29.9" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt9" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Overweight" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt10" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Title">
+                <value culture="en-US" title="30.0 and Above" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="4" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt11" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="4" />
+              <property type="Title">
+                <value culture="en-US" title="Obese" />
+              </property>
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="html2" type="HtmlHost">
+          <properties>
+            <propertylist display="phone">
+              <property type="Html" value="&lt;br&gt;&lt;HR&gt;" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="frm1" type="Frame">
+          <properties>
+            <propertylist display="phone">
+              <property type="BackgroundColor" value="#FF333333" />
+              <property type="BorderColor" value="#FF7C7C7C" />
+              <property type="Children" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings />
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

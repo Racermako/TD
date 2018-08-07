@@ -1,0 +1,208 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/29/2014 10:42 AM: Frank - " />
+    <change description="11/4/2013 2:30 PM: Frank" />
+    <change description="11/4/2013 2:09 PM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="clsEmployee">
+      <inherits />
+      <instance_variables>
+        <variable name="Name" type="String" />
+        <variable name="Salary" type="Number" />
+        <variable name="HireDate" type="Date/Time" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Demonstrates how the Enabled Bind works. 
+
+Our pushButton 'pbSave' has its Enabled Bind set to the Binding 'MOD' (see its Properties window). 
+ 
+'MOD' is a Boolean Binding that is False by default but is set to True when any of the data 
+fields are modified (see the On Change event for each datafield).
+
+Thus the pushbutton will be enabled only after data has been modified.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="dfName,dfSalary,dfHireDate,pbSave" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Employee Info" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfName" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Name" />
+              </property>
+              <property type="Inline" value="No" />
+              <property type="Binding" value="EMP.Name" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Change">
+              <actions>
+                <action action="Set" data="MOD" extradata="TRUE" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="dfSalary" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Salary" />
+              </property>
+              <property type="Inline" value="No" />
+              <property type="Binding" value="EMP.Salary" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Change">
+              <actions>
+                <action action="Set" data="MOD" extradata="TRUE" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="dfHireDate" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Date Hired" />
+              </property>
+              <property type="Binding" value="EMP.HireDate" />
+              <property type="Format" value="Date" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Change">
+              <actions>
+                <action action="Set" data="MOD" extradata="TRUE" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbSave" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Save Changes" />
+              </property>
+              <property type="Editable" value="No" />
+              <property type="EnabledBinding" value="MOD" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Alert" data="" extradata="&quot;Changes Saved!&quot;" />
+                <action action="Set" data="MOD" extradata="FALSE" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <comment>! EMP is a UDV (a User Defined Variable defined in the Classes section).  
+It is populated as the Return value of the Operation 'GetEmployee'.
+Its fields are set as the Value Binds for the three Data Fields.</comment>
+        <binding name="EMP" type="clsEmployee">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Salary" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="HireDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! 'MOD' is the Enabled Bind of the pushButton 'pbSave'.
+It is set to True when any of the data fields are modified (see the On Change event for each datafield).</comment>
+        <binding name="MOD" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetEmployee" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetEmployee">
+          <parameters />
+          <return type="clsEmployee">
+            <binding name="EMP" />
+          </return>
+          <variables>
+            <variable name="emp" type="clsEmployee" />
+          </variables>
+          <actions>
+            <comment>! Simulate getting data from database</comment>
+            <code line="Set emp.Name = &quot;Mary Wong&quot;" />
+            <code line="Set emp.Salary = 55000" />
+            <code line="Set emp.HireDate = SalDateConstruct( 2010, 10, 8, 0, 0, 0)" />
+            <code line="Return emp" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

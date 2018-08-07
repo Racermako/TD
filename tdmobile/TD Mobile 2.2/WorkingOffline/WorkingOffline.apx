@@ -1,0 +1,1529 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables>
+    <variable name="gProdNames" type="String" array="true" dims="*" />
+  </variables>
+  <functions />
+  <classes>
+    <class name="cCustomer">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" />
+        <variable name="Name" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+    <class name="cProduct">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" />
+        <variable name="Name" type="String" />
+        <variable name="Price" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+    <class name="cOrderItem">
+      <inherits />
+      <instance_variables>
+        <variable name="OrderItemID" type="String" />
+        <variable name="OrderID" type="String" />
+        <variable name="ProductName" type="String" />
+        <variable name="ProdID" type="String" />
+        <variable name="CustID" type="String" />
+        <variable name="Quantity" type="String" />
+        <variable name="Price" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>This sample shows how to deal with creating and storing data in an offline state - 
+without an internet connection.  
+
+Imagine you are a salesperson of restaurant supplies, and you are visiting 
+customers in an area with very spotty phone connectivity.  You want to take orders 
+from them and store that data in your phone's browser; then later, when you are 
+back to a place with a strong internet connection, you want to save the orders to the 
+database on your server.  We can do that.
+
+You must have an internet connection to start - to load the page and initialize the 
+data you'll need - customer and product information.  But then you are ready to go 
+offline and take all the orders you can get.  
+
+The length of time that data will be stored in the browser's database can be specified: 
+for example, look at the Binding STOR_ORD_ITEMS (in the Client | Bindings section of this 
+outline); select it and then go to the Bindings tab on the menu; in the Local Storage section, you 
+see that its expiration is set for 500 minutes.
+
+For other server-side data, like global variables, in your app, and for authentication (if necessary)  
+you should set the following timeouts to the time you require in the application's web.config file:
+ &lt;system.web&gt;
+    ...
+    &lt;authentication mode="Forms"&gt;
+            &lt;forms timeout="500" /&gt;
+    &lt;/authentication&gt;
+    &lt;sessionState timeout="500" /&gt;
+  &lt;/system.web&gt;
+</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="expStoredOrders,bgtSelectCustomer,ltvCustomers,lgOrderNumber,lgCustomerName,bgtSelectProducts,cmbProducts,lgProductDetails,pbAddItemToOrder,expCurrentOrdItems,lg3,lgOfflineFooter,bgt29" />
+          <property type="Title">
+            <value culture="en-US" title="Restaurant Supplies" />
+          </property>
+          <property type="ToolbarVisible" value="No" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Offline/Online Demo" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="expStoredOrders" type="Expander">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="You have stored Orders" />
+              </property>
+              <property type="VisibilityBinding" value="STOR_ORD_ITEMS" />
+              <property type="Children" value="lg8,lg7,ltvStoredOrders" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltvCustomers" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="CUSTS" />
+              <property type="Children" value="lgCustomers" />
+              <property type="VisibilityBinding" value="!HAVE_CUST" />
+              <property type="Binding" value="CUST" />
+              <property type="ShowFilter" value="Yes" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Set" data="HAVE_CUST" extradata="TRUE" />
+                <action action="Set" data="ORDER_STARTED" extradata="TRUE" />
+                <action action="Javascript" data="ClearCustomerFilter" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgtSelectCustomer" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="To start an order, select a customer:" />
+              </property>
+              <property type="VisibilityBinding" value="!HAVE_CUST" />
+              <property type="TopMargin" value="0" />
+              <property type="BottomMargin" value="12" />
+              <property type="FontSize" value="1.2" />
+              <property type="TextColor" value="#FF6C78C9" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lgCustomers" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvCustomers" />
+              <property type="TopMargin" value="0" />
+              <property type="Columns" value="1" />
+              <property type="Children" value="bgt2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgCustomers" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="CUSTS.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lgOfflineFooter" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pbStoreOrder,pbCancelOrder" />
+              <property type="ColumnWidth" value="63,37" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCancelOrder" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgOfflineFooter" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Cancel" />
+              </property>
+              <property type="VisibilityBinding" value="ORDER_STARTED" />
+              <property type="TextColor" value="#FFB84F5C" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="ClearCurrentOrderItems" extradata="" />
+                <action action="Set" data="HAVE_CUR_ITEMS" extradata="FALSE" />
+                <action action="Set" data="ORDER_STARTED" extradata="FALSE" />
+                <action action="Set" data="HAVE_CUST" extradata="FALSE" />
+                <action action="Set" data="ORDER_TOTAL" extradata="&quot;0&quot;" />
+                <action action="Set" data="QTY" extradata="1" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgtSelectProducts" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Select products for your order:" />
+              </property>
+              <property type="VisibilityBinding" value="ORDER_STARTED" />
+              <property type="TopMargin" value="12" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lgOrderNumber" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt5,bgt6" />
+              <property type="VisibilityBinding" value="ORDER_STARTED" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgOrderNumber" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Order Number:" />
+              </property>
+              <property type="VisibilityBinding" value="NEXT_ORD" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgOrderNumber" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="NEXT_ORD" />
+              <property type="VisibilityBinding" value="NEXT_ORD" />
+              <property type="TextColor" value="#FF6C78C9" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt7" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgCustomerName" />
+              <property type="Binding" value="CUST.Name" />
+              <property type="VisibilityBinding" value="" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="TextColor" value="#FF6C78C9" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lgCustomerName" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt9,bgt7" />
+              <property type="VisibilityBinding" value="ORDER_STARTED" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt9" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgCustomerName" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Customer:" />
+              </property>
+              <property type="VisibilityBinding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lgProductDetails" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="VisibilityBinding" value="ORDER_STARTED" />
+              <property type="Children" value="bgt13,bgt14,dfQuantity" />
+              <property type="Columns" value="3" />
+              <property type="ColumnWidth" value="60,20,20" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt13" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgProductDetails" />
+              <property type="TopMargin" value="12" />
+              <property type="Binding" value="PROD.Price" />
+              <property type="TextColor" value="#FF6C78C9" />
+              <property type="LeftMargin" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt14" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgProductDetails" />
+              <property type="TopMargin" value="12" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Qty:" />
+              </property>
+              <property type="TextColor" value="#FF6C78C9" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbAddItemToOrder" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Add Item to Order" />
+              </property>
+              <property type="VisibilityBinding" value="ORDER_STARTED" />
+              <property type="TextColor" value="#FFB84F5C" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="AddCurrentOrderItem" extradata="" />
+                <action action="Set" data="HAVE_CUR_ITEMS" extradata="TRUE" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="cmbProducts" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="PRODNAMES" />
+              <property type="Binding" value="PRODNAME" />
+              <property type="VisibilityBinding" value="ORDER_STARTED" />
+              <property type="TextColor" value="#FF6C78C9" />
+            </propertylist>
+          </properties>
+          <listinitialization />
+          <events>
+            <event name="Change">
+              <actions>
+                <action action="Javascript" data="LookupProduct" extradata="" />
+                <action action="Set" data="QTY" extradata="1" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="ltvCurrentOrderItems" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expCurrentOrdItems" />
+              <property type="Children" value="lg2" />
+              <property type="ListBinding" value="CUR_ORD_ITEMS" />
+              <property type="VisibilityBinding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg2" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvCurrentOrderItems" />
+              <property type="TopMargin" value="0" />
+              <property type="Columns" value="3" />
+              <property type="ColumnWidth" value="50,35,15" />
+              <property type="Children" value="bgt10,bgt11,bgt12" />
+              <property type="VisibilityBinding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt10" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvCurrentOrderItems" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="CUR_ORD_ITEMS.ProductName" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt11" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvCurrentOrderItems" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CUR_ORD_ITEMS.Price" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt12" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvCurrentOrderItems" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Binding" value="CUR_ORD_ITEMS.Quantity" />
+              <property type="Format" value="Number" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg3" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt18,bgtTotal" />
+              <property type="VisibilityBinding" value="HAVE_CUR_ITEMS" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt18" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Order Total:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtTotal" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg3" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="ORDER_TOTAL" />
+              <property type="TextColor" value="#FF6C78C9" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="expCurrentOrdItems" type="Expander">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Current Order Items" />
+              </property>
+              <property type="Children" value="ltvCurrentOrderItems" />
+              <property type="VisibilityBinding" value="HAVE_CUR_ITEMS" />
+              <property type="Expand" value="Yes" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbStoreOrder" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Complete Order" />
+              </property>
+              <property type="VisibilityBinding" value="HAVE_CUR_ITEMS" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lgOfflineFooter" />
+              <property type="TextColor" value="#FFB84F5C" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="AddToStoredOrders" extradata="" />
+                <action action="Javascript" data="ClearCurrentOrderItems" extradata="" />
+                <action action="Set" data="HAVE_CUR_ITEMS" extradata="FALSE" />
+                <action action="Set" data="ORDER_STARTED" extradata="FALSE" />
+                <action action="Set" data="HAVE_CUST" extradata="FALSE" />
+                <action action="Set" data="ORDER_TOTAL" extradata="&quot;0&quot;" />
+                <action action="Set" data="QTY" extradata="1" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="ltvStoredOrders" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="ListBinding" value="STOR_ORD_ITEMS" />
+              <property type="Children" value="lg6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg6" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Columns" value="3" />
+              <property type="Rows" value="2" />
+              <property type="Children" value="bgt28,bgt1,bgt8,bgt15,bgt16,bgt17" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="STOR_ORD_ITEMS.OrderID" />
+              <property type="Column" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt8" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg6" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="STOR_ORD_ITEMS.CustID" />
+              <property type="Column" value="2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt15" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg6" />
+              <property type="TopMargin" value="0" />
+              <property type="LeftMargin" value="12" />
+              <property type="Binding" value="STOR_ORD_ITEMS.ProdID" />
+              <property type="Row" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt16" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="STOR_ORD_ITEMS.Price" />
+              <property type="LeftMargin" value="12" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt17" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="2" />
+              <property type="Binding" value="STOR_ORD_ITEMS.Quantity" />
+              <property type="LeftMargin" value="18" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg7" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="Columns" value="3" />
+              <property type="Rows" value="2" />
+              <property type="Children" value="bgt27,bgt20,bgt21,bgt22,bgt23,bgt24" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt20" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Order ID" />
+              </property>
+              <property type="Column" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt21" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg7" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Customer ID" />
+              </property>
+              <property type="Column" value="2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt22" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg7" />
+              <property type="TopMargin" value="0" />
+              <property type="LeftMargin" value="12" />
+              <property type="Title">
+                <value culture="en-US" title="Product ID" />
+              </property>
+              <property type="Row" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt23" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Price" />
+              </property>
+              <property type="LeftMargin" value="12" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt24" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Quantity" />
+              </property>
+              <property type="LeftMargin" value="12" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg8" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="VisibilityBinding" value="" />
+              <property type="Children" value="bgt25,bgt26,pbSaveToServer" />
+              <property type="ColumnWidth" value="35,65" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt25" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="TopMargin" value="9" />
+              <property type="Title">
+                <value culture="en-US" title="You are online!" />
+              </property>
+              <property type="Theme" value="E" />
+              <property type="VisibilityBinding" value="[online]" />
+              <property type="TextColor" value="#FFB84F5C" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbSaveToServer" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Save to Server" />
+              </property>
+              <property type="VisibilityBinding" value="" />
+              <property type="EnabledBinding" value="[online]" />
+              <property type="TextColor" value="#FFB84F5C" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="SaveStoredOrdersToServer" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt26" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="TopMargin" value="9" />
+              <property type="Title">
+                <value culture="en-US" title="You are offline" />
+              </property>
+              <property type="VisibilityBinding" value="![online]" />
+              <property type="TextColor" value="#FF728C91" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt27" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="expStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Item ID" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt28" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvStoredOrders" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="STOR_ORD_ITEMS.OrderItemID" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfQuantity" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgProductDetails" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="MiniSize" value="Yes" />
+              <property type="Binding" value="QTY" />
+              <property type="Format" value="Number" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt29" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="OFFLINE_MSG" />
+              <property type="VisibilityBinding" value="OFFLINE_MSG" />
+              <property type="TopMargin" value="36" />
+              <property type="TextColor" value="#FFFF3434" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <comment>! CUSTS holds your customer information.  It is the List Source Bind for the listview control 'ltvCustomers'; it is populated as the return value of the Operation 'GetCustomers'.</comment>
+        <binding name="CUSTS" array="true" type="cCustomer">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <expiretime value="500" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! CUST is the current customer.  It is the Value Bind for the listview control 'ltvCustomers, and will represent the currently selected customer.</comment>
+        <binding name="CUST" type="cCustomer">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <expiretime value="500" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! HAVE_CUST is the Visibility Bind for the customer lister; set to False when a customer is selected; set to True when order stored or cancelled.  </comment>
+        <binding name="HAVE_CUST" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="HAVE_CUST_SAVED" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! ORDER_STARTED is the Visibility Bind for many controls; set to True when a customer is selected; set to False when order stored or cancelled.  </comment>
+        <binding name="ORDER_STARTED" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="ORDER_STARTED_SAVED" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! PRODS is populated as the return value of the Operation 'GetProducts'; it is used in the js function 'LookupProduct' to get info on the selected product.</comment>
+        <binding name="PRODS" array="true" type="cProduct">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <expiretime value="500" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! PROD is populated in the js function 'LookupProduct' after a product is selected from the combobox cmbProducts; it is used in the js function 'AddCurrentOrderItem'. </comment>
+        <binding name="PROD" type="cProduct">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <expiretime value="500" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="String">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! PRODNAMES is the List Source Bind for the combobox 'cmbProducts'; it is populated as the return value of the Operation 'GetProductNames'.</comment>
+        <binding name="PRODNAMES" array="true" type="String">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <expiretime value="500" />
+        </binding>
+        <comment>! PRODNAME is the Value Bind for the combobox 'cmbProducts' and will represent the currently selected product; it is used in the js function 'LookupProduct'.</comment>
+        <binding name="PRODNAME" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! CUR_ORD_ITEMS holds the order items for the currently ordering customer.  It is the List Source Bind for the listview control 'ltvCurrentOrderItems';  it is populated incrementally in the js function 'AddCurrentOrderItem'; it is cleared in the js function 'ClearCurrentOrderItems'.</comment>
+        <binding name="CUR_ORD_ITEMS" array="true" type="cOrderItem">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <expiretime value="500" />
+          <subbindings>
+            <binding name="OrderItemID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProductName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProdID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Quantity" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! HAVE_CUR_ITEMS is the Visibility Bind for current orders listview and pbStore</comment>
+        <binding name="HAVE_CUR_ITEMS" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="HAVE_CUR_ITEMS_SAVED" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! STOR_ORD_ITEMS holds all the order data that we store while offline.  It is the List Source Bind for the listview control 'ltvStoredOrders'.  It is the Visibility Bind 
+  for the Expander 'expStoredOrders'.  It is populated, order by order, in the js function 'AddToStoredOrders'.  It is used in the js function 'SaveStoredOrdersToServer'.</comment>
+        <binding name="STOR_ORD_ITEMS" array="true" type="cOrderItem">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <expiretime value="500" />
+          <subbindings>
+            <binding name="OrderItemID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProductName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProdID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Quantity" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! SAVE_ITEM is used in the js function 'SaveStoredOrdersToServer' and is passed as a parameter to the Operation 'SaveOrderToServer'.</comment>
+        <binding name="SAVE_ITEM" type="cOrderItem">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="OrderItemID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="OrderID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProductName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ProdID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="CustID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Quantity" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! NEXT_ORD is the next OrderID to use.  It is initialized in Operation 'GetNextOrderNumer'.  It is used in the js functions 'AddCurrentOrderItem' and 'AddToStoredOrders'.</comment>
+        <binding name="NEXT_ORD" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="SpecificValue" value="0" />
+        </binding>
+        <comment>! NEXT_ORDITEM is the next OrderItemID to use.  It is initialized in the Operation 'GetNextOrderItemNumber'.  It is used and incremented in the js function 'AddCurrentOrderItem'.</comment>
+        <binding name="NEXT_ORDITEM" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="SpecificValue" value="0" />
+        </binding>
+        <comment>! QTY is the user-specified quantity on an order item.  It is the Value Bind of dfQuantity.  Used in js function 'AddCurrentOrderItem'.</comment>
+        <binding name="QTY" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! ORDER_TOTAL is the Value Bind of backgroundText 'bgtTotal' and represents the total cost of all items on the current order.  Calculated in js function 'AddCurrentOrderItem'.</comment>
+        <binding name="ORDER_TOTAL" type="String">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! SAVED is the return value of the Operation SaveOrderToServer, which returns the OrderItemID of the saved item if successful.  Used in js function 'SaveStoredOrdersToServer'.</comment>
+        <binding name="SAVED" type="String">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="OFFLINE_MSG" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="LookupProduct">
+          <description>[Note: will not be needed after TDM 1.1, when we can use UDV arrays to populate comboboxes.]
+Use selected string from cmbProducts to lookup all the information for that product</description>
+          <parameters />
+          <variables />
+          <javascript>// In PRODNAME we have the name of the currently selected product;
+//  get a reference to the Binding,
+var prodnameBind = Td.Data.Binding.get("PRODNAME");
+//   then get the Binding's value (the name).
+var prodname = prodnameBind.getValue();
+// In PRODS we have an array of type cProduct, all our product info;
+//  get a reference to the Binding,
+var productBind = Td.Data.Binding.get("PRODS");
+//   then get its value, the array
+var arr = productBind.getValue();
+// Next we loop through the array until we find our product name
+var len = arr.length;
+var i = 0;
+while (i &lt; len) {
+	if (arr[i].Name == prodname) {
+		// Once we find the right array item
+		//  get a reference to PROD, which is expected to be the
+		//    current cProduct item, and populate it.
+		var prodBind = Td.Data.Binding.get("PROD");
+		prodBind.setValue(arr[i].Name, "Name");
+		prodBind.setValue(arr[i].ID, "ID");
+		prodBind.setValue(arr[i].Price, "Price");
+		// and now we're done
+		break;
+	}
+	i = i + 1;
+}</javascript>
+        </function>
+        <function name="AddCurrentOrderItem">
+          <description>Gathers all current customer and product information and adds an item to our current order array </description>
+          <parameters />
+          <variables />
+          <javascript>// Instantiate new Binding of type cOrderItem ...
+// (Note: could not use a single pre-existing Binding or all items -  
+//  previous and current - would reflect current Binding values)
+new Td.Data.Binding("TEMPORD","cOrderItem", "");
+var tempOrd = Td.Data.Binding.get("TEMPORD");
+//      ... and populate it:
+// cOrderItems.OrderItemID from Binding NEXT_ORDITEM (after incrementing it)
+var ordItemBind = Td.Data.Binding.get("NEXT_ORDITEM");
+var ordItemID = ordItemBind.getValue().Value;
+ordItemID = (ordItemID + 1);
+ordItemBind.setValue(ordItemID); // update NEXT_ORDITEM
+tempOrd.OrderItemID = ordItemID;
+// cOrderItems.CustID from Binding CUST (type cCustomer, member ID)
+var custBind = Td.Data.Binding.get("CUST");
+var custID = custBind.getValue("ID").Value;
+tempOrd.CustID = custID;
+// cOrderItems.OrderID from Binding NEXT_ORD
+var ordIDBind = Td.Data.Binding.get("NEXT_ORD");
+var ordID = ordIDBind.getValue().Value;
+tempOrd.OrderID = ordID;
+// Binding PROD (type cProduct) has members ID,Name,Price
+var prodBind = Td.Data.Binding.get("PROD")
+// cOrderItems.ProdID
+tempOrd.ProdID = prodBind.getValue("ID").Value;
+// cOrderItems.ProductName
+tempOrd.ProductName = prodBind.getValue("Name");
+// cOrderItems.Price
+tempOrd.Price = prodBind.getValue("Price");
+// cOrderItems.Quantity from Binding QTY, value of datafield dfQuantity
+var qtyBind = Td.Data.Binding.get("QTY");
+tempOrd.Quantity = qtyBind.getValue().Value;
+// calculate item total (using regular expression to clean-out non-numeric chars)
+var itemTotal = ( Number(tempOrd.Price.replace(/[^0-9\.]+/g,"")) * parseInt(tempOrd.Quantity) );
+
+// Now we have an instance of cOrderItem with the new order item; we want
+//  to add it to any other items being ordered by the current customer.
+
+// get our array: cOrderItems[*]
+// Note: it was necessary to instantiate the CUR_ORD_ITEMS Binding
+//       (with Operation InstantiateCurrentOrderItems)
+var orderBind = Td.Data.Binding.get("CUR_ORD_ITEMS");
+var arr = orderBind.getValue();
+// add new instance to array
+var newLen = arr.push(tempOrd);
+// then assign updated array to our Binding
+orderBind.setValue(arr);
+
+// Note: controls bound to CUR_ORD_ITEMS were not reflecting change
+// - got around this by calling STORE and RESTORE  ?- it works
+Td.Data.Binding.get('CUR_ORD_ITEMS').store('page1_CUR_ORD_ITEMS');
+Td.Data.Binding.get('CUR_ORD_ITEMS').restore('page1_CUR_ORD_ITEMS');
+
+// update Order Total field
+var totalBind = Td.Data.Binding.get("ORDER_TOTAL");
+var totalBindVal = Number(totalBind.getValue().replace(/[^0-9\.]+/g,""));
+totalBindVal = (totalBindVal + itemTotal);
+Number.prototype.toCurrencyString = function() 
+ { return "$" + Math.floor(this).toLocaleString() + (this % 1).toFixed(2).toLocaleString().replace(/^0/,''); }
+totalBind.setValue(totalBindVal.toCurrencyString());
+</javascript>
+        </function>
+        <function name="ClearCurrentOrderItems">
+          <description>After storing or cancelling the current customer's completed order, clear the array</description>
+          <parameters />
+          <variables />
+          <javascript>var orderBind = Td.Data.Binding.get("CUR_ORD_ITEMS");
+var arr = orderBind.getValue();
+// clear array
+arr.length = 0;
+// then assign array back to our Binding
+orderBind.setValue(arr);
+Td.Data.Binding.get('CUR_ORD_ITEMS').store('page1_CUR_ORD_ITEMS');
+Td.Data.Binding.get('CUR_ORD_ITEMS').restore('page1_CUR_ORD_ITEMS');
+</javascript>
+        </function>
+        <function name="AddToStoredOrders">
+          <description>Completing a customer's order, we add all of the current order items
+ to our stored list of order items</description>
+          <parameters />
+          <variables />
+          <javascript>// get our arrays from the cOrderItems[*] Bindings
+// Note: it was necessary to instantiate these Bindings at startup
+//      (with Operation InstantiateCurrentOrderItems, for example)
+var currentBind = Td.Data.Binding.get("CUR_ORD_ITEMS");
+var currentArray = currentBind.getValue();
+var storedBind = Td.Data.Binding.get("STOR_ORD_ITEMS");
+var storedArray = storedBind.getValue();
+
+// concatenate stored orders and current order into newArray
+var newArray = storedArray.concat(currentArray);
+//   then assign array to our Binding
+storedBind.setValue(newArray);
+//     and store
+storedBind.store('page1_STOR_ORD_ITEMS');
+
+// increment order# Binding NEXT_ORD for next order
+var ordNumBind = Td.Data.Binding.get("NEXT_ORD");
+var ordNum = ordNumBind.getValue().Value;
+ordNum = (ordNum + 1);
+ordNumBind.setValue(ordNum);</javascript>
+        </function>
+        <function name="SaveStoredOrdersToServer">
+          <description>When online, called to save all stored order items to the server</description>
+          <parameters />
+          <variables />
+          <javascript>// It is necessary to do this with javascript because we 
+//  do not currently support UDV arrays as parameters to 
+//   server-side Operations.  Our stored orders are in a UDV array.
+// Here we will loop through all our order items and invoke an 
+//  Operation to save one order item at a time.
+
+// this is the Operation we will invoke
+var op = Td.Data.Operation.get("SaveOrderToServer");
+// this is the binding holding all our stored order items (type cOrderItems[*])
+var storedBind = Td.Data.Binding.get("STOR_ORD_ITEMS");
+// getValue() gets the actual array
+var arr = storedBind.getValue();
+// for verification we will put all our orderItemIDs into an array,
+//  then remove them as they are saved
+var len = arr.length;
+var i = 0;
+var verificationArray = new Array();
+while (i &lt; len) {
+	verificationArray.push(arr[i].OrderItemID);
+	i = (i + 1);
+};
+// start saving order items
+var ok = true;
+i = 0;
+while ((i &lt; len) &amp;&amp; ok) {
+	// SAVE_ITEM is the binding that acts as the parameter we will
+	//  pass to the Operation we will invoke; let's get it ready:
+	var instanceBind = Td.Data.Binding.get("SAVE_ITEM");
+	instanceBind.setValue(arr[i].OrderItemID, "OrderItemID");
+	instanceBind.setValue(arr[i].OrderID, "OrderID");
+	instanceBind.setValue(arr[i].CustID, "CustID");
+	instanceBind.setValue(arr[i].ProdID, "ProdID");
+	instanceBind.setValue(arr[i].Price, "Price");
+	instanceBind.setValue(arr[i].Quantity, "Quantity");
+	// invoke the operation; when it completes the callback
+	//  function will run and we can verify that the call succeeded
+	op.invoke({ complete: function(){
+		var returnBind = Td.Data.Binding.get("SAVED");
+		var returnString = returnBind.getValue();
+		if (returnString == "Save failed") { 
+			ok = false;
+		} else	// success!
+		{
+			// remove saved item id from our verificaton array
+			var x = verificationArray.indexOf(Number(returnString));
+			verificationArray.splice(x,1);
+			if (verificationArray.length == 0) {
+				// all items saved; clear our main stored_order_items
+				arr.length = 0;
+				storedBind.setValue(arr);
+				// store/restore to refresh
+				storedBind.store('page1_STOR_ORD_ITEMS');
+				storedBind.restore('page1_STOR_ORD_ITEMS');
+				alert("All order items successfully saved to server!");	
+				// simulate click to collapse our expander container (the button is the only anchor within) 
+				$('#expStoredOrders a').click();
+			}
+			returnString = "Saved OrderItemID: " + returnString;
+		}
+		console.log(returnString);
+	}});
+	i = (i + 1);
+}</javascript>
+        </function>
+        <function name="ClearCustomerFilter">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>//clear the search filter text
+$('input[data-type="search"]').val("");
+// refresh the list by triggering a change 
+$('input[data-type="search"]').trigger("keyup");
+</javascript>
+        </function>
+        <function name="AddExpanderEvents">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>// when expanded, hide all other areas (but save states)
+$('#expStoredOrders').bind('expand', function () {
+	var hcBind = Td.Data.Binding.get("HAVE_CUST");
+	var hcsBind = Td.Data.Binding.get("HAVE_CUST_SAVED");
+	hcsBind.setValue(hcBind.getValue());
+	hcBind.setValue(true);
+
+	var osBind = Td.Data.Binding.get("ORDER_STARTED");
+	var ossBind = Td.Data.Binding.get("ORDER_STARTED_SAVED");
+	ossBind.setValue(osBind.getValue());
+	osBind.setValue(false);
+
+	var hciBind = Td.Data.Binding.get("HAVE_CUR_ITEMS");
+	var hcisBind = Td.Data.Binding.get("HAVE_CUR_ITEMS_SAVED");
+	hcisBind.setValue(hciBind.getValue());
+	hciBind.setValue(false);
+});
+// when collapsed, restore states
+$('#expStoredOrders').bind('collapse', function () {
+	var hcBind = Td.Data.Binding.get("HAVE_CUST");
+	var hcsBind = Td.Data.Binding.get("HAVE_CUST_SAVED");
+	hcBind.setValue(hcsBind.getValue());
+
+	var osBind = Td.Data.Binding.get("ORDER_STARTED");
+	var ossBind = Td.Data.Binding.get("ORDER_STARTED_SAVED");
+	osBind.setValue(ossBind.getValue());
+
+	var hciBind = Td.Data.Binding.get("HAVE_CUR_ITEMS");
+	var hcisBind = Td.Data.Binding.get("HAVE_CUR_ITEMS_SAVED");
+	hciBind.setValue(hcisBind.getValue());
+});</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="If" data="[online]" extradata="">
+              <action action="Restore" data="STOR_ORD_ITEMS" extradata="" />
+              <action action="Set" data="QTY" extradata="1" />
+              <action action="Set" data="ORDER_TOTAL" extradata="&quot;0&quot;" />
+              <action action="Invoke" data="InstantiateCurrentOrderItems" extradata="" />
+              <action action="Invoke" data="InstantiateStoredOrderItems" extradata="" />
+              <action action="Invoke" data="GetCustomers" extradata="">
+                <action action="Invoke" data="GetProducts" extradata="">
+                  <action action="If" data="PRODS" extradata="">
+                    <action action="Invoke" data="GetProductNames" extradata="">
+                      <action action="Invoke" data="GetFirstProduct" extradata="">
+                        <action action="If" data="PRODNAME" extradata="">
+                          <action action="Javascript" data="LookupProduct" extradata="" />
+                        </action>
+                      </action>
+                    </action>
+                    <action action="Invoke" data="GetNextOrderNumber" extradata="" />
+                    <action action="Invoke" data="GetNextOrderItemNumber" extradata="" />
+                  </action>
+                </action>
+              </action>
+              <action action="Javascript" data="AddExpanderEvents" extradata="" />
+            </action>
+            <action action="Else" data="" extradata="">
+              <action action="Set" data="OFFLINE_MSG" extradata="&quot;You must be online when you start the app!&quot;" />
+            </action>
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetCustomers">
+          <parameters />
+          <return type="cCustomer" array="true">
+            <binding name="CUSTS" />
+          </return>
+          <variables>
+            <variable name="custs" type="cCustomer" array="true" dims="*" />
+            <variable name="i" type="Number" />
+          </variables>
+          <actions>
+            <comment>! --- Simulate getting customer list from database</comment>
+            <code line="Set i = 0" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Alesia Restaurant&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Asian Wok&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Carabba's Grill&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Crab Shack Restaurant&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Delaney's Pub&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Donato's Italian Restaurant&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Downtown Diner&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;El Tenampa Mexican Restaurant&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Jake's 4th Street Grill&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Joe's Eats&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Johnny's Pizza&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Mary's Fresh Cafe&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Three Birds Tavern&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Tokyo Bay Japanese Restaurant&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Set custs[i].ID = ( 100 + i )" />
+            <code line="Set custs[i].Name = &quot;Trip's Diner&quot;" />
+            <code line="Set i = ( i + 1 )" />
+            <code line="Return custs" />
+          </actions>
+        </operation>
+        <operation name="GetProducts">
+          <parameters />
+          <return type="cProduct" array="true">
+            <binding name="PRODS" />
+          </return>
+          <variables>
+            <variable name="prods" type="cProduct" array="true" dims="*" />
+          </variables>
+          <actions>
+            <comment>! --- Simulate lookup from database</comment>
+            <code line="Set prods[0].ID = 502" />
+            <code line="Set prods[0].Name = &quot;Convection Oven&quot;" />
+            <code line="Set prods[0].Price = &quot;$2,000&quot;" />
+            <code line="Set prods[1].ID = 714" />
+            <code line="Set prods[1].Name = &quot;Conveyor Dishwasher&quot;" />
+            <code line="Set prods[1].Price = &quot;$10,500&quot;" />
+            <code line="Set prods[2].ID = 233" />
+            <code line="Set prods[2].Name = &quot;Countertop Griddle&quot;" />
+            <code line="Set prods[2].Price = &quot;$1,200&quot;" />
+            <code line="Set prods[3].ID = 510" />
+            <code line="Set prods[3].Name = &quot;Deck Oven&quot;" />
+            <code line="Set prods[3].Price = &quot;$5,000&quot;" />
+            <code line="Set prods[4].ID = 302" />
+            <code line="Set prods[4].Name = &quot;Food Warmer&quot;" />
+            <code line="Set prods[4].Price = &quot;$400&quot;" />
+            <code line="Set prods[5].ID = 414" />
+            <code line="Set prods[5].Name = &quot;Ice maker&quot;" />
+            <code line="Set prods[5].Price = &quot;$1,000&quot;" />
+            <code line="Set prods[6].ID = 520" />
+            <code line="Set prods[6].Name = &quot;Range&quot;" />
+            <code line="Set prods[6].Price = &quot;$3,000&quot;" />
+            <code line="Set prods[7].ID = 418" />
+            <code line="Set prods[7].Name = &quot;Refrigerator&quot;" />
+            <code line="Set prods[7].Price = &quot;$1,500&quot;" />
+            <comment>! - populate global for combobox population (in Operation GetProductNames)</comment>
+            <code line="Set gProdNames[0] = prods[0].Name" />
+            <code line="Set gProdNames[1] = prods[1].Name" />
+            <code line="Set gProdNames[2] = prods[2].Name" />
+            <code line="Set gProdNames[3] = prods[3].Name" />
+            <code line="Set gProdNames[4] = prods[4].Name" />
+            <code line="Set gProdNames[5] = prods[5].Name" />
+            <code line="Set gProdNames[6] = prods[6].Name" />
+            <code line="Set gProdNames[7] = prods[7].Name" />
+            <code line="Return prods" />
+          </actions>
+        </operation>
+        <operation name="GetProductNames">
+          <parameters />
+          <return type="String" array="true">
+            <binding name="PRODNAMES" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return gProdNames" />
+          </actions>
+        </operation>
+        <operation name="GetFirstProduct">
+          <parameters />
+          <return type="String">
+            <binding name="PRODNAME" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return gProdNames[0]" />
+          </actions>
+        </operation>
+        <operation name="GetNextOrderNumber">
+          <parameters />
+          <return type="Number">
+            <binding name="NEXT_ORD" />
+          </return>
+          <variables />
+          <actions>
+            <comment>! --- simulate lookup in database</comment>
+            <code line="Return 1088" />
+          </actions>
+        </operation>
+        <operation name="GetNextOrderItemNumber">
+          <parameters />
+          <return type="Number">
+            <binding name="NEXT_ORDITEM" />
+          </return>
+          <variables />
+          <actions>
+            <comment>! --- simulate lookup in database</comment>
+            <code line="Return 7211" />
+          </actions>
+        </operation>
+        <operation name="InstantiateCurrentOrderItems">
+          <parameters />
+          <return type="cOrderItem" array="true">
+            <binding name="CUR_ORD_ITEMS" />
+          </return>
+          <variables>
+            <variable name="items" type="cOrderItem" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Return items" />
+          </actions>
+        </operation>
+        <operation name="InstantiateStoredOrderItems">
+          <parameters />
+          <return type="cOrderItem" array="true">
+            <binding name="STOR_ORD_ITEMS" />
+          </return>
+          <variables>
+            <variable name="items" type="cOrderItem" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Return items" />
+          </actions>
+        </operation>
+        <operation name="SaveOrderToServer">
+          <parameters>
+            <variable name="pOrderItem" type="cOrderItem">
+              <binding name="SAVE_ITEM" />
+            </variable>
+          </parameters>
+          <return type="String">
+            <binding name="SAVED" />
+          </return>
+          <variables>
+            <variable name="forReal" type="Boolean" />
+            <variable name="sReturn" type="String" />
+            <variable name="sSql" type="String" />
+            <variable name="hSql" type="Sql Handle" />
+          </variables>
+          <actions>
+            <comment>! --- Save item to database and return the saved OrderItemID if successful</comment>
+            <code line="Set sReturn = &quot;Save failed&quot;" />
+            <code line="If forReal">
+              <code line="Set sSql = &quot;Insert INTO Orders (OrderItemID, OrderID, CustID, ProdID, Price, Quantity ) &#xD;&#xA;		VALUES(:,pOrderItem.OrderItemID :pOrderItem.OrderID, :pOrderItem.CustID, &#xD;&#xA;			:pOrderItem.ProdID, :pOrderItem.Price, :pOrderItem.Quantity)&quot;" />
+              <code line="If SqlConnectDotNet( hSql, &quot;DataSource=Localhost;InitialCatalog=myOrdersDatabase;Server=Server1;&#xD;&#xA;	User Id=myUsername;Password=myPassword;&quot;, &quot;Gupta.SQLBase.Data&quot;, DBP_PROVIDER_SQLBASE)">
+                <code line="If SqlPrepareAndExecute( hSql, sSql )">
+                  <code line="If SqlCommit( hSql )">
+                    <code line="Set sReturn = pOrderItem.OrderItemID" />
+                  </code>
+                </code>
+                <code line="Call SqlDisconnect( hSql )" />
+                <comment>! Note:  this is a simplistic example; in a real-world case you might do the connection in one Operation;
+             do the Inserts in a second; and then Commit or Rollback and disconnect in a third.</comment>
+              </code>
+            </code>
+            <code line="Else ">
+              <comment>! --- Just pretend we saved it</comment>
+              <code line="Set sReturn = pOrderItem.OrderItemID" />
+            </code>
+            <code line="Return sReturn" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

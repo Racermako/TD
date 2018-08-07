@@ -1,0 +1,321 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="1/14/2014 11:50 AM: Frank - " />
+    <change description="10/31/2013 7:19 PM: support" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Shows different ways to visually display Checkboxes; notice how the Boolean Bindings display in the text fields versus the checkboxes</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt7,lg2,bgt8,lg1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Checkbox Demo" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cb1" type="CheckBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="grp1" />
+              <property type="Title">
+                <value culture="en-US" title="cb1" />
+              </property>
+              <property type="Binding" value="b1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cb2" type="CheckBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="grp1" />
+              <property type="Title">
+                <value culture="en-US" title="cb2" />
+              </property>
+              <property type="Binding" value="b2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="grp1" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="cb1,cb2,cb3" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="grp2" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="cb4,cb5,cb6" />
+              <property type="Orientation" value="Horizontal" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cb4" type="CheckBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="cb4" />
+              </property>
+              <property type="Binding" value="b4" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cb5" type="CheckBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="cb5" />
+              </property>
+              <property type="Binding" value="b5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cb3" type="CheckBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="cb3" />
+              </property>
+              <property type="Binding" value="b3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cb6" type="CheckBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="cb6" />
+              </property>
+              <property type="Binding" value="b6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="b1" />
+              <property type="TopMargin" value="20" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg2" />
+              <property type="Title">
+                <value culture="en-US" title="false" />
+              </property>
+              <property type="LeftMargin" value="20" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="20" />
+              <property type="Binding" value="b2" />
+              <property type="ParentControl" value="lg2" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="false" />
+              </property>
+              <property type="LeftMargin" value="20" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg2" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Children" value="grp1,bgt1,bgt2,bgt3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="20" />
+              <property type="Binding" value="b3" />
+              <property type="ParentControl" value="lg2" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="false" />
+              </property>
+              <property type="LeftMargin" value="20" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="grp2,bgt4,bgt5,bgt6" />
+              <property type="ColumnWidth" value="65,35" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="b4" />
+              <property type="LeftMargin" value="20" />
+              <property type="Title">
+                <value culture="en-US" title="false" />
+              </property>
+              <property type="Column" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="b5" />
+              <property type="LeftMargin" value="20" />
+              <property type="Title">
+                <value culture="en-US" title="false" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="b6" />
+              <property type="LeftMargin" value="20" />
+              <property type="Title">
+                <value culture="en-US" title="false" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt7" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Vertically grouped:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt8" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Horizontally grouped:" />
+              </property>
+              <property type="TopMargin" value="18" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="b1" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="b2" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="b3" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="b4" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="b5" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="b6" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>
