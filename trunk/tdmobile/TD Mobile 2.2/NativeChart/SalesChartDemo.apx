@@ -1,0 +1,698 @@
+<application xmlns="urn:Gupta.TD.CDK" version="2.0">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="Home" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <miscincludes />
+  <weblinks />
+  <reportfiles />
+  <symbolimports />
+  <variables />
+  <functions />
+  <operations />
+  <exceptions />
+  <classes>
+    <class name="SalesData">
+      <inherits />
+      <instance_variables>
+        <variable name="WidgetSalesPerMonth" type="Number" array="true" dims="*" />
+        <variable name="GizmoSalesPerMonth" type="Number" array="true" dims="*" />
+        <variable name="ContraptionSalesPerMonth" type="Number" array="true" dims="*" />
+        <variable name="MonthLabels" type="String" array="true" dims="*" />
+        <variable name="QuartTotals" type="Number" array="true" dims="*" />
+        <variable name="PieLabels" type="String" array="true" dims="*" />
+        <variable name="MeterTicks" type="Number" array="true" dims="*" />
+      </instance_variables>
+      <functions>
+        <function name="InitMontlyData">
+          <description />
+          <return type="Number" />
+          <parameters />
+          <variables />
+          <staticvariables />
+          <actions>
+            <code line="Set MonthLabels[0] = &quot;July&quot;" />
+            <code line="Set MonthLabels[1] = &quot;August&quot;" />
+            <code line="Set MonthLabels[2] = &quot;September&quot;" />
+            <code line="Set MonthLabels[3] = &quot;October&quot;" />
+            <code line="Set WidgetSalesPerMonth[0] = 6" />
+            <code line="Set WidgetSalesPerMonth[1] = 12" />
+            <code line="Set WidgetSalesPerMonth[2] = 13" />
+            <code line="Set WidgetSalesPerMonth[3] = 16" />
+            <code line="Set GizmoSalesPerMonth[0] = 18" />
+            <code line="Set GizmoSalesPerMonth[1] = 15" />
+            <code line="Set GizmoSalesPerMonth[2] = 8" />
+            <code line="Set GizmoSalesPerMonth[3] =7" />
+            <code line="Set ContraptionSalesPerMonth[0] = 10" />
+            <code line="Set ContraptionSalesPerMonth[1] = 11" />
+            <code line="Set ContraptionSalesPerMonth[2] = 10" />
+            <code line="Set ContraptionSalesPerMonth[3] = 9" />
+          </actions>
+        </function>
+        <function name="InitQuarterData">
+          <description />
+          <return type="Number" />
+          <parameters />
+          <variables />
+          <staticvariables />
+          <actions>
+            <code line="Set QuartTotals[0] = 47" />
+            <code line="Set PieLabels[0] = &quot;Widgets&quot;" />
+            <code line="Set QuartTotals[1] = 48" />
+            <code line="Set PieLabels[1] = &quot;Gizmos&quot;" />
+            <code line="Set QuartTotals[2] = 40" />
+            <code line="Set PieLabels[2] = &quot;Contraptions&quot;" />
+          </actions>
+        </function>
+        <function name="InitCurrentMonthData">
+          <description />
+          <return type="Number" />
+          <parameters />
+          <variables />
+          <staticvariables />
+          <actions>
+            <code line="Set WidgetSalesPerMonth[0] = 22" />
+            <code line="Set GizmoSalesPerMonth[0] = 6" />
+            <code line="Set ContraptionSalesPerMonth[0] = 10" />
+            <code line="Set MeterTicks[0] = 0" />
+            <code line="Set MeterTicks[1] = 5" />
+            <code line="Set MeterTicks[2] = 10" />
+            <code line="Set MeterTicks[3] = 15" />
+            <code line="Set MeterTicks[4] = 20" />
+            <code line="Set MeterTicks[5] = 25" />
+          </actions>
+        </function>
+      </functions>
+      <constructors />
+    </class>
+  </classes>
+  <dataconnections />
+  <webpages>
+    <page name="MonthlySalesData">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pb2,chart1,chart2" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Q1 Sales Data" />
+              </property>
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="chart1" type="Graph">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Q1 2013 Sales - Line" />
+              </property>
+              <property type="XAxisLabel" value="Month" />
+              <property type="YAxisLabel" value="# Units (x1000)" />
+              <property type="Binding" value="SDATA" />
+              <property type="XAxisTicks" value="MonthLabels" />
+              <property type="ChartProps" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ArrayOfChartSeriesModel xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;YAxisField&gt;WidgetSalesPerMonth&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Widgets&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;YAxisField&gt;GizmoSalesPerMonth&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Gizmos&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;YAxisField&gt;ContraptionSalesPerMonth&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Contraptions&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;&lt;/ArrayOfChartSeriesModel&gt;" />
+              <property type="ParentControl" value="MonthlySalesData" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="LeftArrow" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="chart2" type="Graph">
+          <properties>
+            <propertylist display="phone">
+              <property type="ChartType" value="Bar" />
+              <property type="Title">
+                <value culture="en-US" title="Q1 2013 Sales - Bar" />
+              </property>
+              <property type="Binding" value="SDATA" />
+              <property type="YAxisLabel" value="# Units (x1000)" />
+              <property type="XAxisLabel" value="Month" />
+              <property type="ChartProps" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ArrayOfChartSeriesModel xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;YAxisField&gt;WidgetSalesPerMonth&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Widget&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;YAxisField&gt;GizmoSalesPerMonth&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Gizmo&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;YAxisField&gt;ContraptionSalesPerMonth&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Contraption&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;&lt;/ArrayOfChartSeriesModel&gt;" />
+              <property type="XAxisTicks" value="MonthLabels" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb2" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Update Caption" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="UpdateCaptions" extradata="&quot;chart1&quot;, &quot;Dynamic Title&quot;, &quot;Dynamic X Axis Title&quot;, &quot;Dynamic Y Axis&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="SDATA" type="SalesData">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="MeterTicks" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="WidgetSalesPerMonth" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="GizmoSalesPerMonth" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="ContraptionSalesPerMonth" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="MonthLabels" array="true" type="String">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="QuartTotals" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="PieLabels" array="true" type="String">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+          </subbindings>
+          <events />
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="UpdateCaptions">
+          <description />
+          <parameters>
+            <variable name="chartID" type="Var" />
+            <variable name="chartCaption" type="Var" />
+            <variable name="xAxisCaption" type="Var" />
+            <variable name="yAxisCaption" type="Var" />
+          </parameters>
+          <variables />
+          <javascript>if (chartCaption) {
+	$("#" + chartID + " .jqplot-title").html(chartCaption);
+}
+if (xAxisCaption) {
+	$("#" + chartID + " .jqplot-xaxis-label").html(xAxisCaption);
+}
+if (yAxisCaption) {
+	$("#" + chartID + " .jqplot-yaxis-label").html(yAxisCaption);
+}</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetSalesData" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetSalesData">
+          <description />
+          <parameters />
+          <return type="SalesData">
+            <binding name="SDATA" />
+          </return>
+          <variables>
+            <variable name="sData" type="SalesData" />
+          </variables>
+          <actions>
+            <code line="Call sData.InitMontlyData()" />
+            <code line="Return sData" />
+          </actions>
+        </operation>
+      </operations>
+      <reports />
+    </page>
+    <page name="TotalSales">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="chart1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Q1 Total Sales" />
+              </property>
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="chart1" type="Graph">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Sales by Type" />
+              </property>
+              <property type="ChartType" value="Pie" />
+              <property type="ParentControl" value="TotalSales" />
+              <property type="Binding" value="SDATA" />
+              <property type="ChartProps" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ArrayOfChartSeriesModel xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;XAxisField&gt;PieLabels&lt;/XAxisField&gt;&#xD;&#xA;    &lt;YAxisField&gt;QuartTotals&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Total Sales&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;&lt;/ArrayOfChartSeriesModel&gt;" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="ImageAlignment" value="NoText" />
+              <property type="FileName" value="LeftArrow" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="SDATA" type="SalesData">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="WidgetSalesPerMonth" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="GizmoSalesPerMonth" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="ContraptionSalesPerMonth" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="MonthLabels" array="true" type="String">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="QuartTotals" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="PieLabels" array="true" type="String">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="MeterTicks" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+          </subbindings>
+          <events />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetSalesData" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetSalesData">
+          <description />
+          <parameters />
+          <return type="SalesData">
+            <binding name="SDATA" />
+          </return>
+          <variables>
+            <variable name="sData" type="SalesData" />
+          </variables>
+          <actions>
+            <code line="Call sData.InitQuarterData()" />
+            <code line="Return sData" />
+          </actions>
+        </operation>
+      </operations>
+      <reports />
+    </page>
+    <page name="Home">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="grp1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="grp1" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pb1,pb2,pb3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Sales by Month" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="MonthlySalesData" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pb2" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Total Quarter" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="TotalSales" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pb3" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Current Month" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="CurrentMonth" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings />
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+      <reports />
+    </page>
+    <page name="CurrentMonth">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Columns" value="3" />
+              <property type="Children" value="chart1,chart2,chart3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="chart1" type="Graph">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="ChartType" value="Meter" />
+              <property type="Binding" value="SDATA" />
+              <property type="ChartProps" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ArrayOfChartSeriesModel xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;YAxisField&gt;WidgetSalesPerMonth&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Widget Data&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;&lt;/ArrayOfChartSeriesModel&gt;" />
+              <property type="Title">
+                <value culture="en-US" title="Widget Sales" />
+              </property>
+              <property type="XAxisTicks" value="MeterTicks" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="chart2" type="Graph">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="SDATA" />
+              <property type="ChartProps" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ArrayOfChartSeriesModel xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;YAxisField&gt;GizmoSalesPerMonth&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Gizmo Data&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;&lt;/ArrayOfChartSeriesModel&gt;" />
+              <property type="ChartType" value="Meter" />
+              <property type="Title">
+                <value culture="en-US" title="Gizmo Sales" />
+              </property>
+              <property type="XAxisTicks" value="MeterTicks" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="chart3" type="Graph">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="ChartType" value="Meter" />
+              <property type="Binding" value="SDATA" />
+              <property type="ChartProps" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ArrayOfChartSeriesModel xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xD;&#xA;  &lt;ChartSeriesModel&gt;&#xD;&#xA;    &lt;YAxisField&gt;ContraptionSalesPerMonth&lt;/YAxisField&gt;&#xD;&#xA;    &lt;Label&gt;Contraption Data&lt;/Label&gt;&#xD;&#xA;  &lt;/ChartSeriesModel&gt;&#xD;&#xA;&lt;/ArrayOfChartSeriesModel&gt;" />
+              <property type="Title">
+                <value culture="en-US" title="Contraption Sales" />
+              </property>
+              <property type="XAxisTicks" value="MeterTicks" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="LeftArrow" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="SDATA" type="SalesData">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="MeterTicks" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="WidgetSalesPerMonth" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="GizmoSalesPerMonth" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="ContraptionSalesPerMonth" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="MonthLabels" array="true" type="String">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="QuartTotals" array="true" type="Number">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+            <binding name="PieLabels" array="true" type="String">
+              <state mode="HasItems" />
+              <initialvalue mode="Null" />
+              <events />
+            </binding>
+          </subbindings>
+          <events />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetSalesData" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetSalesData">
+          <description />
+          <parameters />
+          <return type="SalesData">
+            <binding name="SDATA" />
+          </return>
+          <variables>
+            <variable name="sData" type="SalesData" />
+          </variables>
+          <actions>
+            <code line="Call sData.InitCurrentMonthData()" />
+            <code line="Return sData" />
+          </actions>
+        </operation>
+      </operations>
+      <reports />
+    </page>
+  </webpages>
+  <dialogs />
+  <webconfig />
+</application>

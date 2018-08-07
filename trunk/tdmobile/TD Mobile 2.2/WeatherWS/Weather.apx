@@ -1,0 +1,765 @@
+<application xmlns="urn:Gupta.TD.CDK" version="1.1">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="pageLocation" />
+    <setting PublishIISPath="Weather" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports>
+    <axlfile name="globalweather.axl" path="." />
+    <axlfile name="System.Xml.axl" path="." />
+  </symbolimports>
+  <variables />
+  <functions />
+  <exceptions />
+  <classes>
+    <class name="clsWeather">
+      <inherits />
+      <instance_variables>
+        <variable name="Location" type="String" />
+        <variable name="Time" type="String" />
+        <variable name="Wind" type="String" />
+        <variable name="Visibility" type="String" />
+        <variable name="Sky" type="String" />
+        <variable name="Temperature" type="String" />
+        <variable name="DewPoint" type="String" />
+        <variable name="RelativeHumidity" type="String" />
+        <variable name="Pressure" type="String" />
+        <variable name="Status" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+    <class name="clsLocation">
+      <inherits />
+      <instance_variables>
+        <variable name="City" type="String" />
+        <variable name="Country" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+    <class name="clsCity">
+      <inherits />
+      <instance_variables>
+        <variable name="City" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <dataconnections />
+  <webpages>
+    <page name="ClsweatherDetail">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="gridMain" />
+          <property type="BackgroundColor" value="#FFFFFFFF" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Weather" />
+              </property>
+              <property type="Children" value="pb1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="gridMain" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ClsweatherDetail" />
+              <property type="Rows" value="10" />
+              <property type="Children" value="bkgd1,Location,bkgd2,Time,bkgd3,Wind,bkgd4,Visibility,bkgd5,Sky,bkgd6,Temperature,bkgd7,DewPoint,bkgd8,RelativeHumidity,bkgd9,Pressure,bkgd10,Status" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Location" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Location" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.Location" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Time" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Time" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.Time" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Wind" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Wind" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.Wind" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Visibility" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Visibility" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.Visibility" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Sky" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="4" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Sky" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="4" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.Sky" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Temperature" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Temperature" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="5" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.Temperature" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd7" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="DewPoint" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="DewPoint" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="6" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.DewPoint" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd8" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="RelativeHumidity" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="7" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="RelativeHumidity" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="7" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.RelativeHumidity" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd9" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Pressure" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Pressure" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="8" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.Pressure" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd10" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Status" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="9" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Status" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="9" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CLSWEATHER.Status" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Back" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="pageLocation" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="CLSWEATHER" type="clsWeather">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Location" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Time" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Wind" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Visibility" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Sky" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Temperature" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="DewPoint" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="RelativeHumidity" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Pressure" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Status" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="PLOCATION" type="clsLocation">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Country" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="oGetWeather" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="oGetWeather">
+          <parameters>
+            <variable name="lLocation" type="clsLocation">
+              <binding name="PLOCATION" />
+            </variable>
+          </parameters>
+          <return type="clsWeather">
+            <binding name="CLSWEATHER" />
+          </return>
+          <variables>
+            <variable name="lWeather" type="globalweather_GlobalWeather" />
+            <variable name="XMLWeather" type="System_Xml_XmlDocument" />
+            <variable name="XMLWeatherNodeList" type="System_Xml_XmlNodeList" />
+            <variable name="XMLWeatherNode" type="System_Xml_XmlNode" />
+            <variable name="XMLWeatherElement" type="System_Xml_XmlElement" />
+            <variable name="localWeather" type="clsWeather" />
+            <variable name="sWSReturn" type="String" />
+          </variables>
+          <actions>
+            <code line="When Exception ">
+              <code line="Set localWeather.Status = &quot;Exception&quot;" />
+              <code line="Return localWeather" />
+            </code>
+            <code line="Set sWSReturn = lWeather.GetWeather(lLocation.City, lLocation.Country)" />
+            <code line="Call XMLWeather.XmlDocument_Overload1()" />
+            <code line="Call XMLWeather.LoadXml(sWSReturn)" />
+            <code line="Set XMLWeatherNodeList = XMLWeather.GetElementsByTagName_Overload1('CurrentWeather')" />
+            <code line="Set XMLWeatherNode = XMLWeatherNodeList.Item(0)" />
+            <code line="If SalStrScan( sWSReturn, 'Location' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('Location')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.Location)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.Location = &quot;Not available&quot;" />
+            </code>
+            <code line="If SalStrScan( sWSReturn, 'Time' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('Time')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.Time)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.Time = &quot;Not available&quot;" />
+            </code>
+            <code line="If  SalStrScan( sWSReturn, 'Wind' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('Wind')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.Wind)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.Wind = &quot;Not available&quot;" />
+            </code>
+            <code line="If SalStrScan( sWSReturn, 'Visibility' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('Visibility')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.Visibility)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.Visibility = &quot;Not available&quot;" />
+            </code>
+            <code line="If SalStrScan( sWSReturn, 'SkyConditions' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('SkyConditions')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.Sky)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.Sky = &quot;Not available&quot;" />
+            </code>
+            <code line="If SalStrScan( sWSReturn, 'Temperature' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('Temperature')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.Temperature)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.Temperature = &quot;Not available&quot;" />
+            </code>
+            <code line="If SalStrScan( sWSReturn, 'DewPoint' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('DewPoint')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.DewPoint)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.DewPoint = &quot;Not available&quot;" />
+            </code>
+            <code line="If SalStrScan( sWSReturn, 'RelativeHumidity' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('RelativeHumidity')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.RelativeHumidity)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.RelativeHumidity = &quot;Not available&quot;" />
+            </code>
+            <code line="If SalStrScan( sWSReturn, 'Pressure' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('Pressure')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.Pressure)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.Pressure = &quot;Not available&quot;" />
+            </code>
+            <code line="If SalStrScan( sWSReturn, 'Status' ) &gt; 0">
+              <code line="Set XMLWeatherElement = XMLWeatherNode.get_Item_Overload1('Status')" />
+              <code line="Call SalStrTrim(XMLWeatherElement.get_InnerText(), localWeather.Status)" />
+            </code>
+            <code line="Else ">
+              <code line="Set localWeather.Status = &quot;Not available&quot;" />
+            </code>
+            <code line="Return localWeather" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+    <page name="pageLocation">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="cmbCountry,pbCities,ltv1" />
+          <property type="BackgroundColor" value="#FFFFFFFF" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Weather WS" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCities" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Get Cities" />
+              </property>
+              <property type="ParentControl" value="pageLocation" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="oGetCities" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt1" />
+              <property type="ListBinding" value="CITIES" />
+              <property type="Binding" value="CITY" />
+              <property type="BindingDirection" value="Get" />
+              <property type="ParentControl" value="pageLocation" />
+              <property type="ShowFilter" value="Yes" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Set" data="LOCATION.City" extradata="CITY.City" />
+                <action action="Navigate" data="ClsweatherDetail" extradata="LOCATION" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="pageLocation" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="LOCATION.City" />
+              <property type="BindingDirection" value="Set" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cmbCountry" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Country" />
+              </property>
+              <property type="Binding" value="LOCATION.Country" />
+            </propertylist>
+          </properties>
+          <listinitialization>
+            <text value="United States" />
+            <text value="Canada" />
+            <text value="Mexico" />
+            <text value="Norway" />
+            <text value="Germany" />
+            <text value="France" />
+            <text value="Italy" />
+            <text value="Spain" />
+            <text value="Japan" />
+          </listinitialization>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="COUNTRY" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="CITIES" array="true" type="clsCity">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="CITY" type="clsCity">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="WEATHER" type="clsWeather">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Location" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Time" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Wind" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Visibility" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Sky" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Temperature" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="DewPoint" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="RelativeHumidity" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Pressure" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Status" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="LOCATION" type="clsLocation">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Country" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Set" data="LOCATION.Country" extradata="&quot;United States&quot;" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="oGetCities">
+          <parameters>
+            <variable name="sCountry" type="String">
+              <binding name="LOCATION.Country" />
+            </variable>
+          </parameters>
+          <return type="clsCity" array="true">
+            <binding name="CITIES" />
+          </return>
+          <variables>
+            <variable name="lWeather" type="globalweather_GlobalWeather" />
+            <variable name="sCitiesResponse" type="String" />
+            <variable name="XMLCities" type="System_Xml_XmlDocument" />
+            <variable name="XMLCitiesNodeList" type="System_Xml_XmlNodeList" />
+            <variable name="XMLCityNode" type="System_Xml_XmlNode" />
+            <variable name="XMLCityElement" type="System_Xml_XmlElement" />
+            <variable name="sCity" type="String" />
+            <variable name="sCities" type="String" />
+            <variable name="sCityArray" type="clsCity" array="true" dims="*" />
+            <variable name="nNodes" type="Number" />
+            <variable name="nLoop" type="Number" />
+          </variables>
+          <actions>
+            <code line="Set sCitiesResponse = lWeather.GetCitiesByCountry(sCountry)" />
+            <code line="Call XMLCities.XmlDocument_Overload1()" />
+            <code line="Call XMLCities.LoadXml(sCitiesResponse)" />
+            <code line="Set XMLCitiesNodeList = XMLCities.GetElementsByTagName_Overload1('Table')" />
+            <code line="Set nNodes = XMLCitiesNodeList.get_Count()" />
+            <code line="Set nLoop = 0" />
+            <code line="While nLoop &lt; nNodes">
+              <code line="Set XMLCityNode = XMLCitiesNodeList.Item(nLoop) " />
+              <code line="Set XMLCityElement = XMLCityNode.get_Item_Overload1('City')" />
+              <code line="Call SalStrTrim(XMLCityElement.get_InnerText() , sCityArray[nLoop].City)" />
+              <code line="Set nLoop = nLoop + 1" />
+            </code>
+            <code line="Return sCityArray" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

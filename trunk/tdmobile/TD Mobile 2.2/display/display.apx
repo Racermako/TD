@@ -1,0 +1,378 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="Products" />
+    <setting PublishIISUrl="localhost" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions>
+    <function name="GetProduct">
+      <description />
+      <return type="Product" />
+      <parameters>
+        <variable name="pID" type="Number" />
+      </parameters>
+      <variables>
+        <variable name="prod" type="Product" />
+      </variables>
+      <staticvariables />
+      <actions>
+        <code line="Set prod.ID = pID" />
+        <code line="If pID = 1">
+          <code line="Set prod.Name = &quot;Team Developer&quot;" />
+          <code line="Set prod.Description = &quot;Build great multi-tier business applications&quot;" />
+          <code line="Set prod.LongDescription = &quot;Team Developer supports your efforts to build and deploy great multi-tier business applications. Using a multi-tier architecture you create a structure that is ready for today's heterogeneous environments and that opens the door for the future that requires business application access from anywhere. Team Developer enables software as a service (SaaS) solutions giving you the power to succeed in today's business world. Developers love the Team Developer IDE because they are guided to maximum productivity in a joyful usage experience. Application users love the rich and powerful high usability applications that are being built using Team Developer.&quot;" />
+          <code line="Set prod.ImageUrl= &quot;images/td.png&quot;" />
+        </code>
+        <code line="Else If pID = 2">
+          <code line="Set prod.Name = &quot;SQLBase&quot;" />
+          <code line="Set prod.Description = &quot;Reduces the costs of business applications&quot;" />
+          <code line="Set prod.LongDescription = &quot;SQLBase 11.6 brings smart Unicode support to enable international application deployment, supporting virtually any character set and language. For users that do not require Unicode, there is no performance hit or negative effect when using SQLBase 11.6. Supporting Unicode is vital to many organizations, but not all organizations require Unicode as some users serve local markets. SQLBase 11.6 supports both user groups by providing a smart implementation with no effect on non-Unicode applications.&quot;" />
+          <code line="Set prod.ImageUrl= &quot;images/sqlbase.png&quot;" />
+        </code>
+        <code line="Else If pID = 3">
+          <code line="Set prod.Name = &quot;Report Builder&quot;" />
+          <code line="Set prod.Description = &quot;Create attractive reports and ad-hoc queries&quot;" />
+          <code line="Set prod.LongDescription = &quot;Report Builder provides individuals with a quick and easy way to create attractive reports and ad-hoc queries for databases.  Use Report Builder to create Business Intelligence for your enterprise or for your customers. Report Builder has all the power built-in to create stunning business reports your team, your management and your customers will love.&quot;" />
+          <code line="Set prod.ImageUrl = &quot;images/reportbuilder.png&quot;" />
+        </code>
+        <code line="Return prod" />
+      </actions>
+    </function>
+  </functions>
+  <classes>
+    <class name="Product">
+      <inherits />
+      <instance_variables>
+        <variable name="Name" type="String" />
+        <variable name="Description" type="String" />
+        <variable name="ImageUrl" type="String" />
+        <variable name="ID" type="Number" />
+        <variable name="LongDescription" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="Products">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="ltv1,bgt1,lnk1" />
+          <property type="Title">
+            <value culture="en-US" title="Display Demo" />
+          </property>
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Display Demo" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="1" />
+              <property type="Binding" value="Products.Description" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Binding" value="Products.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltv1" />
+              <property type="Rows" value="2" />
+              <property type="Columns" value="1" />
+              <property type="Children" value="bgt2,bgt3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="Products" />
+              <property type="Children" value="lg1" />
+              <property type="Binding" value="Product" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="ProductDetail" extradata="Product.ID" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lnk1" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Full Site" />
+              </property>
+              <property type="LinkType" value="Javascript" />
+              <property type="Href" value="Td.Util.setDisplay('d')" />
+              <property type="ParentControl" value="Products" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="This is a cool mobile site, but you might want to check out the desktop version." />
+              </property>
+              <property type="ParentControl" value="Products" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="Product" type="Product">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="LongDescription" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ImageUrl" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Description" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="Products" array="true" type="Product">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="LongDescription" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ID" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ImageUrl" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Description" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetProducts" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetProducts">
+          <parameters />
+          <return type="Product" array="true">
+            <binding name="Products" />
+          </return>
+          <variables>
+            <variable name="prods" type="Product" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Set prods[0] = GetProduct(1)" />
+            <code line="Set prods[1] = GetProduct(2)" />
+            <code line="Set prods[2] = GetProduct(3)" />
+            <code line="Return prods" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+    <page name="ProductDetail">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg1,bgt1,bgt2" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="Product.LongDescription" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="Product.Name" />
+              <property type="FontSize" value="1.2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="img1" type="Picture">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Binding" value="Product.ImageUrl" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="img1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="Product" type="Product">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="LongDescription" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ID" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ImageUrl" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Description" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="ProductId" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetProductDetail" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetProductDetail">
+          <parameters>
+            <variable name="pID" type="Number">
+              <binding name="ProductId" />
+            </variable>
+          </parameters>
+          <return type="Product">
+            <binding name="Product" />
+          </return>
+          <variables>
+            <variable name="prod" type="Product" />
+          </variables>
+          <actions>
+            <code line="Set prod = GetProduct(pID)" />
+            <code line="Return prod" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

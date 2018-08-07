@@ -1,0 +1,237 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="5/2/2014 10:37 AM: Frank - " />
+    <change description="11/4/2013 3:49 PM: Frank" />
+    <change description="11/4/2013 3:48 PM: Frank" />
+    <change description="11/4/2013 3:22 PM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Demonstrates how to validate user input.
+
+Validation is achieved by adding Rules to Bindings:  
+1) Add a Binding to the Outline (in the Client section of this Outline)
+2) Make it the Value Bind (in the Properties window) for a user-input control such as a Data Field
+3) Select the Binding in the Outline, then go to the Bindings tab on the menu
+4) In the Rules section, click the "+" button to add a Rule ( "-" if you want to remove a Rule)
+5) Select the "Binding is valid when" choice (these will vary by the type of the Binding) and a Value if necessary
+6) In the 'Error Text' field, specify the text to show the user when validation fails
+
+This sample shows the two ways that Validation happens:
+1) when passing a Binding as a parameter to a server-side Operation (see pbPassToOp On Click)
+2) when calling the client-side Validate statement (see pbValidate On Click)
+
+See the Bindings that we validate in this sample:  REQ, POS and RANGE.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="dfRequired,dfPositive,dfRange,pbPassToOp,cbSuccess,pbValidate" />
+          <property type="Title">
+            <value culture="en-US" title="Validation" />
+          </property>
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Validation" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfRequired" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Required" />
+              </property>
+              <property type="Binding" value="REQ" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfPositive" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Positive Number" />
+              </property>
+              <property type="Format" value="Number" />
+              <property type="Binding" value="POS" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfRange" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Number in Range (1 - 9)" />
+              </property>
+              <property type="Binding" value="RANGE" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbPassToOp" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Pass Binds to Operation" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Set" data="SUCCESS" extradata="FALSE" />
+                <action action="Invoke" data="CheckParameters" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbValidate" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Use Validate Statement" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Validate" data="POS" extradata="" />
+                <action action="Validate" data="RANGE" extradata="" />
+                <action action="Validate" data="REQ" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="cbSuccess" type="CheckBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="SUCCESS" />
+              <property type="VisibilityBinding" value="SUCCESS" />
+              <property type="Title">
+                <value culture="en-US" title="Call succeeded" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <comment>! REQ is the Value Bind for the Data Field 'dfRequired'; Rule: IsRequired</comment>
+        <binding name="REQ" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <validation>
+            <rule type="IsRequired" value="">
+              <errmsg msg="The Required field is, um, required" locale="en-US" />
+            </rule>
+          </validation>
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! POS is the Value Bind for the Data Field 'dfPositive'; Rule: IsGreaterThan: 0</comment>
+        <binding name="POS" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <validation>
+            <rule type="IsGreaterThan" value="0">
+              <errmsg msg="Value must be greater than zero" locale="en-US" />
+            </rule>
+          </validation>
+          <initialvalue mode="SpecificValue" value="-99" />
+        </binding>
+        <comment>! RANGE is the Value Bind for the Data Field 'dfRange'; Rule#1: IsGreaterThan: 0, Rule#2: IsLessThan: 10</comment>
+        <binding name="RANGE" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <validation>
+            <rule type="IsGreaterThan" value="0">
+              <errmsg msg="Acceptable range is between 1 and 9" locale="en-US" />
+            </rule>
+            <rule type="IsLessThan" value="10">
+              <errmsg msg="Acceptable range is between 1 and 9" locale="en-US" />
+            </rule>
+          </validation>
+          <initialvalue mode="SpecificValue" value="27" />
+        </binding>
+        <comment>! SUCCESS is the return value of the Operation CheckParameter (which won't run unless all the parameters are valid)
+  It also checks and shows the otherwise hidden Check Box 'cbSuccess'</comment>
+        <binding name="SUCCESS" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <operation name="CheckParameters">
+          <parameters>
+            <variable name="psReq" type="String">
+              <binding name="REQ" />
+            </variable>
+            <variable name="pnPos" type="Number">
+              <binding name="POS" />
+            </variable>
+            <variable name="pnRange" type="Number">
+              <binding name="RANGE" />
+            </variable>
+          </parameters>
+          <return type="Boolean">
+            <binding name="SUCCESS" />
+          </return>
+          <variables>
+            <variable name="bReturn" type="Boolean" />
+          </variables>
+          <actions>
+            <code line="Set bReturn = FALSE" />
+            <code line="If ( psReq != &quot;&quot; )">
+              <code line="If ( pnPos &gt; -1 )">
+                <code line="If ( ( pnRange &gt; 0 ) And ( pnRange &lt; 10 ) ) ">
+                  <code line="Set bReturn = TRUE" />
+                </code>
+              </code>
+            </code>
+            <code line="Return bReturn" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

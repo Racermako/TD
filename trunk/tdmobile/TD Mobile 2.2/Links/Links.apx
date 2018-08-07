@@ -1,0 +1,293 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/30/2014 2:50 PM: Frank - " />
+    <change description="4/30/2014 2:49 PM: Frank - " />
+    <change description="4/30/2014 2:32 PM: Frank - " />
+    <change description="11/6/2013 12:05 PM: Frank" />
+    <change description="11/6/2013 12:04 PM: Frank" />
+    <change description="11/6/2013 12:01 PM: Frank" />
+    <change description="11/6/2013 11:44 AM: Frank" />
+    <change description="11/6/2013 11:43 AM: Frank" />
+    <change description="11/6/2013 10:24 AM: Frank" />
+    <change description="11/6/2013 10:19 AM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="clsGuptaContact">
+      <inherits />
+      <instance_variables>
+        <variable name="Website" type="String" />
+        <variable name="CompanyName" type="String" />
+        <variable name="Phone" type="String" />
+        <variable name="Address" type="String" />
+        <variable name="Email" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Demonstrates some popular uses of the powerful Link control.  Specify the Link Type
+in the Properties window for the functionality you want. 
+
+The Links can seem quite magical because you set their Caption to read whatever text you want to display, and 
+then provide the value as a Bind Value or a property setting 'Link URL' to what site to go to, what phone number to call, etc.
+ 
+Here are the Link Types used in this app and what happens when you click them:
+&gt; Web:  shows the specified web page in the browser
+&gt; Phone:  uses your device's phone to call the number specified
+&gt; Email: opens your default email program with an email addressed to the specified recipient
+&gt; Map: opens your default map program to show the location specified</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Link Samples" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lnkWeb" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="Href" value="" />
+              <property type="Title">
+                <value culture="en-US" title="Main website" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="Binding" value="GUPTA.Website" />
+              <property type="VisibilityBinding" value="" />
+              <property type="Row" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ColumnWidth" value="20,80" />
+              <property type="Children" value="bgt5,bgt6,bgt1,lnkWeb,bgt2,lnkPhone,bgt4,lnkEmail,bgt3,lnkMap" />
+              <property type="Rows" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Web" />
+              </property>
+              <property type="Row" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lnkPhone" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="LinkType" value="Phone" />
+              <property type="Binding" value="GUPTA.Phone" />
+              <property type="VisibilityBinding" value="" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Phone" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="4" />
+              <property type="Title">
+                <value culture="en-US" title="Map" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lnkMap" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="4" />
+              <property type="Column" value="1" />
+              <property type="LinkType" value="Map" />
+              <property type="Binding" value="GUPTA.Address" />
+              <property type="Href" value="" />
+              <property type="Title">
+                <value culture="en-US" title="Roseville, CA Office" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Title">
+                <value culture="en-US" title="Email" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lnkEmail" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="GUPTA.Email" />
+              <property type="LinkType" value="Email" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Name" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="GUPTA.CompanyName" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="GUPTA" type="clsGuptaContact">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="CompanyName" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Email" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Website" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Phone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Address" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetLinkFields" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetLinkFields">
+          <parameters />
+          <return type="clsGuptaContact">
+            <binding name="GUPTA" />
+          </return>
+          <variables>
+            <variable name="cntc" type="clsGuptaContact" />
+          </variables>
+          <actions>
+            <code line="Set cntc.Website = &quot;http://guptatechnologies.com&quot;" />
+            <code line="Set cntc.Phone = &quot;916-218-4700&quot;" />
+            <code line="Set cntc.Address = &quot;1420 Rocky Ridge Drive, Roseville, CA 95661&quot;" />
+            <code line="Set cntc.Email = &quot;info@guptatechnologies.com&quot;" />
+            <code line="Set cntc.CompanyName = &quot;Gupta Technologies&quot;" />
+            <code line="Return cntc" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

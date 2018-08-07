@@ -1,0 +1,209 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Demonstrates how to load a file into a Binary Binding, and get information about it and
+upload it to the server.  Try it with an image file, which will also show in the Image control. 
+
+File selection is managed by a Data Field with an Input Type of 'File' (see dfFileSelect).
+
+We use a javascript function 'AttachToFileBind' to bind an event handler to the Binary
+Binding's 'change' event, to get the file name and type whenever you select a new file.
+
+The UploadFile button merely returns the length of the binary data from server-side code, 
+simulating saving the file to a database.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="dfFileSelect,pb1,dfFileName,dfFileType,dfFileLength,img1" />
+          <property type="Title">
+            <value culture="en-US" title="Upload Test" />
+          </property>
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="File Info Demo" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="img1" type="Picture">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="FILE1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfFileLength" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Length:" />
+              </property>
+              <property type="Binding" value="FILE_LENGTH" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Upload" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="UploadFile" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="dfFileSelect" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="File:" />
+              </property>
+              <property type="Binding" value="FILE1" />
+              <property type="Format" value="File" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfFileName" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Name:" />
+              </property>
+              <property type="Binding" value="FILENAME" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfFileType" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Type:" />
+              </property>
+              <property type="Binding" value="FILETYPE" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <comment>! FILETYPE is the Value Bind of dfFileType; it is assigned a value in the javascript function 'AttachToFileBind' (whenever the Binding FILE1 changes) </comment>
+        <binding name="FILETYPE" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! FILENAME is the Value Bind of dfFileName; it is assigned a value in the javascript function 'AttachToFileBind' (whenever the Binding FILE1 changes) </comment>
+        <binding name="FILENAME" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! FILE_LENGTH is the Value Bind of dfFileLength; it is assigned a value as the Return of the Operation 'UploadFile'</comment>
+        <binding name="FILE_LENGTH" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! FILE1 is the Value Bind of dfFileSelect; it becomes a binary representation of the selected file</comment>
+        <binding name="FILE1" type="Binary">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="AttachToFileBind">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>var srcBnd = Td.Data.Binding.get("FILE1");
+var ftBnd = Td.Data.Binding.get("FILETYPE");
+var fnBnd = Td.Data.Binding.get("FILENAME");
+$(srcBnd).on(
+    'changed',
+    function (evt, value) {
+        ftBnd.setValue(value.type);
+        fnBnd.setValue(value.name);
+});</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Javascript" data="AttachToFileBind" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="UploadFile">
+          <parameters>
+            <variable name="bFile" type="Binary">
+              <binding name="FILE1" />
+            </variable>
+          </parameters>
+          <return type="Number">
+            <binding name="FILE_LENGTH" />
+          </return>
+          <variables>
+            <variable name="length" type="Number" />
+            <variable name="strBin" type="String" />
+          </variables>
+          <actions>
+            <code commented="true" line="Set strBin = SalBinaryToString(bFile, ENC_ANSI)" />
+            <code line="Set length = SalGetBufferLength(bFile)" />
+            <code commented="true" line="Call SalStartTrace(TRACE_File,&quot;c:\\tmp\\mytrace.log&quot;, FALSE)" />
+            <code commented="true" line="Call SalTrace(EVENT_WARNING, &quot;UploadFile called&quot;)" />
+            <code commented="true" line="Call SalTrace(EVENT_WARNING, &quot;File Length: &quot; || SalNumberToStrX(length, 0))" />
+            <code commented="true" line="Call SalTrace(EVENT_WARNING, strBin)" />
+            <code commented="true" line="Call SalEndTrace()" />
+            <code line="Return length" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

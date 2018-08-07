@@ -1,0 +1,369 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <description>Shows how to use javascript to conditionally format items in a listview control.
+
+The example will dynamically highlight salespersons whose revenue 
+meet or exceed an amount you can specify at runtime.</description>
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="page1" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <exceptions />
+  <classes>
+    <class name="cSalesperson">
+      <inherits />
+      <instance_variables>
+        <variable name="Name" type="String" />
+        <variable name="Department" type="String" />
+        <variable name="Sales" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <dataconnections />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Shows how to use javascript to conditionally format items in a listview control.
+
+The example will dynamically highlight salespersons whose sales meet or
+exceed an amount you can specify at runtime.
+ 
+See the function HighlightTargetHitters() which is called from Page.OnCreate and
+dfTarget.OnChange </description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="dfTarget,lg1,ltvSales" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Conditional Format" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltvSales" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="SALESPEOPLE" />
+              <property type="Children" value="lgSales" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="SALESPERSON" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="GetMessage" extradata="">
+                  <action action="Confirm" data="" extradata="MSG" />
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lgSales" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltvSales" />
+              <property type="TopMargin" value="0" />
+              <property type="Columns" value="3" />
+              <property type="ColumnWidth" value="44,26,30" />
+              <property type="Children" value="bgtName,bgtDepartment,bgtSales" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtName" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgSales" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="SALESPEOPLE.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtDepartment" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgSales" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="SALESPEOPLE.Department" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtSales" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lgSales" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Binding" value="SALESPEOPLE.Sales" />
+              <property type="Justify" value="Right" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Columns" value="3" />
+              <property type="VisibilityBinding" value="" />
+              <property type="ColumnWidth" value="42,34,24" />
+              <property type="Children" value="bgt1,bgt2,bgt3" />
+              <property type="TopMargin" value="18" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="SalesPerson" />
+              </property>
+              <property type="LeftMargin" value="12" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Department" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Sales" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfTarget" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Target Sales (change to highlight target hitters)" />
+              </property>
+              <property type="Binding" value="TARGET" />
+              <property type="ScaleFactor" value="1" />
+              <property type="Inline" value="No" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Change">
+              <actions>
+                <action action="Javascript" data="HighlightTargetHitters" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <comment>! SALESPEOPLE is the List Source Binding for the ListView control ltvSales; it is populated by the Operation GetSalespeople</comment>
+        <binding name="SALESPEOPLE" array="true" type="cSalesperson">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Department" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Sales" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! SALESPERSON is the Value Binding for the ListView control ltvSales</comment>
+        <binding name="SALESPERSON" type="cSalesperson">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Department" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Sales" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <comment>! TARGET is bound to the datafield dfTarget; it is used in the javascript function HighlightTargetHitters()</comment>
+        <binding name="TARGET" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="MSG" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="HighlightTargetHitters">
+          <description>Highlight salespersons who meet or exceed specified target</description>
+          <parameters />
+          <variables />
+          <javascript>// get a reference to the listview control element
+//  &lt;&lt; where 'ltvSales' is the Name of the listview control &gt;&gt;
+var myList = $('#ltvSales');
+// get current Target &lt;&lt; where 'TARGET' is a Binding in your page &gt;&gt;
+var targetBind = Td.Data.Binding.get("TARGET");
+var sTarget = targetBind.getValue();
+// use regular expression to drop non-numeric chars
+sTarget = sTarget.replace(/[^0-9\.]+/g,"");
+var target = Number(sTarget); // convert to number
+// loop through rows and check sales of each salesperson against the target
+myList.find('li').each(function() {
+	// get sales amount for the current salesperson
+	// &lt;&lt; where 'bgtSales' is the Name of a text field within your listview &gt;&gt;
+	var SalesField = $(this).find('#bgtSales'); 
+	var sSales = SalesField.text();
+	// use regular expression to drop non-numeric chars
+	sSales = sSales.replace(/[^0-9\.]+/g,"");
+	var sales = Number(sSales); // convert to number
+	if (sales &gt;= target) {
+		// highlight the target-maker: make the name red...
+		var name = $(this).find('#bgtName');
+		name.css('color', 'Red');
+		// ... and the row background yellow
+		// - NOTE: the "a" element (anchor) will only 
+		// -       exist if your listview has a Click event handler
+		$(this).find("a").css('backgroundColor', '#FFFF66');
+	}
+	else {	
+		// un-highlight non-target-maker: return to default name color...
+		var name = $(this).find('#bgtName');
+		name.css('color', '');
+		// ... and the row background light blue
+		// - see NOTE above -
+		$(this).find("a").css('backgroundColor', '#F0FFFF');
+	}
+});</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Set" data="TARGET" extradata="&quot;800,000&quot;" />
+            <action action="Invoke" data="GetSalespeople" extradata="">
+              <action action="Javascript" data="HighlightTargetHitters" extradata="" />
+            </action>
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetSalespeople">
+          <parameters />
+          <return type="cSalesperson" array="true">
+            <binding name="SALESPEOPLE" />
+          </return>
+          <variables>
+            <variable name="people" type="cSalesperson" array="true" dims="*" />
+          </variables>
+          <actions>
+            <comment>! -- Simulate pulling data from database</comment>
+            <code line="Set people[0].Name = &quot;Louis Chung&quot;" />
+            <code line="Set people[0].Department = &quot;Licenses&quot;" />
+            <code line="Set people[0].Sales = &quot;$1,000,000&quot;" />
+            <code line="Set people[1].Name = &quot;Jean Nissar&quot;" />
+            <code line="Set people[1].Department = &quot;Products&quot;" />
+            <code line="Set people[1].Sales = &quot;$600,000&quot;" />
+            <code line="Set people[2].Name = &quot;Joe Omaji&quot;" />
+            <code line="Set people[2].Department = &quot;Products&quot;" />
+            <code line="Set people[2].Sales = &quot;$250,000&quot;" />
+            <code line="Set people[3].Name = &quot;Inga Park&quot;" />
+            <code line="Set people[3].Department = &quot;Services&quot;" />
+            <code line="Set people[3].Sales = &quot;$750,000&quot;" />
+            <code line="Set people[4].Name = &quot;Anne Rizzo&quot;" />
+            <code line="Set people[4].Department = &quot;Services&quot;" />
+            <code line="Set people[4].Sales = &quot;$800,000&quot;" />
+            <code line="Set people[5].Name = &quot;Eve Ruskin&quot;" />
+            <code line="Set people[5].Department = &quot;Services&quot;" />
+            <code line="Set people[5].Sales = &quot;$500,000&quot;" />
+            <code line="Set people[6].Name = &quot;Dean Sanchez&quot;" />
+            <code line="Set people[6].Department = &quot;Services&quot;" />
+            <code line="Set people[6].Sales = &quot;$675,000&quot;" />
+            <code line="Set people[7].Name = &quot;Abella Tritt&quot;" />
+            <code line="Set people[7].Department = &quot;Services&quot;" />
+            <code line="Set people[7].Sales = &quot;$725,000&quot;" />
+            <code line="Return people" />
+          </actions>
+        </operation>
+        <operation name="GetMessage">
+          <parameters>
+            <variable name="pName" type="String">
+              <binding name="SALESPERSON.Name" />
+            </variable>
+          </parameters>
+          <return type="String">
+            <binding name="MSG" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return &quot;Send a $1,000 bonus to &quot; || pName || &quot;?&quot;" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

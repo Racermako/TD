@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+	<head>
+		<title>
+			Display Demo
+		</title><meta charset='utf-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="jquery/jquery-mobile-tdm.min.css" />
+		<link rel="stylesheet" href="jquery/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="jquery/jquery.mobile.structure-1.4.2.min.css" />
+		<link rel="stylesheet" href="css/td.css" />
+		<script src="jquery/jquery-2.1.3.min.js"></script>
+		<script src="jquery/jquery.dateFormat-1.0.min.js"></script>
+		<script src="jquery/jquery.mobile-1.4.2.min.js"></script>
+		<script src="js/td.min.js"></script>
+		<script></script>
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<link rel="icon" href="apple-touch-icon.png">
+
+	</head>
+	<body>
+		<div data-role="page" id="Products" data-theme="c" data-title="Display Demo">
+			<script type="text/javascript">
+				Td.Localization.init("en-US");
+				$('body').one("pagecontainerbeforeshow", function(event, ui){
+					new Td.Data.Operation("GetProducts", "Products.asmx/GetProducts", "Products", {});
+					new Td.Data.Binding(
+						"Product",
+						"Functional Class",
+						{
+							boolstate: {
+								booltype: "NotNull",
+								compareval: ""
+							},
+							members:
+							[
+								{
+									name: "LongDescription",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								},
+								{
+									name: "ID",
+									type: "Number",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: "0"
+										},
+										initval: null
+									}
+								},
+								{
+									name: "ImageUrl",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								},
+								{
+									name: "Description",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								},
+								{
+									name: "Name",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								}
+							]
+
+						}
+					);
+					new Td.Data.Binding(
+						"Products",
+						"Functional Class",
+						{
+							array: true,
+							boolstate: {
+								booltype: "HasItems",
+								compareval: ""
+							},
+							members:
+							[
+								{
+									name: "LongDescription",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "NotNull",
+											compareval: ""
+										},
+										initval: ""
+									}
+								},
+								{
+									name: "ID",
+									type: "Number",
+									opts: {
+										boolstate: {
+											booltype: "NotNull",
+											compareval: ""
+										},
+										initval: null
+									}
+								},
+								{
+									name: "ImageUrl",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								},
+								{
+									name: "Description",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								},
+								{
+									name: "Name",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										},
+										initval: ""
+									}
+								}
+							]
+
+						}
+					);
+					new Td.Controls.Page(
+						"Products",
+						{
+							create: function() {
+								Td.Data.Operation.get("GetProducts").invoke();
+							},
+						}
+					);
+					new Td.Controls.Toolbar(
+						"__header",
+						{
+						}
+					);
+					new Td.Controls.Label(
+						"bgt2",
+						{
+							binding: { "source": "Products", "path": "Name", "direction": "get" },
+						}
+					);
+					new Td.Controls.Label(
+						"bgt3",
+						{
+							binding: { "source": "Products", "path": "Description", "direction": "get" },
+						}
+					);
+					new Td.Controls.LayoutGrid(
+						"lg1",
+						{
+						}
+					);
+					new Td.Controls.ListView(
+						"ltv1",
+						{
+							click: function() {
+								Td.Util.navToPage(
+									"ProductDetail",
+									[
+										{ name: "ProductId", binding: "Product.ID" }
+									]
+								);
+							},
+							binding: { "source": "Product", "direction": "set" },
+							listbinding: { "source": "Products" },
+						}
+					);
+					new Td.Controls.Label(
+						"bgt1",
+						{
+						}
+					);
+					new Td.Controls.Link(
+						"lnk1",
+						{
+							linktype: "Javascript"
+						}
+					);
+				});
+				$('body').one("pagecontainershow", function(event, ui){
+					Td.Controls.get('Products').raiseCreateComplete();
+				});
+
+			</script>
+			<div id="__header" data-role="header" data-position="fixed" data-theme="a">
+				<h1>
+					Display Demo
+				</h1>
+			</div>
+			<div data-role="content">
+				<div id="ltv1_listitem_template" style="display:none;">
+					<div id="lg1">
+						<div>
+							<div id="bgt2" style="margin:6px 0px 0px 0px;overflow:hidden;">
+								
+							</div>
+
+						</div>
+						<div>
+							<div id="bgt3" style="margin:6px 0px 0px 0px;font-size:0.8em;overflow:hidden;">
+								
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+				<ul id="ltv1" data-role="listview" data-inset="true">
+
+				</ul><div id="bgt1" style="overflow:hidden;">
+					This is a cool mobile site, but you might want to check out the desktop version.
+				</div>
+				<div>
+					<a id="lnk1" rel="external" href="javascript:Td.Util.setDisplay(&#39;d&#39;)">Full Site</a>
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+</html>

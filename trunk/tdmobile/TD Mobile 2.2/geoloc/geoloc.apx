@@ -1,0 +1,92 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="acadia.daegis.local" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>This demonstrates our special system Binding - [geolocation].
+
+The Data Field 'dfLatLong' has [geolocation] set as its Value Bind (see
+its Properties window), and without any code, that field is populated with
+the Latitude, Longitude of your current location.
+
+The Link control 'lnkMap' also has a Value Bind set to [geolocation], and with
+its LinkType set to 'Map', when clicked will show that location with your local map app. </description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="dfLatLong,lnkMap" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Geo Location" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lnkMap" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Show Location on Map" />
+              </property>
+              <property type="LinkType" value="Map" />
+              <property type="Binding" value="[geolocation]" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfLatLong" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="[geolocation]" />
+              <property type="Title">
+                <value culture="en-US" title="Latitude,Longitude:" />
+              </property>
+              <property type="Inline" value="No" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings />
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

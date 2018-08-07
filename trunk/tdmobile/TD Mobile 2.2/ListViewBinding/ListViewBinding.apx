@@ -1,0 +1,316 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/30/2014 4:43 PM: Frank - " />
+    <change description="4/30/2014 3:57 PM: Frank - " />
+    <change description="11/1/2013 4:56 PM: Frank" />
+    <change description="11/1/2013 4:37 PM: Frank" />
+    <change description="11/1/2013 4:05 PM: Frank" />
+    <change description="11/1/2013 4:05 PM: Frank" />
+    <change description="11/1/2013 4:02 PM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="clsCustomerLister">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" />
+        <variable name="Name" type="String" />
+        <variable name="City" type="String" />
+        <variable name="Description" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Demonstrates how Bindings are used with the ListView control.
+
+In our sample we set the Binding named CUSTS as the List Source Binding for our control (in the Properties window).
+CUSTS is an array of type clsCustomerLister and we set the fields within our list to members of that type, 
+for example, CUSTS.Name.
+We populate that array by invoking an Operation 'GetCustomersByState' which specifies in its Returns section that 
+it will be returning an array of type clsCustomerLister and specifically for the Binding CUSTS.
+
+We also set a different Binding named CUST (singular now) as the Value Bind for our ListView control.
+When the user selects an item in the listview, CUST is given the values of that selected item.  In our sample we 
+display a field not shown in the ListView - CUST.Description - in a text field below the ListView.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="cmbStates,ltv1,bgt4" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="cmbStates" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="STATE" />
+              <property type="ListBinding" value="STATES" />
+            </propertylist>
+          </properties>
+          <listinitialization />
+          <events>
+            <event name="Change">
+              <actions>
+                <action action="Invoke" data="GetCustomersByState" extradata="" />
+              </actions>
+            </event>
+            <event name="Create">
+              <actions>
+                <action action="Invoke" data="PopulateCombobox" extradata="">
+                  <action action="Invoke" data="SetComboboxValue" extradata="">
+                    <action action="Invoke" data="GetCustomersByState" extradata="" />
+                  </action>
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="lg1" />
+              <property type="ListBinding" value="CUSTS" />
+              <property type="Binding" value="CUST" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions />
+            </event>
+          </events>
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltv1" />
+              <property type="Columns" value="3" />
+              <property type="Children" value="bgt1,bgt2,bgt3" />
+              <property type="ColumnWidth" value="20,45,35" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="CUSTS.ID" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="CUSTS.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Binding" value="CUSTS.City" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="CUST.Description" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="STATES" array="true" type="String">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="STATE" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="CUSTS" array="true" type="clsCustomerLister">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Description" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="CUST" type="clsCustomerLister">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Description" type="String">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <operation name="PopulateCombobox">
+          <parameters />
+          <return type="String" array="true">
+            <binding name="STATES" />
+          </return>
+          <variables>
+            <variable name="states" type="String" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Set states[0] = &quot;Alabama&quot;" />
+            <code line="Set states[1] = &quot;Alaska&quot;" />
+            <code line="Set states[2] = &quot;Arizona&quot;" />
+            <code line="Return states" />
+          </actions>
+        </operation>
+        <operation name="GetCustomersByState">
+          <parameters>
+            <variable name="pState" type="String">
+              <binding name="STATE" />
+            </variable>
+          </parameters>
+          <return type="clsCustomerLister" array="true">
+            <binding name="CUSTS" />
+          </return>
+          <variables>
+            <variable name="custs" type="clsCustomerLister" array="true" dims="*" />
+          </variables>
+          <actions>
+            <comment>! Simulate getting customer data from database</comment>
+            <code line="If pState = &quot;Alabama&quot;">
+              <code line="Set custs[0].City = &quot;Selma&quot;" />
+              <code line="Set custs[1].City = &quot;Tuscaloo&quot;" />
+              <code line="Set custs[2].City = &quot;Birmingham&quot;" />
+              <code line="Set custs[0].ID = 101" />
+              <code line="Set custs[1].ID = 103" />
+              <code line="Set custs[2].ID = 105" />
+              <code line="Set custs[0].Name = &quot;Acme, Inc.&quot;" />
+              <code line="Set custs[0].Description = &quot;Acme sells women's shoes, high-fashion, top-dollar; have exclusive deals with top designers&quot;" />
+              <code line="Set custs[1].Name = &quot;Tollo Corp.&quot;" />
+              <code line="Set custs[1].Description = &quot;Tollo is a big exporter of outdoor gear; ships all over the globe, uses many manufacturers&quot;" />
+              <code line="Set custs[2].Name = &quot;Aberroff's&quot;" />
+              <code line="Set custs[2].Description = &quot;Aberroff's designs and manufactures fancy gowns and tuxedos for proms, weddings, etc.&quot;" />
+            </code>
+            <code line="Else If pState = &quot;Alaska&quot;">
+              <code line="Set custs[2].City = &quot;Juneau&quot;" />
+              <code line="Set custs[1].City = &quot;Nome&quot;" />
+              <code line="Set custs[0].City = &quot;Fairbanks&quot;" />
+              <code line="Set custs[0].ID = 102" />
+              <code line="Set custs[1].ID = 118" />
+              <code line="Set custs[2].ID = 122" />
+              <code line="Set custs[0].Name = &quot;Lindy's&quot;" />
+              <code line="Set custs[0].Description = &quot;Lindy's features a low-cost but hip line of casual wear, for the younger set.&quot;" />
+              <code line="Set custs[1].Name = &quot;The Axer Co.&quot;" />
+              <code line="Set custs[1].Description = &quot;Axer specializes in uniforms, from school outfits for children to prison duds for convicts, and everything in between.&quot;" />
+              <code line="Set custs[2].Name = &quot;Dewby Corp.&quot;" />
+              <code line="Set custs[2].Description = &quot;Dewby makes clothes to keep you warm - parkas, gloves, hats, thermal socks, fur-lined boots, you name it.&quot;" />
+            </code>
+            <code line="Else If pState = &quot;Arizona&quot;">
+              <code line="Set custs[2].City = &quot;Phoenix&quot;" />
+              <code line="Set custs[1].City = &quot;Tuscon&quot;" />
+              <code line="Set custs[0].City = &quot;Flagstaff&quot;" />
+              <code line="Set custs[0].ID = 111" />
+              <code line="Set custs[1].ID = 117" />
+              <code line="Set custs[2].ID = 119" />
+              <code line="Set custs[0].Name = &quot;Klondike's.&quot;" />
+              <code line="Set custs[0].Description = &quot;Klondike's is real green - organic materials, all-natural, fair-trade partners, recycled stuff.&quot;" />
+              <code line="Set custs[1].Name = &quot;Walker Corp.&quot;" />
+              <code line="Set custs[1].Description = &quot;Walker sells clothes for infants and toddlers, boys or girls, quality materials, whimsical styles, good prices.&quot;" />
+              <code line="Set custs[2].Name = &quot;George's&quot;" />
+              <code line="Set custs[2].Description = &quot;George's specialty is accessories - scarves, hats, headwear, canes; exotic imported styles from around the world.&quot;" />
+            </code>
+            <code line="Return custs" />
+          </actions>
+        </operation>
+        <operation name="SetComboboxValue">
+          <parameters />
+          <return type="String">
+            <binding name="STATE" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return &quot;Alabama&quot;" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

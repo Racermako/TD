@@ -1,0 +1,190 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="cls1">
+      <inherits />
+      <instance_variables>
+        <variable name="sV01" type="String" />
+        <variable name="sV02" type="String" />
+        <variable name="sV03" type="String" />
+        <variable name="sV04" type="String" />
+        <variable name="sV05" type="String" />
+        <variable name="sV06" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>This sample shows how to retrieve values from an INI file and store them in a UDV. 
+Featured commands:
+	SalFileGetCurrentDirectory()
+	SalGetProfileString()</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pb1,bgt1,bgt2,bgt3,bgt4,bgt5,bgt6" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Read INI" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="oGetINI" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="INI.sV01" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="INI.sV02" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="INI.sV03" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="INI.sV04" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="INI.sV05" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="INI.sV06" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="INI" type="cls1">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="sV01" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sV02" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sV03" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sV04" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sV05" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sV06" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <operation name="oGetINI">
+          <parameters />
+          <return type="cls1">
+            <binding name="INI" />
+          </return>
+          <variables>
+            <variable name="sDir" type="String" />
+            <variable name="tmpINI" type="cls1" />
+          </variables>
+          <actions>
+            <code line="Call SalFileGetCurrentDirectory(sDir)" />
+            <code line="Call SalGetProfileString(&quot;Section1&quot;, &quot;key1&quot;, &quot;&quot;, tmpINI.sV01, sDir || &quot;\\MYINI.ini&quot;)" />
+            <code line="Call SalGetProfileString(&quot;Section1&quot;, &quot;key2&quot;, &quot;&quot;, tmpINI.sV02, sDir || &quot;\\MYINI.ini&quot;)" />
+            <code line="Call SalGetProfileString(&quot;Section2&quot;, &quot;key1&quot;, &quot;&quot;, tmpINI.sV03, sDir || &quot;\\MYINI.ini&quot;)" />
+            <code line="Call SalGetProfileString(&quot;Section2&quot;, &quot;key2&quot;, &quot;&quot;, tmpINI.sV04, sDir || &quot;\\MYINI.ini&quot;)" />
+            <code line="Call SalGetProfileString(&quot;Section3&quot;, &quot;key1&quot;, &quot;&quot;, tmpINI.sV05, sDir || &quot;\\MYINI.ini&quot;)" />
+            <code line="Call SalGetProfileString(&quot;Section3&quot;, &quot;key2&quot;, &quot;&quot;, tmpINI.sV06, sDir || &quot;\\MYINI.ini&quot;)" />
+            <code line="Return tmpINI" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

@@ -1,0 +1,151 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/30/2014 11:20 AM: Frank - " />
+    <change description="11/1/2013 3:28 PM: Frank" />
+    <change description="11/1/2013 3:23 PM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>For tradition's sake, our TD Mobile 'Hello World' app.
+
+Demonstrates in a simple manner how our Bindings work.
+Read more about this in the comments under the Binding 'STR'
+(in the Client | Bindings section of this Outline).</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="df1,lg1,pbChange" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="df1" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="STR bound Data Field" />
+              </property>
+              <property type="Binding" value="STR" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt1,bgt2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Get STR" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="STR" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbChange" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Change with Set statement" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Set" data="STR" extradata="&quot;New client-side value&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="STR" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! STR is the Value Bind for the Data Field 'df1'; by default its 'Direction' is Get/Set - meaning it can both access that Bind's value and change it.
+  STR is also the Value Bind for the Background Text field 'bgt2'; by default its 'Direction' is Get because labels are not editable.
+  In this application STR is assigned a value in three ways: 1) as the Return value of the server-side Operation PopulateDataField; 
+  2) via the client-side Set statement in the Pushbutton 'pbChange' On Click event; and 3) by the user changing the text in the data field.</comment>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="PopulateDataField" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="PopulateDataField">
+          <parameters />
+          <return type="String">
+            <binding name="STR" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return &quot;Hello World&quot;" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

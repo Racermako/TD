@@ -1,0 +1,223 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrateur,Utilisateur" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="clsDT">
+      <inherits />
+      <instance_variables>
+        <variable name="HH" type="Number" />
+        <variable name="MM" type="Number" />
+        <variable name="SS" type="Number" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>This sample shows how to use meter controls, also known as Progress Bars.
+
+There are three meters:  one for hours, one for minutes and one for seconds.  In the Properties window
+for the meters, we set the Max for hours to 24 and the Max for minutes and seconds to 60.
+
+Each meter has their Value Bind set to a variable which is updated using a server side operation.
+
+The call to the server operation is invoked through a timer (in practice, avoid such short frequency
+roundtrips to the server; this is for demonstration only).  The timer is turned on in the Page's 
+On Create event handler, set to fire every second.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg1" />
+          <property type="Title">
+            <value culture="en-US" title="Meter Clock" />
+          </property>
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Meter Clock" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="DT.HH" />
+              <property type="TopMargin" value="9" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="Format" value="Number" />
+              <property type="LeftMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="DT.MM" />
+              <property type="TopMargin" value="9" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="Format" value="Number" />
+              <property type="LeftMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="DT.SS" />
+              <property type="TopMargin" value="9" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="Format" value="Number" />
+              <property type="LeftMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="mtr1" type="ProgressBar">
+          <properties>
+            <propertylist display="phone">
+              <property type="ProgMaxValue" value="24" />
+              <property type="Binding" value="DT.HH" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg1" />
+              <property type="TextColor" value="#FF000000" />
+              <property type="BackgroundColor" value="#FF0000FF" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="mtr2" type="ProgressBar">
+          <properties>
+            <propertylist display="phone">
+              <property type="ProgMaxValue" value="60" />
+              <property type="Binding" value="DT.MM" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="BackgroundColor" value="#FF0000FF" />
+              <property type="TextColor" value="#FF000003" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="mtr3" type="ProgressBar">
+          <properties>
+            <propertylist display="phone">
+              <property type="ProgMaxValue" value="60" />
+              <property type="Binding" value="DT.SS" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="ParentControl" value="lg1" />
+              <property type="BackgroundColor" value="#FF0000FF" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Rows" value="3" />
+              <property type="ColumnWidth" value="90,10" />
+              <property type="Children" value="mtr1,bgt1,mtr2,bgt2,mtr3,bgt3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="DT" type="clsDT">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="HH" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="MM" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="SS" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Timer">
+          <actions>
+            <action action="Invoke" data="updDT" extradata="" />
+          </actions>
+        </event>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="updDT" extradata="">
+              <action action="Timer" data="On" extradata="1000" />
+            </action>
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="updDT">
+          <parameters />
+          <return type="clsDT">
+            <binding name="DT" />
+          </return>
+          <variables>
+            <variable name="locDT" type="clsDT" />
+          </variables>
+          <actions>
+            <code line="Set locDT.HH = SalDateHour(SalDateCurrent() );" />
+            <code line="Set locDT.MM= SalDateMinute(SalDateCurrent() );" />
+            <code line="Set locDT.SS= SalDateSecond(SalDateCurrent() );" />
+            <code line="Return locDT" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

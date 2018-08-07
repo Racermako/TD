@@ -1,0 +1,157 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="1/14/2014 11:36 AM: Frank - " />
+    <change description="1/14/2014 11:32 AM: Frank - " />
+    <change description="10/25/2013 8:57 PM: support" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Shows how to use a javascript function to get and display, the value from a Binding</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="df1,df2,pbString,pbNumber" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="df1" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Text" />
+              </property>
+              <property type="Binding" value="ASTRING" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbString" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Pass a String" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="JSfunction" extradata="&quot;ASTRING&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="df2" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Number" />
+              </property>
+              <property type="Binding" value="ANUMBER" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbNumber" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Pass a Number" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Javascript" data="JSfunction" extradata="&quot;ANUMBER&quot;" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="ASTRING" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="ANUMBER" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="JSfunction">
+          <description />
+          <parameters>
+            <variable name="theParam" type="Unknown" />
+          </parameters>
+          <variables />
+          <javascript>var theParamObj = Td.Data.Binding.get(theParam);
+var val = theParamObj.getValue();
+
+if (theParamObj.type != "String")
+{
+	if (val.IsNull)
+	{
+		val = null;
+	}
+	else val = val.Value;
+	
+}
+
+alert(val);
+
+</javascript>
+        </function>
+      </javascripts>
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Set" data="ASTRING" extradata="&quot;hello&quot;" />
+            <action action="Set" data="ANUMBER" extradata="1000" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

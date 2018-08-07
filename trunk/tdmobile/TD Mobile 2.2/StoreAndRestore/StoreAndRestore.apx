@@ -1,0 +1,277 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="5/1/2014 11:39 AM: Frank - " />
+    <change description="5/1/2014 11:34 AM: Frank - " />
+    <change description="5/1/2014 11:30 AM: Frank - " />
+    <change description="11/4/2013 4:28 PM: Frank" />
+    <change description="11/1/2013 2:58 PM: Frank" />
+    <change description="11/1/2013 2:39 PM: Frank" />
+    <change description="11/1/2013 2:20 PM: Frank" />
+    <change description="11/1/2013 2:12 PM: Frank" />
+    <change description="10/31/2013 5:06 PM: Frank" />
+    <change description="10/31/2013 4:14 PM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes>
+    <class name="clsEmployee">
+      <inherits />
+      <instance_variables>
+        <variable name="Name" type="String" />
+        <variable name="Salary" type="Number" />
+        <variable name="HireDate" type="Date/Time" />
+        <variable name="LikesCandy" type="Boolean" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Demonstrates the use of the Store and Restore commands.  
+
+To run the demo:
+Enter some data, then click the Store button; go to page2 and then back to page1; click the Restore button.
+
+How it's wired:
+In pbStore's On Click event, we use the Store command, specify a Binding that holds
+the data we want to store in the browser's database, and optionally specify a key-name for the stored 
+data.  The Binding can be any kind of data, even a User Defined Variable such as our 
+example Binding 'EMP' which is of type clsEmployee (a class in this application).  It could even
+be an array of a UDV.
+
+In pbRestore's On Click event, we use the Restore command, specify the Binding that we 
+want to re-populate with the data from the browser's database, and (if we specified a key-name
+when storing) use that same name here.  
+
+More about that optional key-name:  if you are going to be Storing and Restoring from the same
+page, you don't need to specify a key-name - we use a default key that concatenates the page
+name and the Binding name.  But if you are going to be restoring to a different binding on a
+different page (it must be the same type) you must specify a key-name or it won't work.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="dfName,dfSalary,dfHireDate,cbLikesCandy,pbStore,pbRestore,pbGotoPage2" />
+          <property type="Title">
+            <value culture="en-US" title="Employee Info" />
+          </property>
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Employee Info" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfName" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="EMP.Name" />
+              <property type="Title">
+                <value culture="en-US" title="Name" />
+              </property>
+              <property type="MiniSize" value="Yes" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfSalary" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="EMP.Salary" />
+              <property type="Title">
+                <value culture="en-US" title="Salary" />
+              </property>
+              <property type="MiniSize" value="Yes" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="cbLikesCandy" type="CheckBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Likes candy" />
+              </property>
+              <property type="Binding" value="EMP.LikesCandy" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfHireDate" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Format" value="Date" />
+              <property type="Binding" value="EMP.HireDate" />
+              <property type="Title">
+                <value culture="en-US" title="Hire Date" />
+              </property>
+              <property type="MiniSize" value="Yes" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbGotoPage2" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="goto page2" />
+              </property>
+              <property type="MiniSize" value="Yes" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="page2" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbRestore" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Restore" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Restore" data="EMP" extradata="keyEmp" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbStore" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Store" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Store" data="EMP" extradata="keyEmp" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <comment>! EMP is not pre-populated; it is populated by the user enterering text.
+    EMP.Name is bound to dfName; EMP.Salary is bound to dfSalary; and so on.</comment>
+        <binding name="EMP" type="clsEmployee">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Salary" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="HireDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="LikesCandy" type="Boolean">
+              <state mode="EqualsValue" comparevalue="TRUE" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+    <page name="page2">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pb1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="back" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings />
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

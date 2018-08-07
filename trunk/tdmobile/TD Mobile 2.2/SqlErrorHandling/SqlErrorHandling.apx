@@ -1,0 +1,461 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="pgErrorHandling" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions>
+    <function name="LogError">
+      <description>This is where you might write the error info to a file or to a database.  
+Here we are just returning the info to display to the user.</description>
+      <return type="clsError" />
+      <parameters>
+        <variable name="phSql" type="Sql Handle" />
+        <variable name="psCallingFunction" type="String" />
+        <variable name="psSqlStatement" type="String" />
+      </parameters>
+      <variables>
+        <variable name="err" type="clsError" />
+        <variable name="nLen" type="Number" />
+      </variables>
+      <staticvariables />
+      <actions>
+        <code line="Set err.Function = psCallingFunction" />
+        <code line="Set err.SqlStatement = psSqlStatement" />
+        <code line="Set err.ErrorNumber = SqlError( phSql )" />
+        <code line="If err.ErrorNumber &gt; 0">
+          <code line="Set err.ErrorText = SqlGetErrorTextX( err.ErrorNumber ) " />
+          <code line="Call SqlErrorText( err.ErrorNumber, SQLERROR_Reason, err.Reason, 999, nLen )" />
+          <code line="Call SqlErrorText( err.ErrorNumber, SQLERROR_Remedy, err.Remedy, 999, nLen )" />
+        </code>
+        <code line="Return err" />
+      </actions>
+    </function>
+  </functions>
+  <classes>
+    <class name="clsError">
+      <inherits />
+      <instance_variables>
+        <variable name="ErrorNumber" type="Number" />
+        <variable name="Function" type="String" />
+        <variable name="SqlStatement" type="String" />
+        <variable name="Reason" type="String" />
+        <variable name="Remedy" type="String" />
+        <variable name="ErrorText" type="String" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <webpages>
+    <page name="pgErrorHandling">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="ToolbarVisible" value="No" />
+          <property type="Children" value="bgt1,grp1,lg1,bgt6,bgt7,bgt8,bgt9,bgt10,bgt11" />
+          <property type="Title">
+            <value culture="en-US" title="Sql Error Handling" />
+          </property>
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Sql Error Handling Demo" />
+              </property>
+              <property type="Justify" value="Center" />
+              <property type="TextColor" value="#FF2B28D1" />
+              <property type="ParentControl" value="pgErrorHandling" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbSelect" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="MiniSize" value="Yes" />
+              <property type="Title">
+                <value culture="en-US" title="Select Non-existent Column" />
+              </property>
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="AttemptSelect" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Rows" value="2" />
+              <property type="ColumnWidth" value="30,70" />
+              <property type="Children" value="bgt2,bgt3,bgt4,bgt5" />
+              <property type="ParentControl" value="pgErrorHandling" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="pgErrorHandling" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Error No." />
+              </property>
+              <property type="TextColor" value="#FF2B28D1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="pgErrorHandling" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="ERR.ErrorNumber" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbConnect" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Connect with Invalid User/Password" />
+              </property>
+              <property type="MiniSize" value="Yes" />
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="AttemptConnect" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="pgErrorHandling" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Function" />
+              </property>
+              <property type="TextColor" value="#FF2B28D1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="pgErrorHandling" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="ERR.Function" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="SqlStatement:" />
+              </property>
+              <property type="TextColor" value="#FF2B28D1" />
+              <property type="ParentControl" value="pgErrorHandling" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt7" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="ERR.SqlStatement" />
+              <property type="ParentControl" value="pgErrorHandling" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt8" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Reason:" />
+              </property>
+              <property type="TextColor" value="#FF2B28D1" />
+              <property type="ParentControl" value="pgErrorHandling" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt9" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="ERR.Reason" />
+              <property type="ParentControl" value="pgErrorHandling" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbUpdate" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Update Number field with String" />
+              </property>
+              <property type="MiniSize" value="Yes" />
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="AttemptUpdate" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbInsert" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="MiniSize" value="Yes" />
+              <property type="Title">
+                <value culture="en-US" title="Insert Record without Required Field" />
+              </property>
+              <property type="BottomMargin" value="18" />
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="AttemptInsert" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt10" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Remedy:" />
+              </property>
+              <property type="TextColor" value="#FF2B28D1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt11" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="ERR.Remedy" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="grp1" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pbConnect,pbSelect,pbUpdate,pbInsert" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="ERR" type="clsError">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ErrorNumber" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Function" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="SqlStatement" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Reason" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Remedy" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="ErrorText" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <operation name="AttemptConnect">
+          <parameters />
+          <return type="clsError">
+            <binding name="ERR" />
+          </return>
+          <variables>
+            <variable name="err" type="clsError" />
+            <variable name="hSql" type="Sql Handle" />
+            <variable name="sSql" type="String" />
+          </variables>
+          <actions>
+            <code line="Set SqlDatabase = &quot;ISLAND&quot;" />
+            <code line="Set SqlUser = &quot;HACKER&quot;" />
+            <code line="Set SqlPassword = &quot;WILDGUESS&quot;" />
+            <code line="When SqlError ">
+              <code line="Set err = LogError( hSql, &quot;AttemptConnect&quot;, &quot;Connect&quot; )" />
+            </code>
+            <code line="If SqlConnect( hSql )">
+              <code line="Call SqlDisconnect( hSql )" />
+            </code>
+            <code line="Return err" />
+          </actions>
+        </operation>
+        <operation name="AttemptSelect">
+          <parameters />
+          <return type="clsError">
+            <binding name="ERR" />
+          </return>
+          <variables>
+            <variable name="err" type="clsError" />
+            <variable name="hSql" type="Sql Handle" />
+            <variable name="sSql" type="String" />
+          </variables>
+          <actions>
+            <code line="Set SqlDatabase = &quot;ISLAND&quot;" />
+            <code line="Set SqlUser = &quot;SYSADM&quot;" />
+            <code line="Set SqlPassword = &quot;SYSADM&quot;" />
+            <code line="When SqlError ">
+              <code line="Set err = LogError( hSql, &quot;AttemptSelect&quot;, &quot;Connect&quot; )" />
+            </code>
+            <code line="If SqlConnect( hSql )">
+              <code line="Set sSql = &quot;SELECT NoSuchColumn FROM Employee&quot; " />
+              <code line="When SqlError ">
+                <code line="Set err = LogError( hSql, &quot;AttemptSelect&quot;, sSql )" />
+              </code>
+              <code line="Call SqlPrepareAndExecute( hSql, sSql )" />
+              <code line="Call SqlDisconnect( hSql )" />
+            </code>
+            <code line="Return err" />
+          </actions>
+        </operation>
+        <operation name="AttemptUpdate">
+          <parameters />
+          <return type="clsError">
+            <binding name="ERR" />
+          </return>
+          <variables>
+            <variable name="err" type="clsError" />
+            <variable name="hSql" type="Sql Handle" />
+            <variable name="sSql" type="String" />
+          </variables>
+          <actions>
+            <code line="Set SqlDatabase = &quot;ISLAND&quot;" />
+            <code line="Set SqlUser = &quot;SYSADM&quot;" />
+            <code line="Set SqlPassword = &quot;SYSADM&quot;" />
+            <code line="When SqlError ">
+              <code line="Set err = LogError( hSql, &quot;AttemptUpdate&quot;, &quot;Connect&quot; )" />
+            </code>
+            <code line="If SqlConnect( hSql )">
+              <code line="Set sSql = &quot;UPDATE Employee SET Current_Salary = 'Way too much' WHERE Last_Name = 'Mud'&quot; " />
+              <code line="When SqlError ">
+                <code line="Set err = LogError( hSql, &quot;AttemptUpdate&quot;, sSql )" />
+              </code>
+              <code line="Call SqlPrepareAndExecute( hSql, sSql )" />
+              <code line="Call SqlDisconnect( hSql )" />
+            </code>
+            <code line="Return err" />
+          </actions>
+        </operation>
+        <operation name="AttemptInsert">
+          <parameters />
+          <return type="clsError">
+            <binding name="ERR" />
+          </return>
+          <variables>
+            <variable name="err" type="clsError" />
+            <variable name="hSql" type="Sql Handle" />
+            <variable name="sSql" type="String" />
+          </variables>
+          <actions>
+            <code line="Set SqlDatabase = &quot;ISLAND&quot;" />
+            <code line="Set SqlUser = &quot;SYSADM&quot;" />
+            <code line="Set SqlPassword = &quot;SYSADM&quot;" />
+            <code line="When SqlError ">
+              <code line="Set err = LogError( hSql, &quot;AttemptInsert&quot;, &quot;Connect&quot; )" />
+            </code>
+            <code line="If SqlConnect( hSql )">
+              <code line="Set sSql = &quot;INSERT INTO Employee (Last_Name, First_Name) VALUES ('Dee', 'Deirdre')&quot; " />
+              <code line="When SqlError ">
+                <code line="Set err = LogError( hSql, &quot;AttemptInsert&quot;, sSql )" />
+              </code>
+              <code line="Call SqlPrepareAndExecute( hSql, sSql )" />
+              <code line="Call SqlDisconnect( hSql )" />
+            </code>
+            <code line="Return err" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

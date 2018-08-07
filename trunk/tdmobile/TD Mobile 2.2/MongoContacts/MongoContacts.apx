@@ -1,0 +1,831 @@
+<application xmlns="urn:Gupta.TD.CDK" version="1.1">
+  <description>Sample using Mongo database and new Data Connections, Data Classes,
+Data Operations and Data Pages</description>
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+    <setting DefaultPage="DccontactList" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <exceptions />
+  <classes>
+    <class name="dcContact" isdata="true" namemap="Contact">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" identityfield="true" autoincrement="true" />
+        <variable name="Name" type="String" />
+        <variable name="Company" type="String" />
+        <variable name="Phone" type="String" />
+        <variable name="Email" type="String" />
+        <variable name="StartDate" type="Date/Time" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <dataconnections>
+    <dataconnection name="connMongo" connectiontype="Mongo">
+      <description />
+      <configuration>
+        <config name="DatabaseName">MongoContacts</config>
+        <config name="Port">27017</config>
+        <config name="Host">localhost</config>
+      </configuration>
+    </dataconnection>
+  </dataconnections>
+  <webpages>
+    <page name="DccontactList">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="listViewMain,bgt1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="addButton" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="layoutGridMain" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="listViewMain" />
+              <property type="Children" value="bkgd1,bkgd2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Name" />
+              </property>
+              <property type="ParentControl" value="layoutGridMain" />
+              <property type="Binding" value="DCCONTACTArray.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Company" />
+              </property>
+              <property type="ParentControl" value="layoutGridMain" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="DCCONTACTArray.Company" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="addButton" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Add" />
+              </property>
+              <property type="FileName" value="Plus" />
+              <property type="Column" value="2" />
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="DccontactEdit" extradata="0" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="listViewMain" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="DccontactList" />
+              <property type="ListBinding" value="DCCONTACTArray" />
+              <property type="Binding" value="DCCONTACT" />
+              <property type="Children" value="layoutGridMain" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="DccontactDetail" extradata="DCCONTACT.ID" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Click the Add button to insert a contact" />
+              </property>
+              <property type="VisibilityBinding" value="!DCCONTACTArray" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="DCCONTACT" type="dcContact">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Company" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Phone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Email" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="StartDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="DCCONTACTArray" array="true" type="dcContact">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Company" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Phone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Email" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="StartDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="BrowsedcContact" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="BrowsedcContact" connection="connMongo" dataaction="Browse">
+          <databinding>
+            <binding name="DCCONTACTArray" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions>
+            <sortoption name="" dir="Ascending">
+              <fieldbind>
+                <binding name="DCCONTACTArray.Company" />
+              </fieldbind>
+            </sortoption>
+            <sortoption name="" dir="Ascending">
+              <fieldbind>
+                <binding name="DCCONTACTArray.Name" />
+              </fieldbind>
+            </sortoption>
+          </sortoptions>
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="DccontactDetail">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="gridMain,navButton" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="gridMain" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="DccontactDetail" />
+              <property type="Rows" value="5" />
+              <property type="Children" value="bkgd1,Name,bkgd2,Company,bkgd3,lnk1,bkgd4,lnk2,bkgd5,StartDate" />
+              <property type="ColumnWidth" value="25,75" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Name" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Name" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="DCCONTACT.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Company" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Company" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="DCCONTACT.Company" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Phone" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Email" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="StartDate" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="4" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="StartDate" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="4" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="DCCONTACT.StartDate" />
+              <property type="Format" value="ShortDate" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="navButton" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Edit" />
+              </property>
+              <property type="ParentControl" value="DccontactDetail" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="DccontactEdit" extradata="ID" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lnk1" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="LinkType" value="Phone" />
+              <property type="Binding" value="DCCONTACT.Phone" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lnk2" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="LinkType" value="Email" />
+              <property type="Binding" value="DCCONTACT.Email" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="DCCONTACT" type="dcContact">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Company" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Phone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Email" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="StartDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="ID" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="GetdcContact" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="GetdcContact" connection="connMongo" dataaction="Read">
+          <databinding>
+            <binding name="DCCONTACT" />
+          </databinding>
+          <identitybinding>
+            <binding name="ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="DccontactEdit">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="gridMain" />
+          <property type="FooterVisible" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="gridMain" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="DccontactEdit" />
+              <property type="Rows" value="5" />
+              <property type="Children" value="bkgd1,Name,bkgd2,Company,bkgd3,Phone,bkgd4,Email,bkgd5,StartDate" />
+              <property type="ColumnWidth" value="25,75" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Name" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Name" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="DCCONTACT.Name" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Company" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Company" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="DCCONTACT.Company" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Phone" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Phone" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="DCCONTACT.Phone" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Email" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="Email" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="DCCONTACT.Email" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgd5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="StartDate" />
+              </property>
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="4" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="StartDate" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="gridMain" />
+              <property type="Row" value="4" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="DCCONTACT.StartDate" />
+              <property type="Format" value="Date" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="saveButton" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Save" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="nav1" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="If" data="DCCONTACT.ID" extradata="">
+                  <action action="Invoke" data="EditdcContact" extradata="">
+                    <action action="Alert" data="" extradata="&quot;Changes Saved&quot;">
+                      <action action="Navigate" data="&lt;back&gt;" extradata="" />
+                    </action>
+                  </action>
+                </action>
+                <action action="Else" data="" extradata="">
+                  <action action="Invoke" data="AdddcContact" extradata="">
+                    <action action="Alert" data="" extradata="&quot;Add Successful&quot;">
+                      <action action="Navigate" data="&lt;back&gt;" extradata="" />
+                    </action>
+                  </action>
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="TopMargin" value="0" />
+              <property type="Children" value="saveButton,pbDelete,pbCancel" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbDelete" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Delete" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Confirm" data="" extradata="&quot;Really delete this contact?&quot;">
+                  <action action="Invoke" data="DeletedcContact" extradata="" />
+                  <action action="Navigate" data="DccontactList" extradata="" />
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbCancel" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Cancel" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="DCCONTACT" type="dcContact">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <validation>
+                <rule type="IsRequired" value="">
+                  <errmsg msg="You must supply a name for your contact!" locale="en-US" />
+                </rule>
+              </validation>
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Company" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Phone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Email" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="StartDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="ID" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="If" data="ID" extradata="">
+              <action action="Invoke" data="GetdcContact" extradata="" />
+            </action>
+            <action action="Else" data="" extradata="">
+              <action action="Invoke" data="GetDate" extradata="" />
+            </action>
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="GetDate">
+          <parameters />
+          <return type="Date/Time">
+            <binding name="DCCONTACT.StartDate" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return SalDateCurrent( )" />
+          </actions>
+        </operation>
+        <dataoperation name="DeletedcContact" connection="connMongo" dataaction="Delete">
+          <databinding>
+            <binding name="DCCONTACT" />
+          </databinding>
+          <identitybinding>
+            <binding name="DCCONTACT.ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="AdddcContact" connection="connMongo" dataaction="Add">
+          <databinding>
+            <binding name="DCCONTACT" />
+          </databinding>
+          <identitybinding>
+            <binding name="ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="EditdcContact" connection="connMongo" dataaction="Edit">
+          <databinding>
+            <binding name="DCCONTACT" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="GetdcContact" connection="connMongo" dataaction="Read">
+          <databinding>
+            <binding name="DCCONTACT" />
+          </databinding>
+          <identitybinding>
+            <binding name="ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+  </webpages>
+</application>

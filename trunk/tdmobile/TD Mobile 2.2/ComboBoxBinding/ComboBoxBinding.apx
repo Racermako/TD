@@ -1,0 +1,145 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="4/29/2014 3:41 PM: Frank - " />
+    <change description="4/28/2014 5:11 PM: Frank - " />
+    <change description="11/1/2013 4:05 PM: Frank" />
+    <change description="11/1/2013 4:05 PM: Frank" />
+    <change description="11/1/2013 4:02 PM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Shows how to populate a combobox via a string array that you specify as its List Source Bind,
+and how to get the user's selection from its Value Bind.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="cmbStates,bgtMsg" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="cmbStates" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="STATE" />
+              <property type="ListBinding" value="STATES" />
+            </propertylist>
+          </properties>
+          <listinitialization />
+          <events>
+            <event name="Change">
+              <actions>
+                <action action="Invoke" data="GetCustomersByState" extradata="" />
+              </actions>
+            </event>
+            <event name="Create">
+              <actions>
+                <action action="Invoke" data="PopulateCombobox" extradata="">
+                  <action action="Set" data="STATE" extradata="&quot;Alabama&quot;" />
+                  <action action="Invoke" data="GetCustomersByState" extradata="" />
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgtMsg" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="MSG" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <comment>! STATES is the List Source Bind for the combobox 'cmbStates'; it is populated as the Return value from the Operation PopulateCombobox</comment>
+        <binding name="STATES" array="true" type="String">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! STATE is the Bind Value for the combobox 'cmbState' and gets/sets the current selection</comment>
+        <binding name="STATE" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <comment>! MSG is the Bind Value for the text field 'bgtMsg'; it is assigned a value as the Return value from the Operation GetCustomersByState</comment>
+        <binding name="MSG" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <operation name="PopulateCombobox">
+          <parameters />
+          <return type="String" array="true">
+            <binding name="STATES" />
+          </return>
+          <variables>
+            <variable name="states" type="String" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="Set states[0] = &quot;Alabama&quot;" />
+            <code line="Set states[1] = &quot;Alaska&quot;" />
+            <code line="Set states[2] = &quot;Arizona&quot;" />
+            <code line="Set states[3] = &quot;Arkansas&quot;" />
+            <code line="Return states" />
+          </actions>
+        </operation>
+        <operation name="GetCustomersByState">
+          <parameters>
+            <variable name="pState" type="String">
+              <binding name="STATE" />
+            </variable>
+          </parameters>
+          <return type="String">
+            <binding name="MSG" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return &quot;TODO: get list of customers from &quot; || pState" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

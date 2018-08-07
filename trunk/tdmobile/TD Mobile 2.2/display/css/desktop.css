@@ -1,0 +1,36 @@
+
+/*
+* {margin: 0; padding: 0;}
+ 
+div {
+  margin: 20px;
+}
+*/
+ 
+#prod_container ul {
+  list-style-type: none;
+  width: 800px;
+}
+ 
+#prod_container h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+ 
+#prod_container li img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+ 
+#prod_container li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+ 
+#prod_container li {
+  padding: 10px;
+  overflow: auto;
+}
+ 
+#prod_container li:hover {
+  background: #eee;
+  cursor: pointer;
+}

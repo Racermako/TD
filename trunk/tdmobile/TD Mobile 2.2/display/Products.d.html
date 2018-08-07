@@ -1,0 +1,177 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>
+	Gupta Technologies | App Dev Tools, Database, Migration Solutions
+</title>
+<link rel="stylesheet" href="stylesheets/styles.css" type="text/css" media="screen">		
+		<link rel="stylesheet" type="text/css" href="css/desktop.css"  />
+		
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.hoverIntent.minified.js"></script>
+		<script type="text/javascript" src="js/td.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+		
+				Td.Localization.init("en-US");
+				
+				new Td.Data.Operation("GetProducts", "Products.asmx/GetProducts", "Products", {});
+				
+				var prodBind = new Td.Data.Binding(
+						"Products",
+						"Functional Class",
+						{
+							boolstate: {
+								booltype: "HasItems",
+								compareval: ""
+							},
+							members:
+							[
+								{
+									name: "ImageUrl",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										}
+									}
+								},
+								{
+									name: "Description",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										}
+									}
+								},
+								{
+									name: "Name",
+									type: "String",
+									opts: {
+										boolstate: {
+											booltype: "DoesntEqualValue",
+											compareval: ""
+										}
+									}
+								}
+							]
+
+						}
+					);
+					
+				
+				$(prodBind).on(
+						'changed',
+						function (evt, value, path) { populateProducts(value, path) }
+						);
+						
+				Td.Data.Operation.get("GetProducts").invoke();
+				
+				function populateProducts(value, path) {
+
+					var prodList = $('#prod_list');
+					
+					for (var idx = 0; idx < value.length; idx++){
+						var prod = value[idx];
+						
+						var itemHtml = "<li><a href='ProductDetail?ProductId=" + prod.ID.Value + "'>" +
+										"<img style='width:200px' src='" + prod.ImageUrl + "'>" +
+										"<h3>" + prod.Name + "</h3>" +
+										"<p>" + prod.Description + "</p>" +
+										"</a></li>";
+						
+						prodList.append(itemHtml);
+					}
+				}
+            });
+        </script>
+</head>
+<body>
+
+<form name="aspnetForm" method="post" action="Default.aspx" id="aspnetForm">
+
+	<div id="container" class="clear">
+		<div id="header" class="clear">
+	<h1><a href="#">GUPTA</a></h1>
+	<div id="nav" class="">
+		<ul>
+			<li id="ctl00_loginLink"><a href="/Account/login.aspx"> Login </a> | </li>
+			<li><a href="/About/contact.aspx"> Contact Us </a></li>
+		</ul>
+	</div>
+	
+	</div><!-- header -->
+		<div style="height:65px;">
+				
+			<div id="menu_wrapper">
+				<div class="left"></div>
+				<ul id="menu">
+					<li><a href="/default.aspx" class="home">Home</a></li>
+					<li>
+						<a href="/Products/default.aspx" class="products">Products</a>
+					</li>
+					<li>
+						<a href="/Solutions/default.aspx" class="solutions">Solutions</a>
+					</li>
+					<li>
+						<a href="/Services/default.aspx" class="services">Services</a>
+					</li>
+					<li>
+						<a href="/News-Events/default.aspx" class="news">News &amp; Events</a>
+					</li>
+					<li>
+						<a href="/About/default.aspx" class="about">About Gupta Technologies</a>
+					</li>
+				</ul>
+				<div class="right"></div>
+			</div><!-- menu_wrapper -->
+
+		</div>
+		<div id="search-site">
+				<input name="ctl00$SearchBox$txtSearch" type="text" maxlength="200" size="11" id="ctl00_SearchBox_txtSearch" class="searchbox" onkeypress="return clickButton(event,'ctl00_SearchBox_btnSearch')">&nbsp;
+				<input type="image" name="ctl00$SearchBox$btnSearch" id="ctl00_SearchBox_btnSearch" title="search" class="searchbutton" src="images/search-button.png" alt="search" align="top" style="border-width:0px;">
+		</div>	
+
+		<div id="banner">
+			<img src="images/products-banner.png" border="0">
+		</div>
+		
+		<div id="content">
+		
+			<div class="content-top"></div>
+
+			<div id="prod_container" class="content-middle">
+				
+				<div>
+				  <ul id="prod_list">
+				  </ul>
+				</div>
+				
+			</div>
+			
+			<div class="content-bottom"></div>
+		
+		</div>
+		
+	</div><!-- container -->
+
+        <div id="footer">
+		<div class="copyright">
+			<span>Copyright © 2013 Gupta Technologies. All Rights Reserved.</span>
+		</div><!-- copyright -->
+		<div class="social-media-icons">
+			<p>Follow Us:</p>
+			<ul>
+				<li><a href="http://www.facebook.com/guptatechnologies" target="_blank"><span class="facebook"></span></a></li>
+				<li><a href="http://twitter.com/Gupta_tweets" target="_blank"><span class="twitter"></span></a></li>
+				<li><a href="http://www.youtube.com/guptatechnologies" target="_blank"><span class="youtube"></span></a></li>
+				<li><a href="http://www.linkedin.com/companies/166593" target="_blank"><span class="linkedin"></span></a></li>
+				<li><a href="https://plus.google.com/104834940749424317914/posts" target="_blank"><span class="googleplus"></span></a></li>
+			</ul>
+		</div><!-- social-media-icons -->
+	</div><!-- footer -->
+     </form>
+</body>
+</html>

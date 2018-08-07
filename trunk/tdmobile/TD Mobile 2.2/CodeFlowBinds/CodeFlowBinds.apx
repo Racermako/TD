@@ -1,0 +1,200 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="true">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="11/4/2013 2:47 PM: Frank" />
+    <change description="11/4/2013 2:40 PM: Frank" />
+    <change description="11/4/2013 2:33 PM: Frank" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="grp1,pbProceed,bgt1" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Code Flow Binds" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="grp1" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="rb1,rb2,rb3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb1" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Option 1" />
+              </property>
+              <property type="Binding" value="OPT1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb2" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Option 2" />
+              </property>
+              <property type="Binding" value="OPT2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb3" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Option 3" />
+              </property>
+              <property type="Binding" value="OPT3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbProceed" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Proceed" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="If" data="OPT1" extradata="">
+                  <action action="Invoke" data="DoOptionOne" extradata="" />
+                </action>
+                <action action="ElseIf" data="OPT2" extradata="">
+                  <action action="Invoke" data="DoOptionTwo" extradata="" />
+                </action>
+                <action action="ElseIf" data="OPT3" extradata="">
+                  <action action="Invoke" data="DoOptionThree" extradata="" />
+                </action>
+                <action action="Else" data="" extradata="">
+                  <action action="Set" data="STR" extradata="&quot;Please make a selection above&quot;" />
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="STR" />
+              <property type="TopMargin" value="24" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="OPT1" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="OPT2" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="OPT3" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="STR" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations>
+        <operation name="DoOptionOne">
+          <parameters />
+          <return type="String">
+            <binding name="STR" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return &quot;You chose Option 1, congratulations!&quot;" />
+          </actions>
+        </operation>
+        <operation name="DoOptionTwo">
+          <parameters />
+          <return type="String">
+            <binding name="STR" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return &quot;You chose Option 2, way to go!&quot;" />
+          </actions>
+        </operation>
+        <operation name="DoOptionThree">
+          <parameters />
+          <return type="String">
+            <binding name="STR" />
+          </return>
+          <variables />
+          <actions>
+            <code line="Return &quot;You chose Option 3, very wise!&quot;" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+  </webpages>
+</application>

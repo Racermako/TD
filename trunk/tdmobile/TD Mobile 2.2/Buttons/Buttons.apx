@@ -1,0 +1,256 @@
+<application xmlns="urn:Gupta.TD.CDK" trackchanges="Simple">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="1/14/2014 11:27 AM: Frank - " />
+    <change description="1/14/2014 11:27 AM: Frank - " />
+    <change description="10/21/2013 6:34 PM: support" />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Shows different ways to visually use Pushbuttons</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="pb1,grp1,grp2,pb11,grp3,pb10,pb12" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Button Uses" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb1" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Button 1" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions />
+            </event>
+          </events>
+        </control>
+        <control name="grp1" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pb2,pb3,pb4" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb2" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Button1" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb3" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Button2" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb4" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Button3" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="grp2" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pb5,pb6,pb7" />
+              <property type="Orientation" value="Horizontal" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb5" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp2" />
+              <property type="TopMargin" value="0" />
+              <property type="Theme" value="B" />
+              <property type="Title">
+                <value culture="en-US" title="Left" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb6" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp2" />
+              <property type="TopMargin" value="0" />
+              <property type="Theme" value="B" />
+              <property type="Title">
+                <value culture="en-US" title="Middle" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb7" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp2" />
+              <property type="TopMargin" value="0" />
+              <property type="Theme" value="B" />
+              <property type="Title">
+                <value culture="en-US" title="Right" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="grp3" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pb8,pb9" />
+              <property type="Orientation" value="Horizontal" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb8" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp3" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="LeftArrow" />
+              <property type="Theme" value="B" />
+              <property type="CssClass" value="square_btn" />
+              <property type="Title">
+                <value culture="en-US" title="Left" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb9" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp3" />
+              <property type="TopMargin" value="0" />
+              <property type="ImageAlignment" value="Right" />
+              <property type="FileName" value="RightArrow" />
+              <property type="Theme" value="B" />
+              <property type="CssClass" value="square_btn" />
+              <property type="Title">
+                <value culture="en-US" title="Right" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb11" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp3" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Edit" />
+              <property type="ImageAlignment" value="Top" />
+              <property type="LeftMargin" value="50" />
+              <property type="RightMargin" value="50" />
+              <property type="Theme" value="B" />
+              <property type="MiniSize" value="Yes" />
+              <property type="Title">
+                <value culture="en-US" title="Button with icon on top" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb10" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Theme" value="A" />
+              <property type="MiniSize" value="Yes" />
+              <property type="Title">
+                <value culture="en-US" title="Mini Size" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pb12" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="FileName" value="Check" />
+              <property type="Title">
+                <value culture="en-US" title="" />
+              </property>
+              <property type="Theme" value="A" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings />
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

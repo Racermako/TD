@@ -1,0 +1,4055 @@
+<application xmlns="urn:Gupta.TD.CDK" version="1.1" trackchanges="Simple">
+  <settings>
+    <setting BuildURL="http://localhost/acadia" />
+    <setting DefaultPage="SelectCompany" />
+    <setting LoginPage="Login" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting DefaultLanguage="en-US" />
+    <setting PublishIISUrl="localhost" />
+  </settings>
+  <libraries />
+  <changelog>
+    <change description="25/06/2014 11:18: henric - " />
+    <change description="25/06/2014 11:13: henric - " />
+  </changelog>
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes>
+    <cssfile name="islanddemo.css" path="." />
+  </cssincludes>
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <exceptions />
+  <classes>
+    <class name="dclsCompany" isdata="true" namemap="COMPANY">
+      <inherits />
+      <instance_variables>
+        <variable name="ID" type="Number" identityfield="true" namemap="COMPANY_ID" />
+        <variable name="Name" type="String" namemap="COMPANY_NAME" />
+        <variable name="Address" type="String" namemap="ADDRESS" />
+        <variable name="City" type="String" namemap="CITY" />
+        <variable name="State" type="String" namemap="STATE" />
+        <variable name="Zip" type="String" namemap="ZIP" />
+      </instance_variables>
+      <functions />
+    </class>
+    <class name="dclsInvoiceItem" isdata="true" namemap="INVOICE_ITEM">
+      <inherits />
+      <instance_variables>
+        <variable name="invoice_no" type="Number" identityfield="true" namemap="INVOICE_NO" />
+        <variable name="Style" type="String" namemap="STYLE" />
+        <variable name="Color" type="String" namemap="COLOR" />
+        <variable name="Quantity" type="Number" namemap="QUANTITY" />
+        <variable name="Price" type="Number" namemap="ITEM_PRICE" />
+      </instance_variables>
+      <functions />
+    </class>
+    <class name="dclsInvoice" isdata="true" namemap="INVOICE">
+      <inherits />
+      <instance_variables>
+        <variable name="InvoiceNo" type="Number" identityfield="true" namemap="INVOICE_NO" />
+        <variable name="InvoiceDate" type="Date/Time" namemap="INVOICE_DATE" />
+        <variable name="InvoiceDatePaid" type="Date/Time" namemap="DATE_PAID" />
+        <variable name="Status" type="String" />
+        <variable name="Amount" type="Number" namemap="AMOUNT_PAID" />
+        <variable name="company_id" type="Number" namemap="COMPANY_ID" />
+      </instance_variables>
+      <functions />
+    </class>
+    <class name="dclsProduct" isdata="true" namemap="PRODUCT">
+      <inherits />
+      <instance_variables>
+        <variable name="nID" type="Number" identityfield="true" namemap="STYLE_ID" />
+        <variable name="sName" type="String" namemap="STYLE" />
+        <variable name="sDescription" type="String" namemap="DESCRIPTION" />
+        <variable name="nPrice" type="Number" namemap="PRICE" />
+        <variable name="bnPicture" type="Binary" namemap="PICTURE" />
+      </instance_variables>
+      <functions />
+    </class>
+    <class name="dclsEmployee" isdata="true" namemap="EMPLOYEE">
+      <inherits />
+      <instance_variables>
+        <variable name="nID" type="String" identityfield="true" namemap="EMPLOYEE_ID" />
+        <variable name="sFirstName" type="String" namemap="FIRST_NAME" />
+        <variable name="sLastName" type="String" namemap="LAST_NAME" />
+        <variable name="sDeptID" type="String" namemap="DEPT_ID" />
+        <variable name="dtDateHired" type="Date/Time" namemap="DATE_HIRED" />
+        <variable name="nCurrentSalary" type="Number" namemap="CURRENT_SALARY" />
+        <variable name="sEmail" type="String" namemap="EMAIL" />
+        <variable name="binPhoto" type="Binary" namemap="PHOTO" />
+        <variable name="sPhone" type="String" namemap="PHONE" />
+      </instance_variables>
+      <functions />
+    </class>
+  </classes>
+  <dataconnections>
+    <dataconnection name="connMongo" connectiontype="Mongo">
+      <description />
+      <configuration>
+        <config name="DatabaseName">Island</config>
+        <config name="Port">27017</config>
+        <config name="Host">localhost</config>
+      </configuration>
+    </dataconnection>
+  </dataconnections>
+  <webpages>
+    <page name="EditEmployee">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Edits the details of an Employee record</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt2,df2,dfFirstName,dfLastName,cmbDeptID,dfDateHired,dfCurrentSalary,dfEmail,dfPhone,lg1" />
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Employee" />
+              </property>
+              <property type="Children" value="pbSave,pbCancel" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfFirstName" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="First Name:" />
+              </property>
+              <property type="Binding" value="EMPLOYEE.sFirstName" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfLastName" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Last Name:" />
+              </property>
+              <property type="Binding" value="EMPLOYEE.sLastName" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfDateHired" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Date Hired:" />
+              </property>
+              <property type="Format" value="Date" />
+              <property type="Binding" value="EMPLOYEE.dtDateHired" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbSave" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Check" />
+              <property type="Title">
+                <value culture="en-US" title="Save" />
+              </property>
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="If" data="ISNEW" extradata="">
+                  <action action="Alert" data="" extradata="&quot;Add ability is disabled in this demo mode. &lt;br&gt;Uncomment source code to enable it.&quot;" commented="true" />
+                  <comment>! Uncomment following statement to allow adding a record</comment>
+                  <action action="Invoke" data="doAddEmpolyee" extradata="" />
+                </action>
+                <action action="Else" data="" extradata="">
+                  <action action="Alert" data="" extradata="&quot;Add ability is disabled in this demo mode. &lt;br&gt;Uncomment source code to enable it.&quot;" commented="true" />
+                  <comment>! Uncomment following statement to allow updating the record</comment>
+                  <action action="Invoke" data="doSaveChanges" extradata="">
+                    <action action="Navigate" data="Employees" extradata="" />
+                  </action>
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbCancel" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Cancel" />
+              </property>
+              <property type="FileName" value="Delete" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="cmbDeptID" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Dept. ID:" />
+              </property>
+              <property type="Binding" value="EMPLOYEE.sDeptID" />
+              <property type="TopMargin" value="5" />
+              <property type="RightMargin" value="150" />
+            </propertylist>
+          </properties>
+          <listinitialization>
+            <text value="CSS" />
+            <text value="FIN" />
+            <text value="HR" />
+            <text value="MFG" />
+            <text value="MIS" />
+            <text value="MKTG" />
+            <text value="PD" />
+          </listinitialization>
+          <events />
+        </control>
+        <control name="dfEmail" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Email:" />
+              </property>
+              <property type="Binding" value="EMPLOYEE.sEmail" />
+              <property type="Format" value="Email" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfCurrentSalary" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Current Salary:" />
+              </property>
+              <property type="Binding" value="EMPLOYEE.nCurrentSalary" />
+              <property type="Format" value="Number" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Columns" value="1" />
+              <property type="Rows" value="2" />
+              <property type="TopMargin" value="5" />
+              <property type="Children" value="lg2,df1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Photo:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="imgPhoto" type="Picture">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg2" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.binPhoto" />
+              <property type="CssClass" value="smallpic" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df1" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Binding" value="EMPLOYEE.binPhoto" />
+              <property type="Format" value="File" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="dfPhone" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Phone:" />
+              </property>
+              <property type="Format" value="Tel" />
+              <property type="Binding" value="EMPLOYEE.sPhone" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="New Employee" />
+              </property>
+              <property type="Justify" value="Center" />
+              <property type="VisibilityBinding" value="!EMPLOYEE.nID" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df2" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="ID" />
+              </property>
+              <property type="Binding" value="EMPLOYEE.nID" />
+              <property type="VisibilityBinding" value="" />
+              <property type="EnabledBinding" value="ISNEW" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg2" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt1,imgPhoto" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="EMPLOYEE" type="dclsEmployee">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="nID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sFirstName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sLastName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sDeptID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="dtDateHired" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="nCurrentSalary" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sEmail" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="binPhoto" type="Binary">
+              <state mode="None" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sPhone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="EMPLOYEE_ID" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="ISNEW" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetEmployeeDetails" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doAddEmpolyee" connection="connMongo" dataaction="Add">
+          <databinding>
+            <binding name="EMPLOYEE" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="doGetEmployeeDetails" connection="connMongo" dataaction="Read">
+          <databinding>
+            <binding name="EMPLOYEE" />
+          </databinding>
+          <identitybinding>
+            <binding name="EMPLOYEE_ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="doSaveChanges" connection="connMongo" dataaction="Edit">
+          <databinding>
+            <binding name="EMPLOYEE" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="EmployeeDetails">
+      <supporteddisplays>
+        <display id="phone" />
+        <display id="tablet" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg2,lg1,pbDelete,lnk2" />
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+        <propertylist display="tablet">
+          <property type="Children" value="lg2,lg1,pbDelete,lnk2" />
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Employee" />
+              </property>
+              <property type="Children" value="pbEdit,pbHome" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="Title">
+                <value culture="en-US" title="Employee Details" />
+              </property>
+              <property type="Children" value="pbEdit,pbHome" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Rows" value="6" />
+              <property type="Children" value="bgt3,bgtDeptID,bgt1,bgtDateHired,bgt2,bgt4,bgt5,bgtEmail,bgt7,lnk1,bgt6,imgPhoto" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg2" />
+              <property type="ColumnWidth" value="30,70" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="Rows" value="4" />
+              <property type="Children" value="bgt3,bgtDeptID,bgt2,bgt4,bgt1,bgtDateHired,bgt5,bgtEmail,bgt7,lnk1,bgt6,imgPhoto" />
+              <property type="RightMargin" value="20" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg2" />
+              <property type="Columns" value="4" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtFirstName" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg2" />
+              <property type="TopMargin" value="0" />
+              <property type="Justify" value="Right" />
+              <property type="Binding" value="EMPLOYEE.sFirstName" />
+              <property type="RightMargin" value="5" />
+              <property type="FontSize" value="1.5" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg2" />
+              <property type="TopMargin" value="0" />
+              <property type="Justify" value="Right" />
+              <property type="Binding" value="EMPLOYEE.sFirstName" />
+              <property type="RightMargin" value="5" />
+              <property type="FontSize" value="1.5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtLastName" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg2" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.sLastName" />
+              <property type="FontSize" value="1.5" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg2" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.sLastName" />
+              <property type="FontSize" value="1.5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbEdit" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Edit" />
+              </property>
+              <property type="FileName" value="Edit" />
+              <property type="Theme" value="B" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Edit" />
+              </property>
+              <property type="FileName" value="Edit" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="EditEmployee" extradata="EMPLOYEE_ID, 0" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbHome" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Home" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Home" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+              <property type="ImageAlignment" value="Top" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+              <property type="FileName" value="Bullets" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+              <property type="FileName" value="Shop" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+              <property type="FileName" value="User" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Dept ID:" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Dept ID:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtDeptID" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.sDeptID" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.sDeptID" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg2" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgtFirstName,bgtLastName" />
+              <property type="BottomMargin" value="5" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="Children" value="bgtFirstName,bgtLastName" />
+              <property type="BottomMargin" value="20" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Date Hired:" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Date Hired:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtDateHired" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.dtDateHired" />
+              <property type="Format" value="ShortDate" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.dtDateHired" />
+              <property type="Format" value="ShortDate" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Salary:" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Current Salary:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.nCurrentSalary" />
+              <property type="Format" value="Number" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="3" />
+              <property type="Binding" value="EMPLOYEE.nCurrentSalary" />
+              <property type="Format" value="Number" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Title">
+                <value culture="en-US" title="Email:" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Title">
+                <value culture="en-US" title="Email:" />
+              </property>
+              <property type="Column" value="2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgtEmail" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.sEmail" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="3" />
+              <property type="Binding" value="EMPLOYEE.sEmail" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="imgPhoto" type="Picture">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="EMPLOYEE.binPhoto" />
+              <property type="Row" value="5" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+              <property type="CssClass" value="smallpic" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="Binding" value="EMPLOYEE.binPhoto" />
+              <property type="Row" value="3" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="3" />
+              <property type="ParentControl" value="lg1" />
+              <property type="CssClass" value="smallpic" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="5" />
+              <property type="Title">
+                <value culture="en-US" title="Photo:" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Title">
+                <value culture="en-US" title="Photo:" />
+              </property>
+              <property type="Column" value="2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt7" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="4" />
+              <property type="Title">
+                <value culture="en-US" title="Phone:" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Phone:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lnk1" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="4" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.sPhone" />
+              <property type="LinkType" value="Phone" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEE.sPhone" />
+              <property type="LinkType" value="Phone" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbDelete" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Delete Employee" />
+              </property>
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="Title">
+                <value culture="en-US" title="Delete Employee" />
+              </property>
+              <property type="FileName" value="Delete" />
+              <property type="BottomMargin" value="10" />
+              <property type="TopMargin" value="10" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Confirm" data="" extradata="&quot;Are you sure you want to delete this employee?&quot;">
+                  <action action="Alert" data="" extradata="&quot;Delete ability is disabled in this demo mode. &lt;br&gt;Uncomment source code to enable it.&quot;">
+                    <action action="Navigate" data="&lt;back&gt;" extradata="" />
+                  </action>
+                  <comment>! Uncomment following statements to allow deletion of record</comment>
+                  <action action="Invoke" data="doDeleteEmployee" extradata="" commented="true">
+                    <action action="Navigate" data="&lt;back&gt;" extradata="" />
+                  </action>
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lnk2" type="Link">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Tablet" />
+              </property>
+              <property type="Href" value="javascript:Td.Util.setDisplay(&quot;t&quot;)" />
+              <property type="TopMargin" value="10" />
+            </propertylist>
+            <propertylist display="tablet">
+              <property type="Title">
+                <value culture="en-US" title="Phone" />
+              </property>
+              <property type="Href" value="javascript:Td.Util.setDisplay(&quot;p&quot;)" />
+              <property type="TopMargin" value="10" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="EMPLOYEE" type="dclsEmployee">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="nID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sFirstName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sLastName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sDeptID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="dtDateHired" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="nCurrentSalary" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sEmail" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="binPhoto" type="Binary">
+              <state mode="None" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sPhone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="EMPLOYEE_ID" type="String">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetEmployeeDetails" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doGetEmployeeDetails" connection="connMongo" dataaction="Read">
+          <databinding>
+            <binding name="EMPLOYEE" />
+          </databinding>
+          <identitybinding>
+            <binding name="EMPLOYEE_ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="doDeleteEmployee" connection="connMongo" dataaction="Delete">
+          <databinding>
+            <binding name="EMPLOYEE" />
+          </databinding>
+          <identitybinding>
+            <binding name="EMPLOYEE_ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="EditProduct">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt3,bgt1,dfName,dfDescription,dfPrice,lg1,df1" />
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Edit Product" />
+              </property>
+              <property type="Children" value="pbCancel,pbSave" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfName" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Name:" />
+              </property>
+              <property type="Binding" value="PRODUCT.sName" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfDescription" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Description:" />
+              </property>
+              <property type="Binding" value="PRODUCT.sDescription" />
+              <property type="Multiline" value="Yes" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfPrice" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Price:" />
+              </property>
+              <property type="Format" value="Number" />
+              <property type="Binding" value="PRODUCT.nPrice" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCancel" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Back" />
+              <property type="Title">
+                <value culture="en-US" title="Cancel" />
+              </property>
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="If" data="PRODUCT.nID" extradata="">
+                  <action action="Navigate" data="ProductDetails" extradata="PRODUCT_ID" />
+                </action>
+                <action action="Else" data="" extradata="">
+                  <action action="Navigate" data="Products" extradata="" />
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Edit" />
+              </property>
+              <property type="Justify" value="Center" />
+              <property type="TopMargin" value="5" />
+              <property type="VisibilityBinding" value="PRODUCT.nID" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbSave" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Save" />
+              </property>
+              <property type="FileName" value="Check" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Alert" data="" extradata="&quot;Save ability is disabled in this demo mode. &lt;br&gt;Uncomment source code to enable it.&quot;" commented="true" />
+                <comment>! Uncomment following statement to allow updating record</comment>
+                <action action="Invoke" data="doSaveChanges" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Fabric Image:" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="imgPicture" type="Picture">
+          <properties>
+            <propertylist display="phone">
+              <property type="LeftMargin" value="20" />
+              <property type="RightMargin" value="20" />
+              <property type="Binding" value="PRODUCT.bnPicture" />
+              <property type="CssClass" value="bigpic" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt2,imgPicture" />
+              <property type="ColumnWidth" value="35,65" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="df1" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="Format" value="File" />
+              <property type="Binding" value="PRODUCT.bnPicture" />
+              <property type="Row" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="New" />
+              </property>
+              <property type="Justify" value="Center" />
+              <property type="VisibilityBinding" value="!PRODUCT.nID" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="PRODUCT" type="dclsProduct">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="nID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sDescription" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="nPrice" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="bnPicture" type="Binary">
+              <state mode="None" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="PRODUCT_ID" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetProductDetails" extradata="">
+              <action action="Invoke" data="GetProductImage" extradata="" commented="true" />
+            </action>
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doGetProductDetails" connection="connMongo" dataaction="Read">
+          <databinding>
+            <binding name="PRODUCT" />
+          </databinding>
+          <identitybinding>
+            <binding name="PRODUCT_ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="doSaveChanges" connection="connMongo" dataaction="Edit">
+          <databinding>
+            <binding name="PRODUCT" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="ProductDetails">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt1,bgt4,bgt5,lg1,bgt6,imgProductPicture" />
+          <property type="Title">
+            <value culture="en-US" title="Island Corp" />
+          </property>
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pbEdit,pbHome" />
+              <property type="Title">
+                <value culture="en-US" title="Product Details" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="PRODUCT.sName" />
+              <property type="FontSize" value="1.5" />
+              <property type="Justify" value="Center" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt2,bgt3" />
+              <property type="TopMargin" value="20" />
+              <property type="ColumnWidth" value="25,75" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Price:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="PRODUCT.nPrice" />
+              <property type="Format" value="Number" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Description:" />
+              </property>
+              <property type="TopMargin" value="10" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="PRODUCT.sDescription" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbEdit" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Edit" />
+              </property>
+              <property type="FileName" value="Edit" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="EditProduct" extradata="PRODUCT_ID" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="imgProductPicture" type="Picture">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="PRODUCT.bnPicture" />
+              <property type="CssClass" value="bigpic" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbHome" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Home" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Fabric Image:" />
+              </property>
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="PRODUCT" type="dclsProduct">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="nID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sDescription" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="nPrice" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="bnPicture" type="Binary">
+              <state mode="None" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="PRODUCT_ID" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetProductDetails" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doGetProductDetails" connection="connMongo" dataaction="Read">
+          <databinding>
+            <binding name="PRODUCT" />
+          </databinding>
+          <identitybinding>
+            <binding name="PRODUCT_ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="Products">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="ltv1" />
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+              <property type="Children" value="pbHome,pbNewProduct" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="PRODUCTS" />
+              <property type="Binding" value="PRODUCT" />
+              <property type="Children" value="bgt1" />
+              <property type="DivideBy" value="bgt1" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="ProductDetails" extradata="PRODUCT.nID" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltv1" />
+              <property type="Binding" value="PRODUCTS.sName" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbHome" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Home" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbNewProduct" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="New" />
+              </property>
+              <property type="FileName" value="Plus" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="EditProduct" extradata="PRODUCT.nID" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="PRODUCTS" array="true" type="dclsProduct">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="nID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sDescription" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="nPrice" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="bnPicture" type="Binary">
+              <state mode="None" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="PRODUCT" type="dclsProduct">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="nID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sDescription" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="nPrice" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="bnPicture" type="Binary">
+              <state mode="None" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetProducts" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doGetProducts" connection="connMongo" dataaction="Browse">
+          <databinding>
+            <binding name="PRODUCTS" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="Login">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Title">
+            <value culture="en-US" title="Login" />
+          </property>
+          <property type="Children" value="bgt1,dfUserID,dfPassword,pbLogin" />
+          <property type="Theme" value="E" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Island Login (Mongo)" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Invalid User ID or Password." />
+                <value culture="de-DE" title="Ungültiger Benutzer oder falsches Passwort" />
+              </property>
+              <property type="Justify" value="Center" />
+              <property type="VisibilityBinding" value="!LOGIN_STATUS" />
+              <property type="TextColor" value="#FFFF0000" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfUserID" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="User ID:" />
+                <value culture="de-DE" title="Benutzer ID" />
+              </property>
+              <property type="ParentControl" value="Login" />
+              <property type="Binding" value="USER_ID" />
+              <property type="ToolTip">
+                <value culture="en-US" title="User ID" />
+              </property>
+              <property type="ShowClearButton" value="Yes" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfPassword" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Password:" />
+                <value culture="de-DE" title="Passwort" />
+              </property>
+              <property type="ParentControl" value="Login" />
+              <property type="Format" value="Password" />
+              <property type="Binding" value="PASSWORD" />
+              <property type="ToolTip">
+                <value culture="en-US" title="Password" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbLogin" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Login" />
+                <value culture="de-DE" title="Login" />
+              </property>
+              <property type="ParentControl" value="Login" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Invoke" data="LoginDotNet" extradata="">
+                  <action action="If" data="LOGIN_STATUS" extradata="">
+                    <action action="Navigate" data="SelectCompany" extradata="" />
+                  </action>
+                  <action action="Else" data="" extradata="">
+                    <action action="Alert" data="" extradata="&quot;Cannot connect, try again.&quot;" />
+                  </action>
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="PASSWORD" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <validation>
+            <rule type="IsRequired" value="">
+              <errmsg msg="Password required" locale="en-US" />
+            </rule>
+          </validation>
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="USER_ID" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <validation>
+            <rule type="IsRequired" value="">
+              <errmsg msg="Username required" locale="en-US" />
+            </rule>
+          </validation>
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="LOGIN_STATUS" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="SpecificValue" value="True" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Set" data="LOGIN_STATUS" extradata="TRUE" />
+            <action action="Set" data="USER_ID" extradata="&quot;Mickey&quot;" />
+            <action action="Set" data="PASSWORD" extradata="&quot;Mouse&quot;" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <operation name="LoginDotNet">
+          <parameters>
+            <variable name="psUserID" type="String">
+              <binding name="USER_ID" />
+            </variable>
+            <variable name="psPassword" type="String">
+              <binding name="PASSWORD" />
+            </variable>
+          </parameters>
+          <return type="Boolean">
+            <binding name="LOGIN_STATUS" />
+          </return>
+          <variables>
+            <variable name="userRoles" type="String" array="true" dims="*" />
+          </variables>
+          <actions>
+            <code line="If psUserID != &quot;Mickey&quot;">
+              <code line="Return FALSE" />
+            </code>
+            <code line="If psPassword != &quot;Mouse&quot;">
+              <code line="Return FALSE" />
+            </code>
+            <code line="Call SalWebLogin(psUserID, userRoles)" />
+            <code line="Return TRUE" />
+          </actions>
+        </operation>
+      </operations>
+    </page>
+    <page name="InvoiceDetails">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="lg2,ltv1" />
+          <property type="Title">
+            <value culture="en-US" title="Invoice Products" />
+            <value culture="de-DE" title="Rechnungspositionen" />
+          </property>
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Invoice Products" />
+              </property>
+              <property type="Children" value="pbHome,pbBack" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt6" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="INVOICE_NO" />
+              <property type="ParentControl" value="lg2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products for Invoice:" />
+                <value culture="de-DE" title="Rechnungspositionen für Rechnung" />
+              </property>
+              <property type="ParentControl" value="lg2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg2" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="bgt5,bgt6" />
+              <property type="TopMargin" value="5" />
+              <property type="ColumnWidth" value="60,40" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Format" value="Number" />
+              <property type="Column" value="2" />
+              <property type="Binding" value="INVOICE_ITEMS.Price" />
+              <property type="TopMargin" value="0" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="INVOICE_ITEMS.Quantity" />
+              <property type="TopMargin" value="0" />
+              <property type="FontSize" value="0.8" />
+              <property type="Format" value="Number" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Binding" value="INVOICE_ITEMS.Color" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Binding" value="INVOICE_ITEMS.Style" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltv1" />
+              <property type="Children" value="bgt1,bgt2,bgt9,bgt3,bgt10,bgt4" />
+              <property type="ColumnWidth" value="70,15,15" />
+              <property type="Columns" value="3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="INVOICE_ITEMS" />
+              <property type="Children" value="lg1" />
+              <property type="Binding" value="" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbHome" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Home" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt9" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Qty:" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt10" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Price:" />
+              </property>
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="2" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbBack" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Back" />
+              </property>
+              <property type="FileName" value="LeftArrow" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="INVOICE_ITEMS" array="true" type="dclsInvoiceItem">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="invoice_no" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Style" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Color" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Quantity" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Price" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="INVOICE_NO" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetProductsForInvoice" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doGetProductsForInvoice" connection="connMongo" dataaction="Browse">
+          <databinding>
+            <binding name="INVOICE_ITEMS" />
+          </databinding>
+          <identitybinding>
+            <binding name="INVOICE_NO" />
+          </identitybinding>
+          <filters>
+            <filter name="" op="EqualTo">
+              <fieldbind>
+                <binding name="INVOICE_ITEMS.invoice_no" />
+              </fieldbind>
+              <valuebind>
+                <binding name="INVOICE_NO" />
+              </valuebind>
+            </filter>
+          </filters>
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="Invoice">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="dfInvDate,dfDatePaid,dfAmount,cmb1,pbViewProducts" />
+          <property type="Title">
+            <value culture="en-US" title="Invoice Detail" />
+            <value culture="de-DE" title="Rechnungsdetails" />
+          </property>
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pbSave,pbBack" />
+              <property type="Title">
+                <value culture="en-US" title="Invoice Detail" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="foo1" type="Object">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="pbSave" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="Title">
+                <value culture="en-US" title="Save" />
+              </property>
+              <property type="FileName" value="Edit" />
+              <property type="ImageAlignment" value="Left" />
+              <property type="Theme" value="B" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="If" data="ISNEW" extradata="">
+                  <action action="Alert" data="" extradata="&quot;Add ability is disabled in this demo mode. &lt;br&gt;Uncomment source code to enable it.&quot;" />
+                  <comment>! Uncomment following statement to allow adding a record</comment>
+                  <action action="Invoke" data="doAddInvoice" extradata="" commented="true" />
+                </action>
+                <action action="Else" data="" extradata="">
+                  <action action="Alert" data="" extradata="&quot;Update ability is disabled in this demo mode. &lt;br&gt;Uncomment source code to enable it.&quot;" />
+                  <comment>! Uncomment following statements to allow updating the record</comment>
+                  <action action="Invoke" data="doUpdateInvoice" extradata="" commented="true" />
+                </action>
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="cmb1" type="ComboBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Status:" />
+              </property>
+              <property type="Binding" value="INVOICE.Status" />
+              <property type="TopMargin" value="5" />
+              <property type="RightMargin" value="150" />
+            </propertylist>
+          </properties>
+          <listinitialization>
+            <text value="PAID" />
+            <text value="LATE" />
+            <text value="OPEN" />
+          </listinitialization>
+          <events />
+        </control>
+        <control name="dfAmount" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Amount:" />
+                <value culture="de-DE" title="Betrag" />
+              </property>
+              <property type="Format" value="Number" />
+              <property type="Binding" value="INVOICE.Amount" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfDatePaid" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Date Paid:" />
+                <value culture="de-DE" title="Zahlungseingang" />
+              </property>
+              <property type="Binding" value="INVOICE.InvoiceDatePaid" />
+              <property type="Format" value="Date" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="dfInvDate" type="TextBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Invoice Date:" />
+                <value culture="de-DE" title="Rechnungsdatum" />
+              </property>
+              <property type="Binding" value="INVOICE.InvoiceDate" />
+              <property type="Format" value="Date" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbViewProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ImageAlignment" value="" />
+              <property type="Title">
+                <value culture="en-US" title="See Invoice Items" />
+                <value culture="de-DE" title="Rechnungspositionen anzeigen" />
+              </property>
+              <property type="VisibilityBinding" value="INVOICE_NO" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="InvoiceDetails" extradata="INVOICE_NO" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbBack" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Back" />
+              </property>
+              <property type="FileName" value="LeftArrow" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="INVOICE" type="dclsInvoice">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="company_id" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="InvoiceNo" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="InvoiceDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="InvoiceDatePaid" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Status" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Amount" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts>
+        <function name="CheckIfAdd">
+          <description />
+          <parameters />
+          <variables />
+          <javascript>if (Td.Data.Binding.get("INVOICE_NO").getValue() == 0) {
+    Td.Data.Binding.get("IS_NEW").setValue(true);
+}</javascript>
+        </function>
+      </javascripts>
+      <parameters>
+        <binding name="INVOICE_NO" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="COMPANY_ID" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="ISNEW" type="Boolean">
+          <state mode="EqualsValue" comparevalue="TRUE" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Javascript" data="CheckIfAdd" extradata="" />
+            <action action="Invoke" data="doGetInvoiceDetails" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doUpdateInvoice" connection="connMongo" dataaction="Edit">
+          <databinding>
+            <binding name="INVOICE" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="doGetInvoiceDetails" connection="connMongo" dataaction="Read">
+          <databinding>
+            <binding name="INVOICE" />
+          </databinding>
+          <identitybinding>
+            <binding name="INVOICE_NO" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+        <dataoperation name="doAddInvoice" connection="connMongo" dataaction="Add">
+          <databinding>
+            <binding name="INVOICE" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="CompanyInvoices">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt1,ltv1" />
+          <property type="Title">
+            <value culture="en-US" title="Invoices" />
+            <value culture="de-DE" title="Rechnungen" />
+          </property>
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="pbAdd,pbHome" />
+              <property type="Title">
+                <value culture="en-US" title="Invoices" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbAdd" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Title">
+                <value culture="en-US" title="New" />
+                <value culture="de-DE" title="Neu" />
+              </property>
+              <property type="FileName" value="Plus" />
+              <property type="ImageAlignment" value="Left" />
+              <property type="Theme" value="B" />
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Invoice" extradata="&quot;0&quot;,COMPANY_ID, 1" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bkgdStatus" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="INVOICES.Status" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgdDatePaid" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Binding" value="INVOICES.InvoiceDatePaid" />
+              <property type="Column" value="1" />
+              <property type="Format" value="ShortDate" />
+              <property type="TopMargin" value="0" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgdAmount" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="1" />
+              <property type="Binding" value="INVOICES.Amount" />
+              <property type="TopMargin" value="0" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgdDate" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Binding" value="INVOICES.InvoiceDate" />
+              <property type="Format" value="ShortDate" />
+              <property type="TopMargin" value="0" />
+              <property type="FontSize" value="0.8" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltv1" />
+              <property type="Children" value="bgt2,bkgdDate,bgt3,bkgdDatePaid,bgt4,bkgdAmount,bgt5,bkgdStatus" />
+              <property type="Rows" value="2" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="INVOICES" />
+              <property type="Children" value="lg1" />
+              <property type="Binding" value="INVOICE" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Invoice" extradata="INVOICE.InvoiceNo, COMPANY_ID, 0" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbHome" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Home" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="COMPANY_NAME" />
+              <property type="TopMargin" value="5" />
+              <property type="FontSize" value="1.5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Title">
+                <value culture="en-US" title="Date:" />
+              </property>
+              <property type="TopMargin" value="0" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Date paid:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Amount:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt5" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Status:" />
+              </property>
+              <property type="Column" value="1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="INVOICES" array="true" type="dclsInvoice">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="company_id" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="InvoiceNo" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="InvoiceDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="InvoiceDatePaid" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Status" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Amount" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="INVOICE" type="dclsInvoice">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="company_id" type="Number">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="InvoiceNo" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="InvoiceDate" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="InvoiceDatePaid" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Status" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Amount" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="COMPANY_ID" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="COMPANY_NAME" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetInvoicesForCompany" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doGetInvoicesForCompany" connection="connMongo" dataaction="Browse">
+          <databinding>
+            <binding name="INVOICES" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters>
+            <filter name="" op="EqualTo">
+              <fieldbind>
+                <binding name="INVOICES.company_id" />
+              </fieldbind>
+              <valuebind>
+                <binding name="COMPANY_ID" />
+              </valuebind>
+            </filter>
+          </filters>
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="CompanyDetails">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>hpp</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bkgdName,lg1,pbGetInvoices" />
+          <property type="Title">
+            <value culture="en-US" title="Company Details" />
+            <value culture="de-DE" title="Firmendetails" />
+          </property>
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Company Details" />
+              </property>
+              <property type="Children" value="pbBack,pbHome" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbGetInvoices" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="See Invoices" />
+                <value culture="de-DE" title="Rechnungen ansehen" />
+              </property>
+              <property type="ImageAlignment" value="" />
+              <property type="TopMargin" value="40" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="CompanyInvoices" extradata="COMPANY_ID, COMPANY.Name" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="bkgdZip" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="COMPANY.Zip" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="2" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkdgState" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="COMPANY.State" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="3" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgdCity" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="COMPANY.City" />
+              <property type="TopMargin" value="0" />
+              <property type="Row" value="1" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgdAddress" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="COMPANY.Address" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="ParentControl" value="lg1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgdName" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Binding" value="COMPANY.Name" />
+              <property type="FontSize" value="1.5" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbBack" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Back" />
+              </property>
+              <property type="FileName" value="LeftArrow" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="&lt;back&gt;" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbHome" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Home" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Rows" value="4" />
+              <property type="Children" value="bgt1,bkgdAddress,bgt2,bkgdCity,bgt3,bkgdZip,bgt4,bkdgState" />
+              <property type="ColumnWidth" value="25,75" />
+              <property type="TopMargin" value="20" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Address:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="City:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Zip:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Row" value="3" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="State:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="COMPANY" type="dclsCompany">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Address" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="State" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Zip" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters>
+        <binding name="COMPANY_ID" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+      </parameters>
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetCompanyDetails" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doGetCompanyDetails" connection="connMongo" dataaction="Read">
+          <databinding>
+            <binding name="COMPANY" />
+          </databinding>
+          <identitybinding>
+            <binding name="COMPANY_ID" />
+          </identitybinding>
+          <filters />
+          <sortoptions />
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="SelectCompany">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description />
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="ltv1" />
+          <property type="Title">
+            <value culture="en-US" title="ISLAND CORP" />
+          </property>
+          <property type="FooterVisible" value="Yes" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Island Corp (Mongo)" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bkgdCompanyName" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltv1" />
+              <property type="Binding" value="COMPANIES.Name" />
+              <property type="BindingDirection" value="Set" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="COMPANIES" />
+              <property type="Children" value="bkgdCompanyName" />
+              <property type="ParentControl" value="SelectCompany" />
+              <property type="Binding" value="COMPANY" />
+              <property type="DivideBy" value="bkgdCompanyName" />
+              <property type="ShowFilter" value="Yes" />
+              <property type="FilterBy" value="bkgdCompanyName" />
+              <property type="TopMargin" value="5" />
+              <property type="BindingDirection" value="Get" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="CompanyDetails" extradata="COMPANY.ID" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbGotoEmployees" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbGotoEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="COMPANIES" array="true" type="dclsCompany">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Address" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="State" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Zip" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="COMPANY" type="dclsCompany">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="ID" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Name" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Address" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="City" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="State" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="Zip" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetCompanies" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doGetCompanies" connection="connMongo" dataaction="Browse">
+          <databinding>
+            <binding name="COMPANIES" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions>
+            <sortoption name="" dir="Ascending">
+              <fieldbind>
+                <binding name="COMPANIES.Name" />
+              </fieldbind>
+            </sortoption>
+          </sortoptions>
+        </dataoperation>
+      </operations>
+    </page>
+    <page name="Employees">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Navigate to EditEmployee uses 2 params. The first is empty, and the second (1) tells ISNEW=TRUE</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="FooterVisible" value="Yes" />
+          <property type="Title">
+            <value culture="en-US" title="Island Corp" />
+          </property>
+          <property type="Children" value="ltv1" />
+          <property type="Theme" value="E" />
+          <property type="Authenticate" value="Yes" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="nav1" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+              <property type="Children" value="pbHome,pbNewEmployee" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="ltv1" type="ListView">
+          <properties>
+            <propertylist display="phone">
+              <property type="ListBinding" value="EMPLOYEES" />
+              <property type="Children" value="lg1" />
+              <property type="Binding" value="EMPLOYEE" />
+              <property type="DivideBy" value="bgt1" />
+              <property type="TopMargin" value="5" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="EmployeeDetails" extradata="EMPLOYEE.nID" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="ltv1" />
+              <property type="Children" value="bgt1,bgt2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Binding" value="EMPLOYEES.sLastName" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Column" value="1" />
+              <property type="Binding" value="EMPLOYEES.sFirstName" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbHome" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="Column" value="2" />
+              <property type="TopMargin" value="0" />
+              <property type="FileName" value="Home" />
+              <property type="ImageAlignment" value="NoText" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbNewEmployee" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__header" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="New" />
+              </property>
+              <property type="FileName" value="Plus" />
+              <property type="Theme" value="B" />
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="EditEmployee" extradata="&quot;&quot;,1" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="nav1" type="Navigator">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="__footer" />
+              <property type="Children" value="pbCompanies,pbProducts,pbEmployees" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="pbCompanies" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Companies" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="SelectCompany" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbProducts" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Products" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Products" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+        <control name="pbEmployees" type="Button">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="nav1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="en-US" title="Employees" />
+              </property>
+            </propertylist>
+          </properties>
+          <events>
+            <event name="Click">
+              <actions>
+                <action action="Navigate" data="Employees" extradata="" />
+              </actions>
+            </event>
+          </events>
+        </control>
+      </contents>
+      <bindings>
+        <binding name="EMPLOYEE" type="dclsEmployee">
+          <state mode="NotNull" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="nID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sFirstName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sLastName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sDeptID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="dtDateHired" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="nCurrentSalary" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sEmail" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="binPhoto" type="Binary">
+              <state mode="None" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sPhone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+        <binding name="EMPLOYEES" array="true" type="dclsEmployee">
+          <state mode="HasItems" />
+          <initialvalue mode="Null" />
+          <subbindings>
+            <binding name="nID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sFirstName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sLastName" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sDeptID" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="dtDateHired" type="Date/Time">
+              <state mode="NotNull" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="nCurrentSalary" type="Number">
+              <state mode="DoesntEqualValue" comparevalue="0" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sEmail" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="binPhoto" type="Binary">
+              <state mode="None" />
+              <initialvalue mode="Null" />
+            </binding>
+            <binding name="sPhone" type="String">
+              <state mode="DoesntEqualValue" comparevalue="" />
+              <initialvalue mode="Null" />
+            </binding>
+          </subbindings>
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events>
+        <event name="Create">
+          <actions>
+            <action action="Invoke" data="doGetEmployees" extradata="" />
+          </actions>
+        </event>
+      </events>
+      <functions />
+      <operations>
+        <dataoperation name="doGetEmployees" connection="connMongo" dataaction="Browse">
+          <databinding>
+            <binding name="EMPLOYEES" />
+          </databinding>
+          <identitybinding>
+            <binding name="" />
+          </identitybinding>
+          <filters />
+          <sortoptions>
+            <sortoption name="" dir="Ascending">
+              <fieldbind>
+                <binding name="EMPLOYEES.sLastName" />
+              </fieldbind>
+            </sortoption>
+          </sortoptions>
+        </dataoperation>
+      </operations>
+    </page>
+  </webpages>
+</application>

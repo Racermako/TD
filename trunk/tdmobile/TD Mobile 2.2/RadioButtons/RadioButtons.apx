@@ -1,0 +1,336 @@
+<application xmlns="urn:Gupta.TD.CDK">
+  <settings>
+    <setting DefaultLanguage="en-US" />
+    <setting BuildTargetPath="&lt;default&gt;" />
+    <setting BuildURL="http://localhost" />
+    <setting DefaultDisplay="Phone" />
+    <setting FallbackDisplay="Phone" />
+    <setting FallbackLanguage="en-US" />
+    <setting DefaultPage="page1" />
+    <setting PublishIISUrl="localhost" />
+    <setting Roles="Administrator,User" />
+  </settings>
+  <libraries />
+  <displays>
+    <display name="Phone" width="320" height="480" id="phone" isphone="True" />
+    <display name="Tablet" width="768" height="1024" id="tablet" isphone="False" />
+  </displays>
+  <cssincludes />
+  <jsincludes />
+  <symbolimports />
+  <variables />
+  <functions />
+  <classes />
+  <webpages>
+    <page name="page1">
+      <supporteddisplays>
+        <display id="phone" />
+      </supporteddisplays>
+      <description>Demonstrates Radio Buttons in group boxes sharing a Binding. 
+
+A common usage of Radio Buttons is to Bind each button to its own Boolean Binding.  
+This example shows how to use grouped buttons with a shared Number Binding, or a
+shared String Binding; the buttons must have a similarly typed Checked Value (in the Properties window). 
+
+In the top half of our page, under 'Vertically grouped', we have a group of three Radio Buttons,
+and a background text field.  
+Each of the three Radio Buttons has the same Value Bind: a number Binding named 'NRADIO1'.  
+This would not have worked if we had used a Binary Binding - it can only be True or False.  
+But since the radio buttons have a numeric 'Checked Value' of 1, 2 or 3 - the selected Button can 
+be reflected in the shared numeric Binding.  
+
+We also have a text field with the same Value Bind, simply to demonstrate the value of the Binding as 
+you select different buttons.
+
+The lower 'Horizontally grouped' buttons are similarly constructed, but share a String Binding
+and have Checked Values that are 'A', 'B' or 'C'.   It also is different in having a second uneditable group
+of radio buttons, all sharing the same Binding, to also demonstrate the value as you select different buttons.</description>
+      <properties>
+        <propertylist display="phone">
+          <property type="Children" value="bgt4,lg1,html1,bgt3,lg2" />
+        </propertylist>
+      </properties>
+      <menu />
+      <contents>
+        <control name="__footer" type="Toolbar">
+          <properties>
+            <propertylist display="phone" />
+          </properties>
+          <events />
+        </control>
+        <control name="__header" type="Toolbar">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="RadioButtons" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg1" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="grp1,bgt1" />
+              <property type="ColumnWidth" value="70,30" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="grp1" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="TopMargin" value="0" />
+              <property type="Children" value="rb1,rb2,rb3" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb1" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="fr-FR" title="rb1" />
+                <value culture="en-US" title="rb1 (checked val=1)" />
+              </property>
+              <property type="CheckValue" value="1" />
+              <property type="Binding" value="NRADIO1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb2" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="fr-FR" title="rb2" />
+                <value culture="en-US" title="rb2 (checked val=2)" />
+              </property>
+              <property type="CheckValue" value="2" />
+              <property type="Binding" value="NRADIO1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb3" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp1" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="fr-FR" title="rb3" />
+                <value culture="en-US" title="rb3 (checked val=3)" />
+              </property>
+              <property type="CheckValue" value="3" />
+              <property type="Binding" value="NRADIO1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt1" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg1" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="60" />
+              <property type="Title">
+                <value culture="fr-FR" title="value" />
+              </property>
+              <property type="LeftMargin" value="20" />
+              <property type="Binding" value="NRADIO1" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="lg2" type="LayoutGrid">
+          <properties>
+            <propertylist display="phone">
+              <property type="Children" value="grp2,grp4,bgt2" />
+              <property type="ColumnWidth" value="70,30" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="grp2" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg2" />
+              <property type="TopMargin" value="0" />
+              <property type="Orientation" value="Horizontal" />
+              <property type="Children" value="rb4,rb5,rb6" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb4" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="fr-FR" title="rbA" />
+                <value culture="en-US" title="rbA" />
+              </property>
+              <property type="CheckValue" value="A" />
+              <property type="Binding" value="SRADIO2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb5" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="fr-FR" title="rbB" />
+              </property>
+              <property type="CheckValue" value="B" />
+              <property type="Binding" value="SRADIO2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb6" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp2" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="fr-FR" title="rbC" />
+              </property>
+              <property type="CheckValue" value="C" />
+              <property type="Binding" value="SRADIO2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt2" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="lg2" />
+              <property type="Column" value="1" />
+              <property type="TopMargin" value="20" />
+              <property type="Title">
+                <value culture="fr-FR" title="value" />
+              </property>
+              <property type="LeftMargin" value="20" />
+              <property type="Binding" value="SRADIO2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="grp4" type="GroupBox">
+          <properties>
+            <propertylist display="phone">
+              <property type="Orientation" value="Horizontal" />
+              <property type="Children" value="rb10,rb11,rb12" />
+              <property type="TopMargin" value="0" />
+              <property type="ParentControl" value="lg2" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb10" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp4" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="fr-FR" title="A" />
+              </property>
+              <property type="CheckValue" value="A" />
+              <property type="Binding" value="SRADIO2" />
+              <property type="Editable" value="No" />
+              <property type="MiniSize" value="Yes" />
+              <property type="BindingDirection" value="Get" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb11" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp4" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="fr-FR" title="B" />
+              </property>
+              <property type="CheckValue" value="B" />
+              <property type="Binding" value="SRADIO2" />
+              <property type="Editable" value="No" />
+              <property type="MiniSize" value="Yes" />
+              <property type="BindingDirection" value="Get" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="rb12" type="Radio">
+          <properties>
+            <propertylist display="phone">
+              <property type="ParentControl" value="grp4" />
+              <property type="TopMargin" value="0" />
+              <property type="Title">
+                <value culture="fr-FR" title="C" />
+              </property>
+              <property type="CheckValue" value="C" />
+              <property type="Binding" value="SRADIO2" />
+              <property type="Editable" value="No" />
+              <property type="MiniSize" value="Yes" />
+              <property type="BindingDirection" value="Get" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt3" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Horizontally grouped:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="bgt4" type="Label">
+          <properties>
+            <propertylist display="phone">
+              <property type="Title">
+                <value culture="en-US" title="Vertically grouped:" />
+              </property>
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+        <control name="html1" type="HtmlHost">
+          <properties>
+            <propertylist display="phone">
+              <property type="Html" value="&lt;HR&gt;" />
+            </propertylist>
+          </properties>
+          <events />
+        </control>
+      </contents>
+      <bindings>
+        <binding name="NRADIO1" type="Number">
+          <state mode="DoesntEqualValue" comparevalue="0" />
+          <initialvalue mode="Null" />
+        </binding>
+        <binding name="SRADIO2" type="String">
+          <state mode="DoesntEqualValue" comparevalue="" />
+          <initialvalue mode="Null" />
+        </binding>
+      </bindings>
+      <javascripts />
+      <parameters />
+      <events />
+      <functions />
+      <operations />
+    </page>
+  </webpages>
+</application>

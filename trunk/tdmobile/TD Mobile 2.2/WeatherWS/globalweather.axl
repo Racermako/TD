@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?><symbolimport xmlns="urn:Unify.Sal.Compiler"><import_description>Web Service Interop: globalweather</import_description>
+<assembly name="globalweather" path="C:\Users\Martin\Documents\Unify\Product Management\TD Mobile\1.1\Apps\Web Service">
+<class name="GlobalWeather" symbol="globalweather_GlobalWeather" namespace="globalweather" loadassymbol="true" implemented="true">
+<type enum="ObjectNative">System_Web_Services_Protocols_SoapHttpClientProtocol</type>
+<functions>
+<function name=".ctor" symbol="GlobalWeather" implemented="true" loadasglobal="false" constructor="true">
+<type enum="NoneVoid" />
+<parameters>
+</parameters>
+</function>
+<function name="GetWeather" symbol="GetWeather" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+<function name="GetCitiesByCountry" symbol="GetCitiesByCountry" implemented="true" loadasglobal="false">
+<type enum="String" />
+<parameters>
+<parameter direction="In">
+<type enum="String" />
+</parameter>
+</parameters>
+</function>
+</functions>
+</class>
+</assembly>
+<assembly name="mscorlib">
+<enumeration name="StreamingContextStates" namespace="System.Runtime.Serialization" symbol="System_Runtime_Serialization_StreamingContextStates">
+<enumvalue name="CrossProcess" value="1" />
+<enumvalue name="CrossMachine" value="2" />
+<enumvalue name="File" value="4" />
+<enumvalue name="Persistence" value="8" />
+<enumvalue name="Remoting" value="16" />
+<enumvalue name="Other" value="32" />
+<enumvalue name="Clone" value="64" />
+<enumvalue name="CrossAppDomain" value="128" />
+<enumvalue name="All" value="255" />
+</enumeration>
+<enumeration name="NormalizationForm" namespace="System.Text" symbol="System_Text_NormalizationForm">
+<enumvalue name="FormC" value="1" />
+<enumvalue name="FormD" value="2" />
+<enumvalue name="FormKC" value="5" />
+<enumvalue name="FormKD" value="6" />
+</enumeration>
+<enumeration name="X509KeyStorageFlags" namespace="System.Security.Cryptography.X509Certificates" symbol="System_Security_Cryptography_X509Certificates_X509KeyStorageFlags">
+<enumvalue name="DefaultKeySet" value="0" />
+<enumvalue name="UserKeySet" value="1" />
+<enumvalue name="MachineKeySet" value="2" />
+<enumvalue name="Exportable" value="4" />
+<enumvalue name="UserProtected" value="8" />
+<enumvalue name="PersistKeySet" value="16" />
+</enumeration>
+<enumeration name="X509ContentType" namespace="System.Security.Cryptography.X509Certificates" symbol="System_Security_Cryptography_X509Certificates_X509ContentType">
+<enumvalue name="Unknown" value="0" />
+<enumvalue name="Cert" value="1" />
+<enumvalue name="SerializedCert" value="2" />
+<enumvalue name="Pfx" value="3" />
+<enumvalue name="Pkcs12" value="3" />
+<enumvalue name="SerializedStore" value="4" />
+<enumvalue name="Pkcs7" value="5" />
+<enumvalue name="Authenticode" value="6" />
+</enumeration>
+<enumeration name="StringComparison" namespace="System" symbol="System_StringComparison">
+<enumvalue name="CurrentCulture" value="0" />
+<enumvalue name="CurrentCultureIgnoreCase" value="1" />
+<enumvalue name="InvariantCulture" value="2" />
+<enumvalue name="InvariantCultureIgnoreCase" value="3" />
+<enumvalue name="Ordinal" value="4" />
+<enumvalue name="OrdinalIgnoreCase" value="5" />
+</enumeration>
+<enumeration name="TypeCode" namespace="System" symbol="System_TypeCode">
+<enumvalue name="Empty" value="0" />
+<enumvalue name="Object" value="1" />
+<enumvalue name="DBNull" value="2" />
+<enumvalue name="Boolean" value="3" />
+<enumvalue name="Char" value="4" />
+<enumvalue name="SByte" value="5" />
+<enumvalue name="Byte" value="6" />
+<enumvalue name="Int16" value="7" />
+<enumvalue name="UInt16" value="8" />
+<enumvalue name="Int32" value="9" />
+<enumvalue name="UInt32" value="10" />
+<enumvalue name="Int64" value="11" />
+<enumvalue name="UInt64" value="12" />
+<enumvalue name="Single" value="13" />
+<enumvalue name="Double" value="14" />
+<enumvalue name="Decimal" value="15" />
+<enumvalue name="DateTime" value="16" />
+<enumvalue name="String" value="18" />
+</enumeration>
+<enumeration name="TimeSpanStyles" namespace="System.Globalization" symbol="System_Globalization_TimeSpanStyles">
+<enumvalue name="None" value="0" />
+<enumvalue name="AssumeNegative" value="1" />
+</enumeration>
+<class name="Object" symbol="System_Object" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<functions>
+</functions>
+</class>
+<class name="ArrayList" symbol="System_Collections_ArrayList" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="Hashtable" symbol="System_Collections_Hashtable" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IList" symbol="System_Collections_IList" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="ICollection" symbol="System_Collections_ICollection" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IComparer" symbol="System_Collections_IComparer" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="Array" symbol="System_Array" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IEnumerator" symbol="System_Collections_IEnumerator" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IDictionaryEnumerator" symbol="System_Collections_IDictionaryEnumerator" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="SerializationInfo" symbol="System_Runtime_Serialization_SerializationInfo" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="StreamingContext" symbol="System_Runtime_Serialization_StreamingContext" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_ValueType</type>
+<functions>
+</functions>
+</class>
+<class name="IHashCodeProvider" symbol="System_Collections_IHashCodeProvider" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IEqualityComparer" symbol="System_Collections_IEqualityComparer" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IDictionary" symbol="System_Collections_IDictionary" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="Encoding" symbol="System_Text_Encoding" namespace="System.Text" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="X509Certificate" symbol="System_Security_Cryptography_X509Certificates_X509Certificate" namespace="System.Security.Cryptography.X509Certificates" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="CollectionBase" symbol="System_Collections_CollectionBase" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="DictionaryEntry" symbol="System_Collections_DictionaryEntry" namespace="System.Collections" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_ValueType</type>
+<functions>
+</functions>
+</class>
+<class name="SerializationInfoEnumerator" symbol="System_Runtime_Serialization_SerializationInfoEnumerator" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IFormatterConverter" symbol="System_Runtime_Serialization_IFormatterConverter" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="ValueType" symbol="System_ValueType" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="EncoderFallback" symbol="System_Text_EncoderFallback" namespace="System.Text" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="DecoderFallback" symbol="System_Text_DecoderFallback" namespace="System.Text" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="EncodingInfo" symbol="System_Text_EncodingInfo" namespace="System.Text" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="Decoder" symbol="System_Text_Decoder" namespace="System.Text" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="Encoder" symbol="System_Text_Encoder" namespace="System.Text" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="SecureString" symbol="System_Security_SecureString" namespace="System.Security" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="EventHandler" symbol="System_EventHandler" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_MulticastDelegate</type>
+<functions>
+</functions>
+</class>
+<class name="MarshalByRefObject" symbol="System_MarshalByRefObject" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="SerializationEntry" symbol="System_Runtime_Serialization_SerializationEntry" namespace="System.Runtime.Serialization" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_ValueType</type>
+<functions>
+</functions>
+</class>
+<class name="EncoderFallbackBuffer" symbol="System_Text_EncoderFallbackBuffer" namespace="System.Text" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="DecoderFallbackBuffer" symbol="System_Text_DecoderFallbackBuffer" namespace="System.Text" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="EventArgs" symbol="System_EventArgs" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IAsyncResult" symbol="System_IAsyncResult" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="AsyncCallback" symbol="System_AsyncCallback" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_MulticastDelegate</type>
+<functions>
+</functions>
+</class>
+<class name="MulticastDelegate" symbol="System_MulticastDelegate" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Delegate</type>
+<functions>
+</functions>
+</class>
+<class name="ObjRef" symbol="System_Runtime_Remoting_ObjRef" namespace="System.Runtime.Remoting" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="WaitHandle" symbol="System_Threading_WaitHandle" namespace="System.Threading" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_MarshalByRefObject</type>
+<functions>
+</functions>
+</class>
+<class name="Delegate" symbol="System_Delegate" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IRemotingTypeInfo" symbol="System_Runtime_Remoting_IRemotingTypeInfo" namespace="System.Runtime.Remoting" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IEnvoyInfo" symbol="System_Runtime_Remoting_IEnvoyInfo" namespace="System.Runtime.Remoting" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IChannelInfo" symbol="System_Runtime_Remoting_IChannelInfo" namespace="System.Runtime.Remoting" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="ReadOnlyCollectionBase" symbol="System_Collections_ReadOnlyCollectionBase" namespace="System.Collections" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="SafeWaitHandle" symbol="Microsoft_Win32_SafeHandles_SafeWaitHandle" namespace="Microsoft.Win32.SafeHandles" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">Microsoft_Win32_SafeHandles_SafeHandleZeroOrMinusOneIsInvalid</type>
+<functions>
+</functions>
+</class>
+<class name="TimeSpan" symbol="System_TimeSpan" namespace="System" loadassymbol="true" implemented="true" valuetype="true" autoCreatable="false">
+<type enum="ObjectNative">System_ValueType</type>
+<functions>
+</functions>
+</class>
+<class name="IMessageSink" symbol="System_Runtime_Remoting_Messaging_IMessageSink" namespace="System.Runtime.Remoting.Messaging" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="SafeHandleZeroOrMinusOneIsInvalid" symbol="Microsoft_Win32_SafeHandles_SafeHandleZeroOrMinusOneIsInvalid" namespace="Microsoft.Win32.SafeHandles" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Runtime_InteropServices_SafeHandle</type>
+<functions>
+</functions>
+</class>
+<class name="IFormatProvider" symbol="System_IFormatProvider" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IMessage" symbol="System_Runtime_Remoting_Messaging_IMessage" namespace="System.Runtime.Remoting.Messaging" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IMessageCtrl" symbol="System_Runtime_Remoting_Messaging_IMessageCtrl" namespace="System.Runtime.Remoting.Messaging" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="SafeHandle" symbol="System_Runtime_InteropServices_SafeHandle" namespace="System.Runtime.InteropServices" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Runtime_ConstrainedExecution_CriticalFinalizerObject</type>
+<functions>
+</functions>
+</class>
+<class name="CriticalFinalizerObject" symbol="System_Runtime_ConstrainedExecution_CriticalFinalizerObject" namespace="System.Runtime.ConstrainedExecution" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+</assembly>
+<assembly name="System.Web.Services">
+<enumeration name="SoapProtocolVersion" namespace="System.Web.Services.Protocols" symbol="System_Web_Services_Protocols_SoapProtocolVersion">
+<enumvalue name="Default" value="0" />
+<enumvalue name="Soap11" value="1" />
+<enumvalue name="Soap12" value="2" />
+</enumeration>
+<class name="SoapHttpClientProtocol" symbol="System_Web_Services_Protocols_SoapHttpClientProtocol" namespace="System.Web.Services.Protocols" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Web_Services_Protocols_HttpWebClientProtocol</type>
+<functions>
+</functions>
+</class>
+<class name="HttpWebClientProtocol" symbol="System_Web_Services_Protocols_HttpWebClientProtocol" namespace="System.Web.Services.Protocols" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Web_Services_Protocols_WebClientProtocol</type>
+<functions>
+</functions>
+</class>
+<class name="WebClientProtocol" symbol="System_Web_Services_Protocols_WebClientProtocol" namespace="System.Web.Services.Protocols" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_ComponentModel_Component</type>
+<functions>
+</functions>
+</class>
+</assembly>
+<assembly name="System">
+<enumeration name="UriHostNameType" namespace="System" symbol="System_UriHostNameType">
+<enumvalue name="Unknown" value="0" />
+<enumvalue name="Basic" value="1" />
+<enumvalue name="Dns" value="2" />
+<enumvalue name="IPv4" value="3" />
+<enumvalue name="IPv6" value="4" />
+</enumeration>
+<enumeration name="UriPartial" namespace="System" symbol="System_UriPartial">
+<enumvalue name="Scheme" value="0" />
+<enumvalue name="Authority" value="1" />
+<enumvalue name="Path" value="2" />
+<enumvalue name="Query" value="3" />
+</enumeration>
+<enumeration name="UriKind" namespace="System" symbol="System_UriKind">
+<enumvalue name="RelativeOrAbsolute" value="0" />
+<enumvalue name="Absolute" value="1" />
+<enumvalue name="Relative" value="2" />
+</enumeration>
+<enumeration name="UriComponents" namespace="System" symbol="System_UriComponents">
+<enumvalue name="Scheme" value="1" />
+<enumvalue name="UserInfo" value="2" />
+<enumvalue name="Host" value="4" />
+<enumvalue name="Port" value="8" />
+<enumvalue name="SchemeAndServer" value="13" />
+<enumvalue name="Path" value="16" />
+<enumvalue name="Query" value="32" />
+<enumvalue name="PathAndQuery" value="48" />
+<enumvalue name="HttpRequestUrl" value="61" />
+<enumvalue name="Fragment" value="64" />
+<enumvalue name="AbsoluteUri" value="127" />
+<enumvalue name="StrongPort" value="128" />
+<enumvalue name="HostAndPort" value="132" />
+<enumvalue name="StrongAuthority" value="134" />
+<enumvalue name="NormalizedHost" value="256" />
+<enumvalue name="KeepDelimiter" value="1073741824" />
+<enumvalue name="SerializationInfoString" value="-2147483648" />
+</enumeration>
+<enumeration name="UriFormat" namespace="System" symbol="System_UriFormat">
+<enumvalue name="UriEscaped" value="1" />
+<enumvalue name="Unescaped" value="2" />
+<enumvalue name="SafeUnescaped" value="3" />
+</enumeration>
+<class name="CookieContainer" symbol="System_Net_CookieContainer" namespace="System.Net" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="X509CertificateCollection" symbol="System_Security_Cryptography_X509Certificates_X509CertificateCollection" namespace="System.Security.Cryptography.X509Certificates" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Collections_CollectionBase</type>
+<functions>
+</functions>
+</class>
+<class name="IWebProxy" symbol="System_Net_IWebProxy" namespace="System.Net" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="ICredentials" symbol="System_Net_ICredentials" namespace="System.Net" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="Component" symbol="System_ComponentModel_Component" namespace="System.ComponentModel" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_MarshalByRefObject</type>
+<functions>
+</functions>
+</class>
+<class name="Cookie" symbol="System_Net_Cookie" namespace="System.Net" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="CookieCollection" symbol="System_Net_CookieCollection" namespace="System.Net" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="Uri" symbol="System_Uri" namespace="System" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="X509CertificateCollection/X509CertificateEnumerator" symbol="System_Security_Cryptography_X509Certificates_X509CertificateCollection_X509CertificateEnumerator" namespace="System.Security.Cryptography.X509Certificates" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="NetworkCredential" symbol="System_Net_NetworkCredential" namespace="System.Net" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="ISite" symbol="System_ComponentModel_ISite" namespace="System.ComponentModel" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IContainer" symbol="System_ComponentModel_IContainer" namespace="System.ComponentModel" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="IComponent" symbol="System_ComponentModel_IComponent" namespace="System.ComponentModel" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Object</type>
+<functions>
+</functions>
+</class>
+<class name="ComponentCollection" symbol="System_ComponentModel_ComponentCollection" namespace="System.ComponentModel" loadassymbol="true" implemented="true" autoCreatable="false">
+<type enum="ObjectNative">System_Collections_ReadOnlyCollectionBase</type>
+<functions>
+</functions>
+</class>
+</assembly>
+</symbolimport>
